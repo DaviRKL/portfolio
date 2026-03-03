@@ -17,7 +17,7 @@ export default function Navbar() {
   ];
 
   // Variantes para animação do menu mobile
-  const menuVariants = {
+  const menuVariants: any = {
     closed: {
       opacity: 0,
       y: -20,
