@@ -28,7 +28,7 @@ const BADGE_META: Record<
 }
 
 export default function Certifications() {
-  const hoverLift = {
+  const hoverLift: any = {
     initial: { y: 0 },
     hover: { y: -8, transition: { duration: 0.3, ease: "easeOut" } }
   }

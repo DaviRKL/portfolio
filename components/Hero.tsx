@@ -81,13 +81,18 @@ export default function Hero() {
     let ctx: any = null
 
     async function setupGsap() {
-      const gsap = (await import('gsap')).gsap ?? (await import('gsap'))
-      const ScrollTrigger = (await import('gsap/ScrollTrigger')).ScrollTrigger ?? (await import('gsap/ScrollTrigger'))
+      // SOLUÇÃO: Importamos os tipos apenas para as referências
+      const GSAP = await import('gsap')
+      const ST = await import('gsap/ScrollTrigger')
+      
+      // Atribuímos a uma constante tipada como 'any' ou ao módulo diretamente
+      const gsap = GSAP.gsap
+      const ScrollTrigger = ST.ScrollTrigger
+
       gsap.registerPlugin(ScrollTrigger)
 
       ctx = gsap.context(() => {
         if (nameRef.current) {
-          nameRef.current.style.willChange = 'transform'
           gsap.to(nameRef.current, {
             yPercent: -10,
             ease: 'power1.out',
@@ -101,7 +106,6 @@ export default function Hero() {
         }
 
         if (titleRef.current) {
-          titleRef.current.style.willChange = 'transform, opacity'
           gsap.to(titleRef.current, {
             y: -20,
             opacity: 1,
