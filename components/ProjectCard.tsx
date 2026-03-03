@@ -2,161 +2,110 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 
 type Project = {
   title: string
   tagline: string
   challenge: string
-  image?: string
+  image?: string | null
   technologies: string[]
   links: { repo?: string; live?: string }
+  status?: "completed" | "in_progress"
 }
 
-export default function ProjectCard({
-  project,
-  variants,
-}: {
-  project: Project
-  variants?: any
-}) {
-  const ref = useRef<HTMLElement | null>(null)
-  const transformative = new Set(['Supabase', 'N8N', 'n8n'])
+export default function ProjectCard({ project, variants }: { project: Project, variants?: any }) {
   const [loaded, setLoaded] = useState(false)
-  // try to enrich project.image using generated manifest if available
-  const [manifestEntry, setManifestEntry] = useState<any | null>(null)
+  const transformative = new Set(['Supabase', 'N8N', 'n8n', 'Llama-3', 'Groq API'])
 
-  useEffect(() => {
-    async function loadManifest() {
-      try {
-        const res = await fetch('/data/image-manifest.json')
-        if (!res.ok) return
-        const json = await res.json()
-        if (project.image) {
-          const key = project.image.split('/').pop()
-          if (key && json[key]) setManifestEntry(json[key])
-        }
-      } catch (e) {
-        // ignore
-      }
-    }
-    loadManifest()
-  }, [project.image])
-
-  // derive final image source: prefer manifestEntry, then project.image, then named project images or icons
-  const resolvedImage = (() => {
-    if (manifestEntry?.src) return manifestEntry.src
-    if (!project.image) return null
-    // map known project image keys to files in public/images/projects
-    const key = project.image.replace(/\.[^/.]+$/, '') // strip extension if any
-    const keyLower = key.toLowerCase()
-    if (key === 'exo-classifier' || key === 'exo_classifier' || key === 'exoplanet-classifier') {
-      return '/images/projects/exo-classifier.jpg'
-    }
-    if (key === 'diario_de_classe' || key === 'diario-de-classe' || key === 'diario') {
-      return '/images/projects/diario_de_classe.png'
-    }
-    if (['recycling', 'recycle', 'reciclagem', 'sistema_reciclagem'].includes(keyLower)) {
-      return null // handled by inline icon fallback
-    }
-    if (key === 'financial_copilot' || key === 'financial-copilot' || key === 'financial') {
-      return null // handled by inline icon fallback
-    }
-    return project.image
-  })()
+  // A lógica simplificou para: use o que está no JSON ou o placeholder
+  const imageSrc = project.image || '/images/projects/placeholder.png'
 
   return (
     <motion.article
-      ref={ref}
       variants={variants}
-      transition={{ duration: 0.65, ease: 'easeOut' }}
-      whileHover={{ y: -6, transition: { duration: 0.14, ease: 'easeOut' } }}
-      whileTap={{ y: -3, transition: { duration: 0.08, ease: 'easeOut' } }}
-      className="group backdrop-blur-xl rounded-xl p-0 overflow-hidden transition-colors shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] bg-black/5 border border-black/5 hover:bg-black/10 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10"
-      aria-labelledby={`project-${project.title}`}
+      initial="initial"
+      whileInView="animate"
+      viewport={{ once: true }}
+      whileHover={{ y: -8 }}
+      className="flex flex-col h-full overflow-hidden rounded-xl border backdrop-blur-md transition-all duration-500 shadow-lg bg-black/5 border-black/5 dark:bg-white/5 dark:border-white/10 group"
     >
-      {/* Image or icon area */}
-      <div className="w-full h-44 bg-gradient-to-r from-prussian to-deep-night relative overflow-hidden flex items-center justify-center">
-        {resolvedImage ? (
-          <img
-            src={manifestEntry?.src ?? resolvedImage}
-            srcSet={manifestEntry?.srcset ?? `${resolvedImage} 400w, ${resolvedImage} 800w, ${resolvedImage} 1200w`}
-            sizes={manifestEntry?.sizes ?? '(max-width: 640px) 100vw, 50vw'}
-            alt={`${project.title} preview`}
-            className={`w-full h-full object-cover transition-filter duration-700 ease-out ${loaded ? 'filter-none blur-0' : 'blur-sm scale-105'}`}
+      <div className="relative aspect-video w-full bg-gradient-to-r from-prussian to-deep-night overflow-hidden border-b border-black/5 dark:border-white/5 flex items-center justify-center">
+        {project.image ? (
+          <Image
+            src={imageSrc}
+            alt={project.title}
+            fill
+            className={`object-cover transition-all duration-700 group-hover:scale-110 ${loaded ? 'blur-0 opacity-100' : 'blur-sm opacity-0'}`}
             onLoad={() => setLoaded(true)}
-            loading="lazy"
+            unoptimized
           />
         ) : (
-          // fallback icon for projects without an image file
+          /* Mantendo a lógica de ícones para projetos sem imagem no JSON */
           <div className="flex items-center justify-center w-full h-full">
             {project.title.toLowerCase().includes('reciclagem') ? (
-              <i className="fa fa-recycle fa-3x text-white-smoke/90" aria-hidden="true" />
-            ) : project.title.toLowerCase().includes('financial') || project.title.toLowerCase().includes('copilot') ? (
-              <i className="fa fa-usd fa-2x text-white-smoke/90" aria-hidden="true" />
+              <i className="fa fa-recycle fa-3x text-white-smoke/90" />
+            ) : project.title.toLowerCase().includes('financial') ? (
+              <i className="fa fa-usd fa-3x text-white-smoke/90" />
             ) : (
-              <div className="text-white-smoke/60">No preview</div>
+              <div className="text-white-smoke/60 italic">No preview</div>
             )}
           </div>
         )}
-        {!loaded && resolvedImage && (
-          <div
-            className="absolute inset-0 bg-gradient-to-r from-prussian to-deep-night opacity-70 animate-pulse"
-            style={{ backgroundImage: `url(${manifestEntry?.blurDataURL ?? ''})`, backgroundSize: 'cover' }}
-          />
+
+        {/* Badge de Status */}
+        {project.status && (
+          <div className="absolute top-3 right-3 z-10">
+            <div className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border shadow-sm flex items-center gap-2 ${
+              project.status === 'completed' 
+              ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-500' 
+              : 'bg-amber-500/10 border-amber-500/20 text-amber-500'
+            }`}>
+              {project.status === 'in_progress' && (
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+                </span>
+              )}
+              {project.status === 'completed' ? 'Finalizado' : 'Em progresso'}
+            </div>
+          </div>
         )}
       </div>
 
-      <div className="p-6 text-center">
-      <header>
-        <h3 id={`project-${project.title}`} className="text-xl font-semibold text-text-main">
+      <div className="p-6 flex-grow flex flex-col items-center text-center">
+        <h3 className="text-xl font-bold text-text-main group-hover:text-[#00A9E0] transition-colors">
           {project.title}
         </h3>
-        <p className="mt-1 text-text-main/70">{project.tagline}</p>
-      </header>
+        <p className="mt-1 text-sm text-text-main/70 italic">{project.tagline}</p>
+        
+        <div className="mt-4 text-left w-full">
+          <p className="text-sm text-text-main/90">
+            <strong className="text-[#00A9E0]">Desafio:</strong> {project.challenge}
+          </p>
+        </div>
 
-      <div className="mt-4">
-        <p className="text-sm text-text-main/90"><strong>Desafio:</strong> {project.challenge}</p>
-      </div>
-
-      <ul className="mt-4 flex flex-wrap gap-2 justify-center" aria-hidden={false}>
-        {project.technologies.map((t) => {
-          const isNew = transformative.has(t)
-          return (
-            <motion.li
-              key={t}
-              whileHover={{ scale: 1.06 }}
-              className={`px-3 py-1 rounded-full text-sm border ${
-                isNew
-                  ? 'bg-transformative-teal text-deep-night border-transformative-teal/80'
-                  : 'bg-deep-night text-white-smoke/90 border-prussian/20'
-              }`}
-            >
+        <ul className="mt-6 flex flex-wrap gap-2 justify-center">
+          {project.technologies.map((t) => (
+            <li key={t} className={`px-3 py-1 rounded-full text-[11px] font-medium border ${
+              transformative.has(t)
+              ? 'bg-[#2f6364]/20 text-[#2f6364] border-[#2f6364]/40 dark:text-emerald-300'
+              : 'bg-black/5 dark:bg-white/5 text-text-main/80 border-black/10'
+            }`}>
               {t}
-            </motion.li>
-          )
-        })}
-      </ul>
-
+            </li>
+          ))}
+        </ul>
       </div>
-      <footer className="p-6 pt-0 mt-0 flex flex-col sm:flex-row items-center gap-3 justify-center">
+
+      <footer className="p-6 pt-0 flex items-center gap-4 justify-center">
         {project.links.repo && (
-          <a
-            className="text-sm text-[var(--accent)] underline"
-            href={project.links.repo}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={project.links.repo} target="_blank" className="text-xs font-semibold text-[#00A9E0] hover:underline">
             Repositório
           </a>
         )}
-
         {project.links.live && (
-          <a
-            className="text-sm text-text-main/90 bg-[var(--accent)]/10 px-3 py-1 rounded-md"
-            href={project.links.live}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={project.links.live} target="_blank" className="text-xs font-semibold bg-[#00A9E0] text-white px-4 py-2 rounded-lg hover:bg-[#00A9E0]/80 shadow-md">
             Ver Demo
           </a>
         )}

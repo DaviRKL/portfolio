@@ -3,7 +3,7 @@
     "title": "Diário de Classe ANG",
     "tagline": "Digitalização do gerenciamento de informações e registros de presença para a Associação Nova Geração.",
     "challenge": "Substituir registros manuais em papel por um sistema centralizado, garantindo a integridade dos dados e agilizando a rotina administrativa.",
-    "image": "diario_de_classe",
+    "image": "/images/projects/diario_de_classe.png",
     "technologies": [
       "React",
       "Node.js",
@@ -15,13 +15,14 @@
     ],
     "links": {
       "repo": "https://github.com/DaviRKL/PI"
-    }
+    },
+    "status": "completed"
   },
   {
     "title": "Exoplanet Classifier API & Dashboard",
     "tagline": "Classificador de exoplanetas utilizando modelos de Machine Learning (Ensemble) e visualização de dados em tempo real.",
     "challenge": "Processar o catálogo Kepler KOI para treinar classificadores Random Forest e XGBoost, servindo predições via API de baixa latência.",
-    "image": "exo-classifier",
+    "image": "/images/projects/exo-classifier.jpg",
     "technologies": [
       "Python",
       "FastAPI",
@@ -33,13 +34,68 @@
     ],
     "links": {
       "repo": "https://github.com/DaviRKL/exoplanet-classifier"
-    }
+    },
+    "status": "completed"
+  },
+  {
+    "title": "Todo List — MERN Stack",
+    "tagline": "Ecossistema Fullstack completo para gestão de tarefas, integrando banco NoSQL e interface responsiva sob a stack MERN.",
+    "challenge": "Consolidar a integração entre frontend e backend em uma arquitetura MERN (MongoDB, Express, React, Node), implementando operações CRUD eficientes e uma UI moderna com Material UI e feedbacks dinâmicos via React Toastify.",
+    "image": "/images/projects/todo-list-mern.png",
+    "technologies": [
+      "MongoDB",
+      "Express.js",
+      "React",
+      "Node.js",
+      "Material UI",
+      "React Toastify"
+    ],
+    "links": {
+      "repo": "https://github.com/DaviRKL/ToDoList"
+    },
+    "status": "completed"
+  },
+  {
+    "title": "Pokémon Unite Clone",
+    "tagline": "Interface inspirada no site oficial do Pokémon Unite na época de desenvolvimento, com consumo de Mock API e design responsivo.",
+    "challenge": "Desenvolver uma arquitetura de frontend escalável utilizando React Hooks (useState/useEffect) e roteamento dinâmico para simular a experiência do site oficial em parceria com a Eduzz.",
+    "image": "/images/projects/pokemon-unite.png",
+    "technologies": [
+      "React",
+      "React Router",
+      "Vite",
+      "Mock API",
+      "Hooks",
+      "CSS"
+    ],
+    "links": {
+      "repo": "https://github.com/DaviRKL/PokemonsReact"
+    },
+    "status": "completed"
+  },
+  {
+    "title": "Sistema de Reciclagem e Descarte",
+    "tagline": "Otimização de rotas de coleta e gestão de materiais utilizando estruturas de dados avançadas.",
+    "challenge": "Implementar grafos para o cálculo de rotas mais curtas e árvores Tries para busca eficiente e classificação de materiais recicláveis.",
+    "image": null,
+    "technologies": [
+      "Java",
+      "GraphStream",
+      "Data Structures",
+      "Algorithms",
+      "Graphs",
+      "Trie Tree"
+    ],
+    "links": {
+      "repo": "https://github.com/DaviRKL/sistema-reciclagem-descarte"
+    },
+    "status": "completed"
   },
   {
     "title": "Financial Copilot",
     "tagline": "Planejador financeiro inteligente com análise preditiva via IA (Llama-3) e dashboard interativo.",
     "challenge": "Implementar uma arquitetura híbrida (SSR/SSG/ISR) para performance e garantir a segurança de chaves sensíveis via API Routes na integração com Groq Cloud.",
-    "image": "financial_copilot",
+    "image": null,
     "technologies": [
       "Next.js",
       "TypeScript",
@@ -51,24 +107,7 @@
     ],
     "links": {
       "repo": "https://github.com/DaviRKL/financial-copilot"
-    }
-  },
-  {
-    "title": "Sistema de Reciclagem e Descarte",
-    "tagline": "Otimização de rotas de coleta e gestão de materiais utilizando estruturas de dados avançadas.",
-    "challenge": "Implementar grafos para o cálculo de rotas mais curtas e árvores Tries para busca eficiente e classificação de materiais recicláveis.",
-    "image": "recycling",
-    "technologies": [
-      "Java",
-      "GraphStream",
-      "Data Structures",
-      "Algorithms",
-      "Graphs",
-      "Trie Tree"
-    ],
-    "links": {
-      "repo": "https://github.com/DaviRKL/sistema-reciclagem-descarte"
-    }
+    },
+    "status": "in_progress"
   }
-
 ]
