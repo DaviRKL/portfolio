@@ -3,11 +3,11 @@ import type { ReactNode } from 'react'
 import ThemeProvider from '../components/ThemeProvider'
 
 export const metadata = {
-  title: 'Davi Konuma — Full-Stack Developer',
-  description: 'Portfólio de Davi Konuma — Full-Stack Developer (Next.js, TypeScript, Tailwind)',
+  title: 'Davi Konuma — Front-End Developer',
+  description: 'Portfólio de Davi Konuma — Front-End Developer (Next.js, TypeScript, Tailwind)',
   openGraph: {
-    title: 'Davi Konuma — Full-Stack Developer',
-    description: 'Portfólio de Davi Konuma — Full-Stack Developer',
+    title: 'Davi Konuma — Front-End Developer',
+    description: 'Portfólio de Davi Konuma — Front-End Developer',
   },
 }
 

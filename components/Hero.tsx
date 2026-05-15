@@ -161,7 +161,7 @@ export default function Hero() {
           variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className="mt-6 text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05] animated-gradient bg-clip-text"
-          aria-label="Davi Konuma — Full-Stack Developer"
+          aria-label="Davi Konuma — Front-End Developer"
           style={{ willChange: 'transform' }}
         >
           Davi Konuma
@@ -173,7 +173,7 @@ export default function Hero() {
           className="mt-4 pd-10 inline-flex items-center px-3 py-1 rounded-full bg-[rgba(0,169,224,0.08)] text-white text-sm font-semibold badge-beam pd-10"
           style={{ willChange: 'transform' }}
         >
-          Full-Stack Developer
+          Front-End Developer
         </motion.div>
 
         <motion.p
@@ -183,7 +183,7 @@ export default function Hero() {
           className="mt-6 text-base md:text-lg text-text-main/85 max-w-2xl mx-auto"
           style={{ willChange: 'transform, opacity' }}
         >
-          Com sólida base em Engenharia de Software e especialização no ecossistema TypeScript, minha atuação foca na entrega de soluções de ponta a ponta, unindo interfaces de alta performance a arquiteturas de backend robustas e escaláveis.
+          Com sólida base em Engenharia de Software e atuação focada em frontend enterprise com React e TypeScript, desenvolvo interfaces integradas a fluxos operacionais, priorizando escalabilidade, contexto de produto e experiência do usuário.
         </motion.p>
 
         <motion.div

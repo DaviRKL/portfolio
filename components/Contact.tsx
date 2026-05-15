@@ -50,7 +50,7 @@ export default function Contact() {
         </h2>
         
         <p className="text-lg md:text-xl text-[#00171f]/80 dark:text-[#f2f2f2]/80 mb-12 max-w-2xl mx-auto">
-          Estou sempre aberto a novos projetos, colaborações Full-Stack e desafios tecnológicos que demandem alta performance.
+          Estou sempre aberto a novos projetos, colaborações Front-End e desafios tecnológicos que demandem alta performance.
         </p>
 
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-20">
@@ -79,7 +79,7 @@ export default function Contact() {
 
         {/* Footer Minimalista */}
         <footer className="pt-12 border-t border-black/5 dark:border-white/5 text-sm text-[#00171f]/60 dark:text-[#f2f2f2]/60">
-          <p>© 2026 Davi Konuma — Desenvolvedor Full-Stack </p>
+          <p>© 2026 Davi Konuma — Desenvolvedor Front-End </p>
           <p className="mt-2">Feito com Next.js 14, Framer Motion e GSAP.</p>
         </footer>
       </motion.div>

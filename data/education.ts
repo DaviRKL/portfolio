@@ -13,7 +13,7 @@ export const education: EducationItem[] = [
     degree: 'Análise e Desenvolvimento de Sistemas — Tecnologia da Informação',
     period: 'fev de 2024 - dez de 2025',
     description:
-      'Na FATEC Sorocaba, consolidei minha base em Engenharia de Software, Estruturas de Dados, DevOps e IA. Desenvolvi uma solução Full-Stack para a ONG Associação Nova Geração, digitalizando o controle de presença e cadastros para otimizar a rotina administrativa da instituição.',
+      'Na FATEC Sorocaba, consolidei minha base em Engenharia de Software, Estruturas de Dados, DevOps e IA. Desenvolvi uma solução Front-End para a ONG Associação Nova Geração, digitalizando o controle de presença e cadastros para otimizar a rotina administrativa da instituição.',
     highlights: ['Destaque: Projeto Diário de Classe ANG.'],
     skills: [
       'React.js',
