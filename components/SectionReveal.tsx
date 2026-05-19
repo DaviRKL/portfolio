@@ -7,10 +7,12 @@ export default function SectionReveal({
   children,
   dir = 'left',
   className = '',
+  amount = 0.2,
 }: {
   children: ReactNode
   dir?: 'left' | 'right'
   className?: string
+  amount?: number
 }) {
   const x = dir === 'left' ? -80 : 80
 
@@ -22,7 +24,7 @@ export default function SectionReveal({
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1.5, ease: 'easeOut', delay: 0.12 }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount }}
       />
       <motion.div
         aria-hidden
@@ -30,7 +32,7 @@ export default function SectionReveal({
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1.5, ease: 'easeOut', delay: 0.12 }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount }}
       />
       <div aria-hidden className="absolute inset-0" style={{ background: 'rgba(var(--bg-rgb), 0.18)' }} />
 
@@ -38,7 +40,7 @@ export default function SectionReveal({
         initial={{ opacity: 0, x }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.7, ease: 'easeOut' }}
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount }}
         className="relative"
       >
         {children}

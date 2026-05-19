@@ -32,7 +32,7 @@ export default function Page() {
         <Certifications />
       </SectionReveal>
 
-      <SectionReveal dir="right">
+      <SectionReveal dir="right" amount={0.01}>
         <Showcase />
       </SectionReveal>
 

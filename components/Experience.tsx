@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 export default function Experience() {
   return (
-    <section id="experience" className="max-w-6xl mx-auto px-6 py-24">
-      <div className="text-center mb-8">
+    <section id="experience" className="w-full max-w-6xl mx-auto px-3 sm:px-6 py-10 sm:py-20">
+      <div className="text-center mb-6 sm:mb-8">
         <h2 className="text-3xl font-extrabold text-text-main">
           Experiência Profissional
         </h2>
@@ -18,7 +18,7 @@ export default function Experience() {
 
       {/* Card Destaque: AGX Software */}
       <motion.div
-        className="mb-10"
+        className="mb-6 sm:mb-10"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
@@ -30,7 +30,7 @@ export default function Experience() {
             transition: { duration: 0.14, ease: "easeOut" },
           }}
           whileTap={{ y: -2, transition: { duration: 0.08, ease: "easeOut" } }}
-          className="relative backdrop-blur-xl rounded-xl p-8 md:p-10 flex flex-col h-full transition-colors shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] bg-black/5 border border-black/5 hover:bg-black/10 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10"
+          className="relative backdrop-blur-xl rounded-xl p-4 sm:p-8 md:p-10 flex flex-col h-full transition-colors shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] bg-black/5 border border-black/5 hover:bg-black/10 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10"
         >
           <div className="flex-1">
             <header className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
@@ -88,7 +88,7 @@ export default function Experience() {
             </div>
           </div>
           <div
-            className="mt-8 p-4 rounded-lg"
+            className="mt-6 sm:mt-8 p-3 sm:p-4 rounded-lg"
             style={{
               background: "linear-gradient(90deg, rgba(0,169,224,0.08), rgba(0,169,224,0.03))",
               borderLeft: "4px solid var(--accent)",
@@ -104,7 +104,7 @@ export default function Experience() {
 
       {/* Grid com os dois cards secundários */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch"
+        className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8 items-stretch"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
@@ -125,7 +125,7 @@ export default function Experience() {
             transition: { duration: 0.14, ease: "easeOut" },
           }}
           whileTap={{ y: -2, transition: { duration: 0.08, ease: "easeOut" } }}
-          className="relative backdrop-blur-xl rounded-xl p-6 flex flex-col h-full transition-colors shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] bg-black/5 border border-black/5 hover:bg-black/10 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10"
+          className="relative backdrop-blur-xl rounded-xl p-3 sm:p-6 flex flex-col h-full transition-colors shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] bg-black/5 border border-black/5 hover:bg-black/10 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10"
         >
           <div className="flex-1">
             <header className="flex items-start justify-between">
@@ -171,7 +171,7 @@ export default function Experience() {
             </div>
           </div>
           <div
-            className="mt-6 p-4 rounded-lg"
+            className="mt-5 sm:mt-6 p-3 sm:p-4 rounded-lg"
             style={{
               background: "linear-gradient(90deg, rgba(0,169,224,0.06), rgba(0,169,224,0.02))",
               borderLeft: "4px solid var(--accent)",
@@ -196,7 +196,7 @@ export default function Experience() {
             transition: { duration: 0.14, ease: "easeOut" },
           }}
           whileTap={{ y: -2, transition: { duration: 0.08, ease: "easeOut" } }}
-          className="relative backdrop-blur-xl rounded-xl p-6 flex flex-col h-full transition-colors shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] bg-black/5 border border-black/5 hover:bg-black/10 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10"
+          className="relative backdrop-blur-xl rounded-xl p-3 sm:p-6 flex flex-col h-full transition-colors shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] bg-black/5 border border-black/5 hover:bg-black/10 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10"
         >
           <div className="flex-1">
             <header className="flex items-start justify-between">
@@ -233,7 +233,7 @@ export default function Experience() {
             </div>
           </div>
           <div
-            className="mt-6 p-4 rounded-lg"
+            className="mt-5 sm:mt-6 p-3 sm:p-4 rounded-lg"
             style={{
               background: "linear-gradient(90deg, rgba(0,169,224,0.04), rgba(0,169,224,0.01))",
               borderLeft: "4px solid var(--accent)",
