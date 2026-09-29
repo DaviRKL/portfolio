@@ -1,7 +1,7 @@
 "use client"
 
 import ProjectCard from './ProjectCard'
-import projects from '../data/projects.json'
+import projects from '../data/projects'
 import { motion } from 'framer-motion'
 
 type Project = {
