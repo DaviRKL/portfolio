@@ -5,6 +5,9 @@ import ThemeProvider from '../components/ThemeProvider'
 export const metadata = {
   title: 'Davi Konuma — Front-End Developer',
   description: 'Portfólio de Davi Konuma — Front-End Developer (Next.js, TypeScript, Tailwind)',
+  icons: {
+    icon: '/images/davi/mypic.ico',
+  },
   openGraph: {
     title: 'Davi Konuma — Front-End Developer',
     description: 'Portfólio de Davi Konuma — Front-End Developer',

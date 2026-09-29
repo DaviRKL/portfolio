@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "fetch:badges": "node scripts/fetchCredlyBadges.js",
     "generate-images": "node scripts/generateImageVariants.cjs",
     "build": "next build",
