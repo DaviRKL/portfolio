@@ -1,41 +1,65 @@
 const projects = [
   {
-    title: 'Diário de Classe ANG',
-    tagline: 'Digitalização do gerenciamento de informações e registros de presença para a Associação Nova Geração.',
-    challenge: 'Substituir registros manuais em papel por um sistema centralizado, garantindo a integridade dos dados e agilizando a rotina administrativa.',
-    image: '/images/projects/diario_de_classe.png',
+    title: "Portfólio - Fotografa Sofia Clickss",
+    tagline:
+      "Portfólio fotográfico com design em Glassmorphism e galeria Masonry imersiva.",
+    challenge:
+      "Exibir dezenas de imagens em alta qualidade em um layout complexo sem comprometer a memória do navegador, garantindo navegação mobile intuitiva via gestos (swipe) e cache otimizado na CDN para carregamento instantâneo.",
+    image: "/images/projects/portfolio-sofia-clickss.png",
     technologies: [
-      'React',
-      'Node.js',
-      'TypeScript',
-      'PostgreSQL',
-      'Sequelize',
-      'Docker',
-      'JWT',
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Vite",
+      "Vercel",
+      "react-masonry-css",
     ],
     links: {
-      repo: 'https://github.com/DaviRKL/PI',
+      live: "https://sofiaclickss.vercel.app/",
     },
-    status: 'completed',
+    status: "completed",
   },
   {
-    title: 'Exoplanet Classifier API & Dashboard',
-    tagline: 'Classificador de exoplanetas utilizando modelos de Machine Learning (Ensemble) e visualização de dados em tempo real.',
-    challenge: 'Processar o catálogo Kepler KOI para treinar classificadores Random Forest e XGBoost, servindo predições via API de baixa latência.',
-    image: '/images/projects/exo-classifier.jpg',
+    title: "Diário de Classe ANG",
+    tagline:
+      "Digitalização do gerenciamento de informações de assistidos e registros de presença para a Associação Nova Geração.",
+    challenge:
+      "Substituir registros manuais em papel por um sistema centralizado, garantindo a integridade dos dados e agilizando a rotina administrativa.",
+    image: "/images/projects/diario_de_classe.png",
     technologies: [
-      'Python',
-      'FastAPI',
-      'Angular',
-      'Scikit-Learn',
-      'XGBoost',
-      'TypeScript',
-      'Machine Learning',
+      "React",
+      "Node.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Sequelize",
+      "Docker",
+      "JWT",
     ],
     links: {
-      repo: 'https://github.com/DaviRKL/exoplanet-classifier',
+      repo: "https://github.com/DaviRKL/PI",
     },
-    status: 'completed',
+    status: "completed",
+  },
+  {
+    title: "Exoplanet Classifier API & Dashboard",
+    tagline:
+      "Classificador de exoplanetas utilizando modelos de Machine Learning (Ensemble) e visualização de dados em tempo real.",
+    challenge:
+      "Processar o catálogo Kepler KOI para treinar classificadores Random Forest e XGBoost, servindo predições via API de baixa latência.",
+    image: "/images/projects/exo-classifier.jpg",
+    technologies: [
+      "Python",
+      "FastAPI",
+      "Angular",
+      "Scikit-Learn",
+      "XGBoost",
+      "TypeScript",
+      "Machine Learning",
+    ],
+    links: {
+      repo: "https://github.com/DaviRKL/exoplanet-classifier",
+    },
+    status: "completed",
   },
   /*
   {
@@ -95,23 +119,25 @@ const projects = [
   },
   */
   {
-    title: 'Sistema de Reciclagem e Descarte',
-    tagline: 'Otimização de rotas de coleta e gestão de materiais utilizando estruturas de dados avançadas.',
-    challenge: 'Implementar grafos para o cálculo de rotas mais curtas e árvores Tries para busca eficiente e classificação de materiais recicláveis.',
+    title: "Sistema de Reciclagem e Descarte",
+    tagline:
+      "Otimização de rotas de coleta e gestão de materiais utilizando estruturas de dados avançadas.",
+    challenge:
+      "Implementar grafos para o cálculo de rotas mais curtas e árvores Tries para busca eficiente e classificação de materiais recicláveis.",
     image: null,
     technologies: [
-      'Java',
-      'GraphStream',
-      'Data Structures',
-      'Algorithms',
-      'Graphs',
-      'Trie Tree',
+      "Java",
+      "GraphStream",
+      "Data Structures",
+      "Algorithms",
+      "Graphs",
+      "Trie Tree",
     ],
     links: {
-      repo: 'https://github.com/DaviRKL/sistema-reciclagem-descarte',
+      repo: "https://github.com/DaviRKL/sistema-reciclagem-descarte",
     },
-    status: 'completed',
+    status: "completed",
   },
-]
+];
 
-export default projects
+export default projects;
