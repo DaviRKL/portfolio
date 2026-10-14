@@ -35,10 +35,8 @@ export default function Certifications() {
 
   return (
     <section id="certifications" className="max-w-6xl mx-auto px-6 py-24 text-center">
-      <h2 className="text-3xl font-extrabold mb-2 text-text-main">Certificações e Conquistas</h2>
-      <p className="text-text-main/85 mb-10">Foco em Cloud e Desenvolvimento Web — badges e conquistas recentes.</p>
+      <h2 className="text-3xl font-extrabold mb-10 text-text-main">Certificações e Conquistas</h2>
 
-      {/* Cloud & Inteligência Artificial */}
       <section className="mb-12">
         <h3 className="text-2xl font-bold mb-1 text-text-main">Cloud & Inteligência Artificial</h3>
         <p className="text-text-main/75 mb-6 max-w-3xl mx-auto">Estes certificados validam minha capacidade de trabalhar em ambientes modernos e escaláveis, com foco em nuvem e soluções de IA.</p>

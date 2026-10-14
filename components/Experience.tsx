@@ -1,108 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { experienceIntroduction, experiences, experienceTitle } from "../data/experiences";
 
 export default function Experience() {
   return (
-    <section id="experience" className="w-full max-w-6xl mx-auto px-3 sm:px-6 py-10 sm:py-20">
-      <div className="text-center mb-6 sm:mb-8">
-        <h2 className="text-3xl font-extrabold text-text-main">
-          Experiência Profissional
-        </h2>
-        <p className="text-text-main/80 mt-4 max-w-3xl mx-auto">
-          Estrategista em <strong>Engenharia de Software Front-End</strong>,
-          graduado pela FATEC — desenvolvendo arquiteturas web e integrações
-          escaláveis com foco em performance, SEO e resultados de alto impacto.
+    <section id="experience" className="w-full max-w-6xl mx-auto px-3 py-10 sm:px-6 sm:py-20">
+      <header className="mb-6 text-center sm:mb-8">
+        <h2 className="text-3xl font-extrabold text-text-main">{experienceTitle}</h2>
+        <p className="mx-auto mt-4 max-w-3xl text-text-main/80">
+          {experienceIntroduction.map((part, index) =>
+            part.emphasis ? (
+              <strong key={index}>{part.text}</strong>
+            ) : (
+              <span key={index}>{part.text}</span>
+            ),
+          )}
         </p>
-      </div>
+      </header>
 
-      {/* Card Destaque: AGX Software */}
-      <motion.div
-        className="mb-6 sm:mb-10"
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-      >
-        <motion.article
-          whileHover={{
-            y: -4,
-            transition: { duration: 0.14, ease: "easeOut" },
-          }}
-          whileTap={{ y: -2, transition: { duration: 0.08, ease: "easeOut" } }}
-          className="relative backdrop-blur-xl rounded-xl p-4 sm:p-8 md:p-10 flex flex-col h-full transition-colors shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] bg-black/5 border border-black/5 hover:bg-black/10 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10"
-        >
-          <div className="flex-1">
-            <header className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-              <div>
-                <div className="text-sm text-text-main/70">Desenvolvedor Front-End Junior</div>
-                <h3 className="text-2xl md:text-3xl font-bold text-text-main">AGX Software</h3>
-                <div className="text-xs text-text-main/60 mt-1">mar de 2026 — Atualmente</div>
-              </div>
-              <div className="flex flex-wrap gap-2 items-center mt-2 md:mt-0">
-                <span className="text-xs bg-[var(--accent)] text-white font-semibold px-2 py-1 rounded-full">React.js</span>
-                <span className="text-xs bg-[var(--accent)] text-white font-semibold px-2 py-1 rounded-full">TypeScript</span>
-                <span className="text-xs bg-[var(--accent)] text-white font-semibold px-2 py-1 rounded-full">Redux</span>
-                <span className="text-xs bg-[var(--accent)] text-white font-semibold px-2 py-1 rounded-full">APIs REST</span>
-                <span className="text-xs bg-[var(--accent)] text-white font-semibold px-2 py-1 rounded-full">Git</span>
-                <span className="text-xs bg-[var(--accent)] text-white font-semibold px-2 py-1 rounded-full">Styled Components</span>
-              </div>
-            </header>
-            <div className="mt-6 text-text-main/85 space-y-3">
-              <p className="flex items-start gap-3">
-                <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span>Estruturei sincronização bidirecional entre estado global (Redux) e URL (Query Params), permitindo persistência de filtros, compartilhamento de contexto e navegação consistente entre módulos.</span>
-              </p>
-              <p className="flex items-start gap-3">
-                <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span>Desenvolvi fluxos de navegação contextual entre Produto, Auto-contratação (AC) e Propostas, reduzindo etapas manuais e melhorando a produtividade operacional.</span>
-              </p>
-              <p className="flex items-start gap-3">
-                <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span>Reaproveitei e adaptei componentes de CRM em novos contextos de negócio, desacoplando dependências de rota e preservando compatibilidade com fluxos legados.</span>
-              </p>
-              <p className="flex items-start gap-3">
-                <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span>Atuei na evolução de permissões, formulários e gestão documental, integrando regras específicas por produto e refinando a experiência operacional do usuário.</span>
-              </p>
-              <p className="flex items-start gap-3">
-                <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span>Implementei integrações frontend com APIs REST para recursos contextuais de comunicação omnichannel diretamente na interface de propostas.</span>
-              </p>
-              <p className="flex items-start gap-3">
-                <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span>Desenvolvi melhorias em navegação por voz utilizando Web Speech API, incluindo tratamento de restrições de navegador, normalização de comandos e mecanismos de fallback.</span>
-              </p>
-            </div>
-          </div>
-          <div
-            className="mt-6 sm:mt-8 p-3 sm:p-4 rounded-lg"
-            style={{
-              background: "linear-gradient(90deg, rgba(0,169,224,0.08), rgba(0,169,224,0.03))",
-              borderLeft: "4px solid var(--accent)",
-            }}
-          >
-            <div className="text-sm font-semibold text-[var(--badge-legend-color)]">Resultado</div>
-            <div className="mt-1 text-text-main/85">
-              Atuação no desenvolvimento e evolução de aplicações web enterprise voltadas a fluxos operacionais e gestão comercial, utilizando React e TypeScript em ambientes com regras de negócio complexas e múltiplos módulos integrados.
-            </div>
-          </div>
-        </motion.article>
-      </motion.div>
-
-      {/* Experiências anteriores */}
       <motion.div
         className="grid grid-cols-1 gap-5 sm:gap-8"
         initial="hidden"
@@ -113,138 +29,72 @@ export default function Experience() {
           show: { transition: { staggerChildren: 0.14, delayChildren: 0.06 } },
         }}
       >
-        {/* Card: Climbz Consultoria (atualizado) */}
-        <motion.article
-          variants={{
-            hidden: { opacity: 0, y: 18 },
-            show: { opacity: 1, y: 0 },
-          }}
-          transition={{ duration: 0.65, ease: "easeOut" }}
-          whileHover={{
-            y: -4,
-            transition: { duration: 0.14, ease: "easeOut" },
-          }}
-          whileTap={{ y: -2, transition: { duration: 0.08, ease: "easeOut" } }}
-          className="relative backdrop-blur-xl rounded-xl p-4 sm:p-8 md:p-10 flex flex-col h-full transition-colors shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] bg-black/5 border border-black/5 hover:bg-black/10 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10"
-        >
-          <div className="flex-1">
-            <header className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-              <div>
-                <div className="text-sm text-text-main/70">Estagiário de Tecnologia</div>
-                <h3 className="text-2xl md:text-3xl font-bold text-text-main">Climbz Consultoria</h3>
-                <div className="text-xs text-text-main/60 mt-1">nov de 2024 — nov de 2025 · Sorocaba (Híbrida)</div>
-              </div>
-              <div className="flex flex-wrap gap-2 items-center">
-                <span className="text-xs bg-[var(--accent)] text-white font-semibold px-2 py-1 rounded-full">React.js</span>
-                <span className="text-xs bg-[var(--accent)] text-white font-semibold px-2 py-1 rounded-full">Next.js</span>
-                <span className="text-xs bg-[var(--accent)] text-white font-semibold px-2 py-1 rounded-full">Node.js</span>
-                <span className="text-xs bg-[var(--accent)] text-white font-semibold px-2 py-1 rounded-full">n8n</span>
-                <span className="text-xs bg-[var(--accent)] text-white font-semibold px-2 py-1 rounded-full">Google Apps Script</span>
-                <span className="text-xs bg-[var(--accent)] text-white font-semibold px-2 py-1 rounded-full">REST APIs</span>
-              </div>
-            </header>
-            <div className="mt-4 text-text-main/85 space-y-3">
-              <p className="flex items-start gap-3">
-                <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span>Atuei no suporte e manutenção de sistemas web utilizados em operações internas e atendimento ao cliente.</span>
-              </p>
-              <p className="flex items-start gap-3">
-                <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span>Participei em integrações e automações de processos, incluindo manipulação de dados e comunicação entre sistemas.</span>
-              </p>
-              <p className="flex items-start gap-3">
-                <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span>Criei scripts e fluxos automatizados para otimização operacional.</span>
-              </p>
-              <p className="flex items-start gap-3">
-                <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span>Participei em reuniões de levantamento de requisitos e alinhamento técnico com clientes, colaborando com equipes multidisciplinares em ambiente ágil.</span>
-              </p>
-            </div>
-          </div>
-          <div
-            className="mt-5 sm:mt-6 p-3 sm:p-4 rounded-lg"
-            style={{
-              background: "linear-gradient(90deg, rgba(0,169,224,0.06), rgba(0,169,224,0.02))",
-              borderLeft: "4px solid var(--accent)",
+        {experiences.map((experience) => (
+          <motion.article
+            key={experience.company}
+            variants={{
+              hidden: { opacity: 0, y: 18 },
+              show: { opacity: 1, y: 0 },
             }}
+            transition={{ duration: 0.65, ease: "easeOut" }}
+            whileHover={{ y: -4, transition: { duration: 0.14, ease: "easeOut" } }}
+            whileTap={{ y: -2, transition: { duration: 0.08, ease: "easeOut" } }}
+            className="relative flex h-full flex-col rounded-xl border border-black/5 bg-black/5 p-4 shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] backdrop-blur-xl transition-colors hover:bg-black/10 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10 sm:p-8 md:p-10"
           >
-            <div className="text-sm font-semibold text-[var(--badge-legend-color)]">Resultado</div>
-            <div className="mt-1 text-text-main/85">
-              Suporte eficiente e otimização operacional através da criação de scripts e automações, garantindo alinhamento técnico ágil com as necessidades do cliente.
-            </div>
-          </div>
-        </motion.article>
+            <div className="flex-1">
+              <header className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                <div>
+                  <div className="text-sm text-text-main/70">{experience.role}</div>
+                  <h3 className="text-2xl font-bold text-text-main md:text-3xl">{experience.company}</h3>
+                  <div className="mt-1 text-xs text-text-main/60">{experience.period}</div>
+                </div>
+                <ul className="mt-2 flex flex-wrap items-center gap-2 md:mt-0" aria-label={`Tecnologias de ${experience.company}`}>
+                  {experience.technologies.map((technology) => (
+                    <li
+                      key={technology}
+                      className="rounded-full bg-[var(--accent)] px-2 py-1 text-xs font-semibold text-white"
+                    >
+                      {technology}
+                    </li>
+                  ))}
+                </ul>
+              </header>
 
-        {/* Card: Staff em Eventos (mantido)
-        <motion.article
-          variants={{
-            hidden: { opacity: 0, y: 18 },
-            show: { opacity: 1, y: 0 },
-          }}
-          transition={{ duration: 0.65, ease: "easeOut" }}
-          whileHover={{
-            y: -4,
-            transition: { duration: 0.14, ease: "easeOut" },
-          }}
-          whileTap={{ y: -2, transition: { duration: 0.08, ease: "easeOut" } }}
-          className="relative backdrop-blur-xl rounded-xl p-3 sm:p-6 flex flex-col h-full transition-colors shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] bg-black/5 border border-black/5 hover:bg-black/10 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10"
-        >
-          <div className="flex-1">
-            <header className="flex items-start justify-between">
-              <div>
-                <div className="text-sm text-text-main/70">Freelance</div>
-                <h3 className="text-xl md:text-2xl font-bold text-text-main">Staff em Eventos</h3>
-                <div className="text-xs text-text-main/60 mt-1">nov de 2023 — nov de 2025 · Sorocaba (Presencial)</div>
-              </div>
-              <div className="flex flex-wrap gap-2 items-center">
-                <span className="text-xs bg-[var(--accent)] text-white font-semibold px-2 py-1 rounded-full">Operações</span>
-                <span className="text-xs bg-[var(--accent)] text-white font-semibold px-2 py-1 rounded-full">Gestão de Crises</span>
-                <span className="text-xs bg-[var(--accent)] text-white font-semibold px-2 py-1 rounded-full">Comunicação</span>
-              </div>
-            </header>
-            <div className="mt-4 text-text-main/85 space-y-3">
-              <p className="flex items-start gap-3">
-                <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span><strong>Orquestrei</strong> suporte operacional e logístico em eventos de escala, garantindo infraestrutura e fluxo.</span>
-              </p>
-              <p className="flex items-start gap-3">
-                <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span><strong>Gerenciei</strong> crises e incidentes em tempo real, aplicando resolução ágil.</span>
-              </p>
-              <p className="flex items-start gap-3">
-                <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span><strong>Comuniquei</strong> de forma assertiva com equipes multidisciplinares, facilitando decisões sob pressão.</span>
-              </p>
+              <ul className="mt-6 space-y-3 text-text-main/85">
+                {experience.responsibilities.map((responsibility) => (
+                  <li key={responsibility} className="flex items-start gap-3">
+                    <svg
+                      className="h-5 w-5 shrink-0 text-accent"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M5 12l4 4L19 6"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <span>{responsibility}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
-          <div
-            className="mt-5 sm:mt-6 p-3 sm:p-4 rounded-lg"
-            style={{
-              background: "linear-gradient(90deg, rgba(0,169,224,0.04), rgba(0,169,224,0.01))",
-              borderLeft: "4px solid var(--accent)",
-            }}
-          >
-            <div className="text-sm font-semibold text-[var(--badge-legend-color)]">Resultado</div>
-            <div className="mt-1 text-text-main/85">
-              Desempenho operacional consistente com redução no tempo de resposta a incidentes e melhoria na coordenação entre stakeholders.
+
+            <div
+              className="mt-6 rounded-lg p-3 sm:mt-8 sm:p-4"
+              style={{
+                background: "linear-gradient(90deg, rgba(0,169,224,0.08), rgba(0,169,224,0.03))",
+                borderLeft: "4px solid var(--accent)",
+              }}
+            >
+              <div className="text-sm font-semibold text-[var(--badge-legend-color)]">{experience.resultLabel}</div>
+              <p className="mt-1 text-text-main/85">{experience.result}</p>
             </div>
-          </div>
-        </motion.article> */}
+          </motion.article>
+        ))}
       </motion.div>
     </section>
   );

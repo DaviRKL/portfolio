@@ -12,8 +12,9 @@ export default function Navbar() {
     { href: "#experience", label: "Experiência" },
     { href: "#projects", label: "Projetos" },
     { href: "#education", label: "Formações" },
-    { href: "#languages", label: "Idiomas" },
     { href: "#certifications", label: "Certificações" },
+    { href: "#languages", label: "Idiomas" },
+    { href: "#contacts", label: "Contato" },
   ];
 
   // Variantes para animação do menu mobile
@@ -67,7 +68,10 @@ export default function Navbar() {
             ))}
           </div>
 
-          <div className="flex items-center gap-5 border-l pl-5" style={{ borderColor: "var(--border-color)" }}>
+          <div
+            className="flex items-center gap-5 border-l pl-5"
+            style={{ borderColor: "var(--border-color)" }}
+          >
             <motion.a
               whileHover={{
                 y: -4,
@@ -190,11 +194,11 @@ export default function Navbar() {
                   key={l.href}
                   href={l.href}
                   onClick={() => {
-                    window.setTimeout(() => setOpen(false), 160)
+                    window.setTimeout(() => setOpen(false), 160);
                     window.setTimeout(() => {
-                      document.documentElement.scrollLeft = 0
-                      document.body.scrollLeft = 0
-                    }, 250)
+                      document.documentElement.scrollLeft = 0;
+                      document.body.scrollLeft = 0;
+                    }, 250);
                   }}
                   whileHover={{
                     y: -5, // Efeito de levantar

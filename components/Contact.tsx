@@ -37,7 +37,7 @@ function MagneticButton({ children, className }: { children: React.ReactNode, cl
 
 export default function Contact() {
   return (
-    <section className="relative overflow-hidden hero-mesh hero-mesh-animate py-24 transition-colors duration-500">
+    <section id="contacts" className="relative overflow-hidden hero-mesh hero-mesh-animate py-24 transition-colors duration-500">
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
