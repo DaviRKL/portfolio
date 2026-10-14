@@ -12,31 +12,31 @@ export default function Page() {
   return (
     <main>
       <Navbar />
-      <SectionReveal dir="left">
+      <SectionReveal>
         <Hero />
       </SectionReveal>
 
-      <SectionReveal dir="right">
+      <SectionReveal>
         <Experience />
       </SectionReveal>
 
-      <SectionReveal dir="right">
+      <SectionReveal>
         <Education />
       </SectionReveal>
 
-      <SectionReveal dir="left">
+      <SectionReveal>
         <Languages />
       </SectionReveal>
 
-      <SectionReveal dir="right">
+      <SectionReveal>
         <Certifications />
       </SectionReveal>
 
-      <SectionReveal dir="right" amount={0.01}>
+      <SectionReveal>
         <Showcase />
       </SectionReveal>
 
-      <SectionReveal dir="left">
+      <SectionReveal>
         <Contact />  
       </SectionReveal>  
     </main>
