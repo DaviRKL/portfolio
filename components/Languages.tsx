@@ -56,10 +56,12 @@ export default function Languages() {
 
           <div className="min-w-0">
             <div className="overflow-hidden rounded-lg border bg-white" style={{ borderColor: 'var(--border-color)' }}>
-              <iframe
-                src="/images/certificado_EF_SET/EF%20SET%20Certificate.pdf"
-                title="Certificado EF SET de Davi Konuma"
-                className="h-[320px] w-full sm:h-[420px]"
+              <Image
+                src="/images/certificado_EF_SET/EF%20SET%20Certificate.jpg"
+                alt="Certificado EF SET de Davi Konuma"
+                width={2483}
+                height={3512}
+                className="h-[320px] w-full object-contain sm:h-[420px]"
               />
             </div>
             <a
