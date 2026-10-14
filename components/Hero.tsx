@@ -170,7 +170,7 @@ export default function Hero() {
         <motion.div
           variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
           transition={{ duration: 0.65, ease: 'easeOut' }}
-          className="mt-4 pd-10 inline-flex items-center px-3 py-1 rounded-full bg-[rgba(0,169,224,0.08)] text-white text-sm font-semibold badge-beam pd-10"
+          className="mt-6 pd-10 inline-flex items-center px-3 py-1 rounded-full bg-[rgba(0,169,224,0.08)] text-white text-sm font-semibold badge-beam pd-10"
           style={{ willChange: 'transform' }}
         >
           Front-End Developer
