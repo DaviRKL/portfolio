@@ -1,8 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { X } from "lucide-react";
 
 type Project = {
   title: string;
@@ -22,6 +23,7 @@ export default function ProjectCard({
   variants?: any;
 }) {
   const [loaded, setLoaded] = useState(false);
+  const [imageOpen, setImageOpen] = useState(false);
   const transformative = new Set([
     "Supabase",
     "N8N",
@@ -33,7 +35,25 @@ export default function ProjectCard({
   // A lógica simplificou para: use o que está no JSON ou o placeholder
   const imageSrc = project.image || "/images/projects/placeholder.png";
 
+  useEffect(() => {
+    if (!imageOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setImageOpen(false);
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [imageOpen]);
+
   return (
+    <>
     <motion.article
       variants={variants}
       initial="initial"
@@ -44,14 +64,21 @@ export default function ProjectCard({
     >
       <div className="relative aspect-video w-full bg-gradient-to-r from-prussian to-deep-night overflow-hidden border-b border-black/5 dark:border-white/5 flex items-center justify-center">
         {project.image ? (
-          <Image
-            src={imageSrc}
-            alt={project.title}
-            fill
-            className={`object-cover transition-all duration-700 group-hover:scale-110 ${loaded ? "blur-0 opacity-100" : "blur-sm opacity-0"}`}
-            onLoad={() => setLoaded(true)}
-            unoptimized
-          />
+          <button
+            type="button"
+            onClick={() => setImageOpen(true)}
+            aria-label={`Ampliar imagem do projeto ${project.title}`}
+            className="absolute inset-0 z-0 cursor-zoom-in"
+          >
+            <Image
+              src={imageSrc}
+              alt={project.title}
+              fill
+              className={`object-cover transition-all duration-700 group-hover:scale-110 ${loaded ? "blur-0 opacity-100" : "blur-sm opacity-0"}`}
+              onLoad={() => setLoaded(true)}
+              unoptimized
+            />
+          </button>
         ) : (
           /* Mantendo a lógica de ícones para projetos sem imagem no JSON */
           <div className="flex items-center justify-center w-full h-full">
@@ -139,5 +166,38 @@ export default function ProjectCard({
         )}
       </footer>
     </motion.article>
+    {imageOpen && project.image && (
+      <div
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm"
+        onClick={() => setImageOpen(false)}
+        role="presentation"
+      >
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={`Imagem do projeto ${project.title}`}
+          className="relative h-full max-h-[900px] w-full max-w-6xl"
+          onClick={(event) => event.stopPropagation()}
+        >
+          <button
+            type="button"
+            onClick={() => setImageOpen(false)}
+            aria-label="Fechar imagem"
+            className="absolute right-0 top-0 z-10 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 font-semibold text-black shadow-lg transition-colors hover:bg-gray-200"
+          >
+            Fechar <X size={18} aria-hidden="true" />
+          </button>
+          <Image
+            src={imageSrc}
+            alt={project.title}
+            fill
+            sizes="100vw"
+            className="object-contain"
+            unoptimized
+          />
+        </div>
+      </div>
+    )}
+    </>
   );
 }

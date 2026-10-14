@@ -1,7 +1,34 @@
+'use client'
+
 import Image from 'next/image'
-import { ExternalLink } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import { ExternalLink, X } from 'lucide-react'
 
 export default function Languages() {
+  const [openCertificate, setOpenCertificate] = useState<{
+    src: string
+    alt: string
+    width: number
+    height: number
+  } | null>(null)
+
+  useEffect(() => {
+    if (!openCertificate) return
+
+    const previousOverflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') setOpenCertificate(null)
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.body.style.overflow = previousOverflow
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [openCertificate])
+
   return (
     <section id="languages" aria-labelledby="languages-heading" className="max-w-6xl mx-auto px-6 py-24 text-center">
       <h2 id="languages-heading" className="text-3xl font-extrabold mb-8 text-text-main">Idiomas</h2>
@@ -55,7 +82,20 @@ export default function Languages() {
           </div>
 
           <div className="min-w-0">
-            <div className="overflow-hidden rounded-lg border bg-white" style={{ borderColor: 'var(--border-color)' }}>
+            <button
+              type="button"
+              onClick={() =>
+                setOpenCertificate({
+                  src: '/images/certificado_EF_SET/EF%20SET%20Certificate.jpg',
+                  alt: 'Certificado EF SET de Davi Konuma',
+                  width: 2483,
+                  height: 3512,
+                })
+              }
+              aria-label="Ampliar certificado EF SET"
+              className="block w-full cursor-zoom-in overflow-hidden rounded-lg border bg-white"
+              style={{ borderColor: 'var(--border-color)' }}
+            >
               <Image
                 src="/images/certificado_EF_SET/EF%20SET%20Certificate.jpg"
                 alt="Certificado EF SET de Davi Konuma"
@@ -63,7 +103,7 @@ export default function Languages() {
                 height={3512}
                 className="h-[320px] w-full object-contain sm:h-[420px]"
               />
-            </div>
+            </button>
             <a
               href="https://cert.efset.org/qiXnjT"
               target="_blank"
@@ -92,15 +132,62 @@ export default function Languages() {
             <span className="rounded-md border border-white/10 px-3 py-2 text-sm text-text-main/85">Reading: 375</span>
           </div>
         </div>
-        <Image
-          src="/images/certificado_toeic/certificado_toeic.jpg"
-          alt="Certificado TOEIC Listening & Reading de Davi Konuma, score 755"
-          width={1200}
-          height={800}
-          className="h-auto w-full rounded-md border shadow-lg"
-          style={{ objectFit: 'contain', borderColor: 'var(--border-color)' }}
-        />
+        <button
+          type="button"
+          onClick={() =>
+            setOpenCertificate({
+              src: '/images/certificado_toeic/certificado_toeic.jpg',
+              alt: 'Certificado TOEIC Listening & Reading de Davi Konuma, score 755',
+              width: 1200,
+              height: 800,
+            })
+          }
+          aria-label="Ampliar certificado TOEIC"
+          className="block w-full cursor-zoom-in"
+        >
+          <Image
+            src="/images/certificado_toeic/certificado_toeic.jpg"
+            alt="Certificado TOEIC Listening & Reading de Davi Konuma, score 755"
+            width={1200}
+            height={800}
+            className="h-auto w-full rounded-md border shadow-lg"
+            style={{ objectFit: 'contain', borderColor: 'var(--border-color)' }}
+          />
+        </button>
       </article>
+
+      {openCertificate && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-4 backdrop-blur-sm"
+          onClick={() => setOpenCertificate(null)}
+          role="presentation"
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={openCertificate.alt}
+            className="relative flex h-full max-h-[900px] w-full max-w-6xl items-center justify-center"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setOpenCertificate(null)}
+              aria-label="Fechar imagem"
+              className="absolute right-0 top-0 z-10 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 font-semibold text-black shadow-lg transition-colors hover:bg-gray-200"
+            >
+              Fechar <X size={18} aria-hidden="true" />
+            </button>
+            <Image
+              src={openCertificate.src}
+              alt={openCertificate.alt}
+              width={openCertificate.width}
+              height={openCertificate.height}
+              className="max-h-[calc(100dvh-5rem)] w-auto max-w-full object-contain"
+              sizes="100vw"
+            />
+          </div>
+        </div>
+      )}
     </section>
   )
 }
