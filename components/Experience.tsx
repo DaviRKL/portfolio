@@ -53,37 +53,37 @@ export default function Experience() {
                 <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span><strong>Estruturei</strong> sincronização bidirecional entre estado global (Redux) e URL (Query Params), permitindo persistência de filtros, compartilhamento de contexto e navegação consistente entre módulos.</span>
+                <span>Estruturei sincronização bidirecional entre estado global (Redux) e URL (Query Params), permitindo persistência de filtros, compartilhamento de contexto e navegação consistente entre módulos.</span>
               </p>
               <p className="flex items-start gap-3">
                 <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span><strong>Desenvolvi</strong> fluxos de navegação contextual entre Produto, Auto-contratação (AC) e Propostas, reduzindo etapas manuais e melhorando a produtividade operacional.</span>
+                <span>Desenvolvi fluxos de navegação contextual entre Produto, Auto-contratação (AC) e Propostas, reduzindo etapas manuais e melhorando a produtividade operacional.</span>
               </p>
               <p className="flex items-start gap-3">
                 <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span><strong>Reaproveitei</strong> e adaptei componentes de CRM em novos contextos de negócio, desacoplando dependências de rota e preservando compatibilidade com fluxos legados.</span>
+                <span>Reaproveitei e adaptei componentes de CRM em novos contextos de negócio, desacoplando dependências de rota e preservando compatibilidade com fluxos legados.</span>
               </p>
               <p className="flex items-start gap-3">
                 <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span><strong>Atuei</strong> na evolução de permissões, formulários e gestão documental, integrando regras específicas por produto e refinando a experiência operacional do usuário.</span>
+                <span>Atuei na evolução de permissões, formulários e gestão documental, integrando regras específicas por produto e refinando a experiência operacional do usuário.</span>
               </p>
               <p className="flex items-start gap-3">
                 <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span><strong>Implementei</strong> integrações frontend com APIs REST para recursos contextuais de comunicação omnichannel diretamente na interface de propostas.</span>
+                <span>Implementei integrações frontend com APIs REST para recursos contextuais de comunicação omnichannel diretamente na interface de propostas.</span>
               </p>
               <p className="flex items-start gap-3">
                 <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span><strong>Desenvolvi</strong> melhorias em navegação por voz utilizando Web Speech API, incluindo tratamento de restrições de navegador, normalização de comandos e mecanismos de fallback.</span>
+                <span>Desenvolvi melhorias em navegação por voz utilizando Web Speech API, incluindo tratamento de restrições de navegador, normalização de comandos e mecanismos de fallback.</span>
               </p>
             </div>
           </div>
@@ -102,9 +102,9 @@ export default function Experience() {
         </motion.article>
       </motion.div>
 
-      {/* Grid com os dois cards secundários */}
+      {/* Experiências anteriores */}
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-8 items-stretch"
+        className="grid grid-cols-1 gap-5 sm:gap-8"
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
@@ -125,13 +125,13 @@ export default function Experience() {
             transition: { duration: 0.14, ease: "easeOut" },
           }}
           whileTap={{ y: -2, transition: { duration: 0.08, ease: "easeOut" } }}
-          className="relative backdrop-blur-xl rounded-xl p-3 sm:p-6 flex flex-col h-full transition-colors shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] bg-black/5 border border-black/5 hover:bg-black/10 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10"
+          className="relative backdrop-blur-xl rounded-xl p-4 sm:p-8 md:p-10 flex flex-col h-full transition-colors shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] bg-black/5 border border-black/5 hover:bg-black/10 dark:bg-white/5 dark:border-white/10 dark:hover:bg-white/10"
         >
           <div className="flex-1">
-            <header className="flex items-start justify-between">
+            <header className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
               <div>
                 <div className="text-sm text-text-main/70">Estagiário de Tecnologia</div>
-                <h3 className="text-xl md:text-2xl font-bold text-text-main">Climbz Consultoria</h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-text-main">Climbz Consultoria</h3>
                 <div className="text-xs text-text-main/60 mt-1">nov de 2024 — nov de 2025 · Sorocaba (Híbrida)</div>
               </div>
               <div className="flex flex-wrap gap-2 items-center">
@@ -148,25 +148,25 @@ export default function Experience() {
                 <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span><strong>Atuei</strong> no suporte e manutenção de sistemas web utilizados em operações internas e atendimento ao cliente.</span>
+                <span>Atuei no suporte e manutenção de sistemas web utilizados em operações internas e atendimento ao cliente.</span>
               </p>
               <p className="flex items-start gap-3">
                 <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span><strong>Participei</strong> em integrações e automações de processos, incluindo manipulação de dados e comunicação entre sistemas.</span>
+                <span>Participei em integrações e automações de processos, incluindo manipulação de dados e comunicação entre sistemas.</span>
               </p>
               <p className="flex items-start gap-3">
                 <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span><strong>Criei</strong> scripts e fluxos automatizados para otimização operacional.</span>
+                <span>Criei scripts e fluxos automatizados para otimização operacional.</span>
               </p>
               <p className="flex items-start gap-3">
                 <svg className="w-5 h-5 shrink-0 text-accent" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M5 12l4 4L19 6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
-                <span><strong>Participei</strong> em reuniões de levantamento de requisitos e alinhamento técnico com clientes, colaborando com equipes multidisciplinares em ambiente ágil.</span>
+                <span>Participei em reuniões de levantamento de requisitos e alinhamento técnico com clientes, colaborando com equipes multidisciplinares em ambiente ágil.</span>
               </p>
             </div>
           </div>
@@ -184,7 +184,7 @@ export default function Experience() {
           </div>
         </motion.article>
 
-        {/* Card: Staff em Eventos (mantido) */}
+        {/* Card: Staff em Eventos (mantido)
         <motion.article
           variants={{
             hidden: { opacity: 0, y: 18 },
@@ -244,7 +244,7 @@ export default function Experience() {
               Desempenho operacional consistente com redução no tempo de resposta a incidentes e melhoria na coordenação entre stakeholders.
             </div>
           </div>
-        </motion.article>
+        </motion.article> */}
       </motion.div>
     </section>
   );

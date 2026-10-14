@@ -118,26 +118,26 @@ const projects = [
     status: 'in_progress',
   },
   */
-  {
-    title: "Sistema de Reciclagem e Descarte",
-    tagline:
-      "Otimização de rotas de coleta e gestão de materiais utilizando estruturas de dados avançadas.",
-    challenge:
-      "Implementar grafos para o cálculo de rotas mais curtas e árvores Tries para busca eficiente e classificação de materiais recicláveis.",
-    image: null,
-    technologies: [
-      "Java",
-      "GraphStream",
-      "Data Structures",
-      "Algorithms",
-      "Graphs",
-      "Trie Tree",
-    ],
-    links: {
-      repo: "https://github.com/DaviRKL/sistema-reciclagem-descarte",
-    },
-    status: "completed",
-  },
+  // {
+  //   title: "Sistema de Reciclagem e Descarte",
+  //   tagline:
+  //     "Otimização de rotas de coleta e gestão de materiais utilizando estruturas de dados avançadas.",
+  //   challenge:
+  //     "Implementar grafos para o cálculo de rotas mais curtas e árvores Tries para busca eficiente e classificação de materiais recicláveis.",
+  //   image: null,
+  //   technologies: [
+  //     "Java",
+  //     "GraphStream",
+  //     "Data Structures",
+  //     "Algorithms",
+  //     "Graphs",
+  //     "Trie Tree",
+  //   ],
+  //   links: {
+  //     repo: "https://github.com/DaviRKL/sistema-reciclagem-descarte",
+  //   },
+  //   status: "completed",
+  // },
 ];
 
 export default projects;

@@ -1,12 +1,12 @@
-import Navbar from '../components/Navbar'
-import Hero from '../components/Hero'
-import Showcase from '../components/Showcase'
-import Languages from '../components/Languages'
-import Education from '../components/Education'
-import SectionReveal from '../components/SectionReveal'
-import Certifications from '../components/Certifications'
-import Experience from '../components/Experience'
-import Contact from '../components/Contact'
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
+import Showcase from "../components/Showcase";
+import Languages from "../components/Languages";
+import Education from "../components/Education";
+import SectionReveal from "../components/SectionReveal";
+import Certifications from "../components/Certifications";
+import Experience from "../components/Experience";
+import Contact from "../components/Contact";
 
 export default function Page() {
   return (
@@ -21,11 +21,11 @@ export default function Page() {
       </SectionReveal>
 
       <SectionReveal>
-        <Education />
+        <Showcase />
       </SectionReveal>
 
       <SectionReveal>
-        <Languages />
+        <Education />
       </SectionReveal>
 
       <SectionReveal>
@@ -33,12 +33,12 @@ export default function Page() {
       </SectionReveal>
 
       <SectionReveal>
-        <Showcase />
+        <Languages />
       </SectionReveal>
 
       <SectionReveal>
-        <Contact />  
-      </SectionReveal>  
+        <Contact />
+      </SectionReveal>
     </main>
-  )
+  );
 }
