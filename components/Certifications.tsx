@@ -16,18 +16,18 @@ const BADGE_IDS = [
 
 const BADGE_META: Record<
   string,
-  { title: string; date?: string; image?: string }
+  { title: string; date?: string; image?: string; link?: string }
 > = {
-  'cddb1fe4-b19c-431f-bfeb-6f174d477d37': { title: 'JavaScript Essentials 2 - Cisco', date: '2026-02', image: 'badges/javascript-essentials-2.png' },
-  'c7051ddb-432b-4600-953b-eccd74fdcde3': { title: 'AWS Academy Graduate - Cloud Foundations - Training Badge', date: '2025-06', image: 'badges/aws-academy-graduate-cloud-foundations-training-bad.png' },
-  'f0a14d48-243e-49ae-b607-d1835af289e0': { title: 'AWS Academy Graduate - Machine Learning Foundations - Training Badge', date: '2025-11', image: 'badges/aws-academy-graduate-machine-learning-foundations-t.png' },
-  '156ff5a0-74ef-4b67-890f-e05d980f34dd': { title: 'AWS Cloud Quest: Cloud Practitioner - Training Badge', date: '2024-09', image: 'badges/aws-cloud-quest-cloud-practitioner-training-badge (1).png' },
-  '2530c36d-8ebb-4016-9159-9d8120d900a0': { title: 'Computer Hardware Basics - Cisco', date: '2024-06', image: 'badges/computer-hardware-basics.png' },
-  '78b22a43-12d0-4abf-b0cd-2492677e2762': { title: 'HTML Essentials', date: '2026-02', image: 'badges/html-essentials.png' },
-  '6578a5bb-b5fb-4b64-b898-55811cbfc45d': { title: 'JavaScript Essentials 1', date: '2026-02', image: 'badges/javascript-essentials-1.png' },
-  'c0849106-bdac-49c2-984d-dbe0eb0fa184': { title: 'MongoDB Advanced Schema Design Patterns and Anti-patterns', date: '2026-05', image: 'badges/mongodb-advanced-schema-design-patterns-and-anti-pa.png' },
-  '7e0f925c-1cf3-42f1-898c-e91ffab31c4b': { title: 'Optimizing MongoDB Performance with Tuning Tools', date: '2026-06', image: 'badges/optimizing-mongodb-performance-with-tuning-tools.1.png' },
-  '85544a77-9af0-417c-9233-fe018479398d': { title: 'MongoDB Aggregation Fundamentals', date: '2026-06', image: 'badges/mongodb-aggregation-fundamentals.png' },
+  'cddb1fe4-b19c-431f-bfeb-6f174d477d37': { title: 'JavaScript Essentials 2 - Cisco', date: '2026-02', image: 'badges/javascript-essentials-2.png', link: 'https://www.credly.com/badges/cddb1fe4-b19c-431f-bfeb-6f174d477d37/public_url' },
+  'c7051ddb-432b-4600-953b-eccd74fdcde3': { title: 'AWS Academy Graduate - Cloud Foundations - Training Badge', date: '2025-06', image: 'badges/aws-academy-graduate-cloud-foundations-training-bad.png', link: 'https://www.credly.com/badges/c7051ddb-432b-4600-953b-eccd74fdcde3/public_url' },
+  'f0a14d48-243e-49ae-b607-d1835af289e0': { title: 'AWS Academy Graduate - Machine Learning Foundations - Training Badge', date: '2025-11', image: 'badges/aws-academy-graduate-machine-learning-foundations-t.png', link: 'https://www.credly.com/badges/f0a14d48-243e-49ae-b607-d1835af289e0/public_url' },
+  '156ff5a0-74ef-4b67-890f-e05d980f34dd': { title: 'AWS Cloud Quest: Cloud Practitioner - Training Badge', date: '2024-09', image: 'badges/aws-cloud-quest-cloud-practitioner-training-badge (1).png', link: 'https://www.credly.com/badges/156ff5a0-74ef-4b67-890f-e05d980f34dd/public_url' },
+  '2530c36d-8ebb-4016-9159-9d8120d900a0': { title: 'Computer Hardware Basics - Cisco', date: '2024-06', image: 'badges/computer-hardware-basics.png', link: 'https://www.credly.com/badges/2530c36d-8ebb-4016-9159-9d8120d900a0/public_url' },
+  '78b22a43-12d0-4abf-b0cd-2492677e2762': { title: 'HTML Essentials', date: '2026-02', image: 'badges/html-essentials.png', link: 'https://www.credly.com/badges/78b22a43-12d0-4abf-b0cd-2492677e2762/public_url' },
+  '6578a5bb-b5fb-4b64-b898-55811cbfc45d': { title: 'JavaScript Essentials 1', date: '2026-02', image: 'badges/javascript-essentials-1.png', link: 'https://www.credly.com/badges/6578a5bb-b5fb-4b64-b898-55811cbfc45d/public_url' },
+  'c0849106-bdac-49c2-984d-dbe0eb0fa184': { title: 'MongoDB Advanced Schema Design Patterns and Anti-patterns', date: '2026-05', image: 'badges/mongodb-advanced-schema-design-patterns-and-anti-pa.png', link: 'https://www.credly.com/badges/c0849106-bdac-49c2-984d-dbe0eb0fa184/public_url' },
+  '7e0f925c-1cf3-42f1-898c-e91ffab31c4b': { title: 'Optimizing MongoDB Performance with Tuning Tools', date: '2026-06', image: 'badges/optimizing-mongodb-performance-with-tuning-tools.1.png', link: 'https://www.credly.com/badges/7e0f925c-1cf3-42f1-898c-e91ffab31c4b/public_url' },
+  '85544a77-9af0-417c-9233-fe018479398d': { title: 'MongoDB Aggregation Fundamentals', date: '2026-06', image: 'badges/mongodb-aggregation-fundamentals.png', link: 'https://www.credly.com/badges/85544a77-9af0-417c-9233-fe018479398d/public_url' },
 }
 
 export default function Certifications() {
@@ -61,7 +61,7 @@ export default function Certifications() {
                 className="flex flex-col items-center gap-3 group"
               >
                 <a
-                  href={`https://www.credly.com/embedded_badge/${id}`}
+                  href={meta?.link ?? `https://www.credly.com/embedded_badge/${id}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-[150px] h-[150px] rounded-md overflow-hidden transition-transform duration-300"
@@ -112,7 +112,7 @@ export default function Certifications() {
                 className="flex flex-col items-center gap-3 group"
               >
                 <a
-                  href={`https://www.credly.com/embedded_badge/${id}`}
+                  href={meta?.link ?? `https://www.credly.com/embedded_badge/${id}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-[150px] h-[150px] rounded-md overflow-hidden transition-transform duration-300"
@@ -164,7 +164,7 @@ export default function Certifications() {
                 className="flex flex-col items-center gap-3 group"
               >
                 <a
-                  href={`https://www.credly.com/embedded_badge/${id}`}
+                  href={meta?.link ?? `https://www.credly.com/embedded_badge/${id}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-[150px] h-[150px] rounded-md overflow-hidden transition-transform duration-300"
@@ -205,7 +205,7 @@ export default function Certifications() {
               return (
                 <>
                   <a
-                    href={`https://www.credly.com/embedded_badge/${id}`}
+                    href={meta?.link ?? `https://www.credly.com/embedded_badge/${id}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="block w-[120px] h-[120px] rounded-md overflow-hidden transition-transform duration-300"
