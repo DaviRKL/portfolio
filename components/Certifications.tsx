@@ -4,16 +4,6 @@ import Image from 'next/image'
 import Script from 'next/script'
 import { motion } from 'framer-motion'
 
-const BADGE_IDS = [
-  'cddb1fe4-b19c-431f-bfeb-6f174d477d37',
-  'c7051ddb-432b-4600-953b-eccd74fdcde3',
-  'f0a14d48-243e-49ae-b607-d1835af289e0',
-  '156ff5a0-74ef-4b67-890f-e05d980f34dd',
-  '2530c36d-8ebb-4016-9159-9d8120d900a0',
-  '78b22a43-12d0-4abf-b0cd-2492677e2762',
-  '6578a5bb-b5fb-4b64-b898-55811cbfc45d',
-]
-
 const BADGE_META: Record<
   string,
   { title: string; date?: string; image?: string; link?: string }
