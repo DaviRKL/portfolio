@@ -25,6 +25,9 @@ const BADGE_META: Record<
   '2530c36d-8ebb-4016-9159-9d8120d900a0': { title: 'Computer Hardware Basics - Cisco', date: '2024-06', image: 'badges/computer-hardware-basics.png' },
   '78b22a43-12d0-4abf-b0cd-2492677e2762': { title: 'HTML Essentials', date: '2026-02', image: 'badges/html-essentials.png' },
   '6578a5bb-b5fb-4b64-b898-55811cbfc45d': { title: 'JavaScript Essentials 1', date: '2026-02', image: 'badges/javascript-essentials-1.png' },
+  'c0849106-bdac-49c2-984d-dbe0eb0fa184': { title: 'MongoDB Advanced Schema Design Patterns and Anti-patterns', date: '2026-05', image: 'badges/mongodb-advanced-schema-design-patterns-and-anti-pa.png' },
+  '7e0f925c-1cf3-42f1-898c-e91ffab31c4b': { title: 'Optimizing MongoDB Performance with Tuning Tools', date: '2026-06', image: 'badges/optimizing-mongodb-performance-with-tuning-tools.1.png' },
+  '85544a77-9af0-417c-9233-fe018479398d': { title: 'MongoDB Aggregation Fundamentals', date: '2026-06', image: 'badges/mongodb-aggregation-fundamentals.png' },
 }
 
 export default function Certifications() {
@@ -61,7 +64,58 @@ export default function Certifications() {
                   href={`https://www.credly.com/embedded_badge/${id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-[150px] h-[150px] rounded-md overflow-hidden border backdrop-blur-xl transition-all duration-300 shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] bg-black/5 border-black/5 group-hover:bg-[#00A9E0]/10 group-hover:border-[#00A9E0]/40 dark:bg-white/5 dark:border-white/10 dark:group-hover:bg-[#00A9E0]/10"
+                  className="block w-[150px] h-[150px] rounded-md overflow-hidden transition-transform duration-300"
+                  aria-label={meta?.title ?? 'Ver certificado no Credly'}
+                >
+                  <Image
+                    src={encodeURI(localImg)}
+                    alt={meta?.title ?? 'Badge'}
+                    width={150}
+                    height={150}
+                    className="object-contain bg-transparent transition-transform duration-500 group-hover:scale-105"
+                    unoptimized
+                  />
+                </a>
+
+                <div className="mt-1 text-center max-w-[190px]">
+                  <div className="text-sm font-semibold text-[var(--badge-legend-color)] transition-colors duration-300 group-hover:text-[#00A9E0]">
+                    {meta?.title ?? 'Certificação'}
+                  </div>
+                  {meta?.date && (
+                    <div className="text-xs text-[var(--badge-legend-muted)]">{meta.date}</div>
+                  )}
+                </div>
+              </motion.article>
+            )
+          })}
+        </div>
+      </section>
+
+      <section className="mb-12">
+        <h3 className="text-2xl font-bold mb-1 text-text-main">Banco de Dados</h3>
+        <p className="text-text-main/75 mb-6 max-w-3xl mx-auto">Certificações em modelagem de dados, otimização de desempenho e agregações com MongoDB.</p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
+          {[
+            'c0849106-bdac-49c2-984d-dbe0eb0fa184',
+            '7e0f925c-1cf3-42f1-898c-e91ffab31c4b',
+            '85544a77-9af0-417c-9233-fe018479398d',
+          ].map((id) => {
+            const meta = BADGE_META[id]
+            const localImg = meta?.image ? `/images/${meta.image}` : `/images/badges/${id}.png`
+            return (
+              <motion.article
+                key={id}
+                initial="initial"
+                whileHover="hover"
+                variants={hoverLift}
+                className="flex flex-col items-center gap-3 group"
+              >
+                <a
+                  href={`https://www.credly.com/embedded_badge/${id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block w-[150px] h-[150px] rounded-md overflow-hidden transition-transform duration-300"
                   aria-label={meta?.title ?? 'Ver certificado no Credly'}
                 >
                   <Image
@@ -113,7 +167,7 @@ export default function Certifications() {
                   href={`https://www.credly.com/embedded_badge/${id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-[150px] h-[150px] rounded-md overflow-hidden border backdrop-blur-xl transition-all duration-300 shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] bg-black/5 border-black/5 group-hover:bg-[#00A9E0]/10 group-hover:border-[#00A9E0]/40 dark:bg-white/5 dark:border-white/10 dark:group-hover:bg-[#00A9E0]/10"
+                  className="block w-[150px] h-[150px] rounded-md overflow-hidden transition-transform duration-300"
                   aria-label={meta?.title ?? 'Ver certificado no Credly'}
                 >
                   <Image
@@ -154,7 +208,7 @@ export default function Certifications() {
                     href={`https://www.credly.com/embedded_badge/${id}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block w-[120px] h-[120px] rounded-md overflow-hidden border backdrop-blur-xl transition-all duration-300 shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] bg-black/5 border-black/5 group-hover:bg-[#00A9E0]/10 group-hover:border-[#00A9E0]/40 dark:bg-white/5 dark:border-white/10 dark:group-hover:bg-[#00A9E0]/10"
+                    className="block w-[120px] h-[120px] rounded-md overflow-hidden transition-transform duration-300"
                     aria-label={meta?.title ?? 'Ver certificado no Credly'}
                   >
                     <Image
