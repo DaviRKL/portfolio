@@ -41,6 +41,28 @@ const projects = [
     status: "completed",
   },
   {
+    title: "folkDex",
+    tagline:
+      "Aplicação de descoberta de pessoas com filtros avançados, sincronização de estado via URL e suporte a múltiplos idiomas e temas.",
+    challenge:
+      "Criar uma experiência de busca rápida e compartilhável sobre perfis da Random User API, com paginação e filtros client-side, dados sensíveis sanitizados na camada de serviço e interface adaptável a Português/Inglês e aos temas claro/escuro.",
+    image: "images/projects/folkDex.png",
+    technologies: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "React Router DOM",
+      "Context API",
+      "i18next",
+      "Lucide React",
+    ],
+    links: {
+      live: "https://folkdex-davikonuma.vercel.app/",
+    },
+    status: "completed",
+  },
+  {
     title: "Exoplanet Classifier API & Dashboard",
     tagline:
       "Classificador de exoplanetas utilizando modelos de Machine Learning (Ensemble) e visualização de dados em tempo real.",
@@ -61,6 +83,7 @@ const projects = [
     },
     status: "completed",
   },
+
   /*
   {
     title: 'Todo List — MERN Stack',
