@@ -41,6 +41,34 @@ const projects = [
     status: "completed",
   },
   {
+    title: "My Poll",
+    tagline:
+      "Plataforma responsiva de enquetes em tempo real, com criação, votação e filtros personalizados.",
+    challenge:
+      "Construir uma experiência de enquetes compartilhadas com atualização instantânea de votos via Firestore, autenticação Google e anônima, filtros por escopo/status, busca, ordenação e paginação.",
+    image: "/images/projects/mypoll.png",
+    technologies: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS v4",
+      "TanStack Router",
+      "Firebase Firestore",
+      "Firebase Auth",
+      "Firebase Hosting",
+      "react-i18next",
+      "Storybook",
+      "Jest",
+      "React Testing Library",
+      "Lucide React",
+    ],
+    links: {
+      live: "https://my-poll-b9694.web.app/",
+      repo: "https://github.com/DaviRKL/my-poll",
+    },
+    status: "completed",
+  },
+  {
     title: "folkDex",
     tagline:
       "Aplicação de descoberta de pessoas com filtros avançados, sincronização de estado via URL e suporte a múltiplos idiomas e temas.",
@@ -59,6 +87,7 @@ const projects = [
     ],
     links: {
       live: "https://folkdex-davikonuma.vercel.app/",
+      repo: "https://github.com/DaviRKL/folkDex",
     },
     status: "completed",
   },
