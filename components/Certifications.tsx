@@ -1,229 +1,249 @@
-"use client"
+"use client";
 
-import Image from 'next/image'
-import Script from 'next/script'
-import { motion } from 'framer-motion'
+import Image from "next/image";
+import { motion, type Variants } from "framer-motion";
+import { Award } from "lucide-react";
 
-const BADGE_META: Record<
-  string,
-  { title: string; date?: string; image?: string; link?: string }
-> = {
-  'cddb1fe4-b19c-431f-bfeb-6f174d477d37': { title: 'JavaScript Essentials 2 - Cisco', date: '2026-02', image: 'badges/javascript-essentials-2.png', link: 'https://www.credly.com/badges/cddb1fe4-b19c-431f-bfeb-6f174d477d37/public_url' },
-  'c7051ddb-432b-4600-953b-eccd74fdcde3': { title: 'AWS Academy Graduate - Cloud Foundations - Training Badge', date: '2025-06', image: 'badges/aws-academy-graduate-cloud-foundations-training-bad.png', link: 'https://www.credly.com/badges/c7051ddb-432b-4600-953b-eccd74fdcde3/public_url' },
-  'f0a14d48-243e-49ae-b607-d1835af289e0': { title: 'AWS Academy Graduate - Machine Learning Foundations - Training Badge', date: '2025-11', image: 'badges/aws-academy-graduate-machine-learning-foundations-t.png', link: 'https://www.credly.com/badges/f0a14d48-243e-49ae-b607-d1835af289e0/public_url' },
-  '156ff5a0-74ef-4b67-890f-e05d980f34dd': { title: 'AWS Cloud Quest: Cloud Practitioner - Training Badge', date: '2024-09', image: 'badges/aws-cloud-quest-cloud-practitioner-training-badge (1).png', link: 'https://www.credly.com/badges/156ff5a0-74ef-4b67-890f-e05d980f34dd/public_url' },
-  '2530c36d-8ebb-4016-9159-9d8120d900a0': { title: 'Computer Hardware Basics - Cisco', date: '2024-06', image: 'badges/computer-hardware-basics.png', link: 'https://www.credly.com/badges/2530c36d-8ebb-4016-9159-9d8120d900a0/public_url' },
-  '78b22a43-12d0-4abf-b0cd-2492677e2762': { title: 'HTML Essentials', date: '2026-02', image: 'badges/html-essentials.png', link: 'https://www.credly.com/badges/78b22a43-12d0-4abf-b0cd-2492677e2762/public_url' },
-  '6578a5bb-b5fb-4b64-b898-55811cbfc45d': { title: 'JavaScript Essentials 1', date: '2026-02', image: 'badges/javascript-essentials-1.png', link: 'https://www.credly.com/badges/6578a5bb-b5fb-4b64-b898-55811cbfc45d/public_url' },
-  'c0849106-bdac-49c2-984d-dbe0eb0fa184': { title: 'MongoDB Advanced Schema Design Patterns and Anti-patterns', date: '2026-05', image: 'badges/mongodb-advanced-schema-design-patterns-and-anti-pa.png', link: 'https://www.credly.com/badges/c0849106-bdac-49c2-984d-dbe0eb0fa184/public_url' },
-  '7e0f925c-1cf3-42f1-898c-e91ffab31c4b': { title: 'Optimizing MongoDB Performance with Tuning Tools', date: '2026-06', image: 'badges/optimizing-mongodb-performance-with-tuning-tools.1.png', link: 'https://www.credly.com/badges/7e0f925c-1cf3-42f1-898c-e91ffab31c4b/public_url' },
-  '85544a77-9af0-417c-9233-fe018479398d': { title: 'MongoDB Aggregation Fundamentals', date: '2026-06', image: 'badges/mongodb-aggregation-fundamentals.png', link: 'https://www.credly.com/badges/85544a77-9af0-417c-9233-fe018479398d/public_url' },
+type BadgeMetadata = {
+  title: string;
+  date?: string;
+  image?: string;
+  link: string;
+};
+
+const BADGE_META = {
+  "cddb1fe4-b19c-431f-bfeb-6f174d477d37": {
+    title: "JavaScript Essentials 2 - Cisco",
+    date: "2026-02",
+    image: "badges/javascript-essentials-2.png",
+    link: "https://www.credly.com/badges/cddb1fe4-b19c-431f-bfeb-6f174d477d37/public_url",
+  },
+  "c7051ddb-432b-4600-953b-eccd74fdcde3": {
+    title: "AWS Academy Graduate - Cloud Foundations - Training Badge",
+    date: "2025-06",
+    image: "badges/aws-academy-graduate-cloud-foundations-training-bad.png",
+    link: "https://www.credly.com/badges/c7051ddb-432b-4600-953b-eccd74fdcde3/public_url",
+  },
+  "f0a14d48-243e-49ae-b607-d1835af289e0": {
+    title:
+      "AWS Academy Graduate - Machine Learning Foundations - Training Badge",
+    date: "2025-11",
+    image: "badges/aws-academy-graduate-machine-learning-foundations-t.png",
+    link: "https://www.credly.com/badges/f0a14d48-243e-49ae-b607-d1835af289e0/public_url",
+  },
+  "156ff5a0-74ef-4b67-890f-e05d980f34dd": {
+    title: "AWS Cloud Quest: Cloud Practitioner - Training Badge",
+    date: "2024-09",
+    image: "badges/aws-cloud-quest-cloud-practitioner-training-badge (1).png",
+    link: "https://www.credly.com/badges/156ff5a0-74ef-4b67-890f-e05d980f34dd/public_url",
+  },
+  "2530c36d-8ebb-4016-9159-9d8120d900a0": {
+    title: "Computer Hardware Basics - Cisco",
+    date: "2024-06",
+    image: "badges/computer-hardware-basics.png",
+    link: "https://www.credly.com/badges/2530c36d-8ebb-4016-9159-9d8120d900a0/public_url",
+  },
+  "78b22a43-12d0-4abf-b0cd-2492677e2762": {
+    title: "HTML Essentials",
+    date: "2026-02",
+    image: "badges/html-essentials.png",
+    link: "https://www.credly.com/badges/78b22a43-12d0-4abf-b0cd-2492677e2762/public_url",
+  },
+  "6578a5bb-b5fb-4b64-b898-55811cbfc45d": {
+    title: "JavaScript Essentials 1",
+    date: "2026-02",
+    image: "badges/javascript-essentials-1.png",
+    link: "https://www.credly.com/badges/6578a5bb-b5fb-4b64-b898-55811cbfc45d/public_url",
+  },
+  "c0849106-bdac-49c2-984d-dbe0eb0fa184": {
+    title: "MongoDB Advanced Schema Design Patterns and Anti-patterns",
+    date: "2026-05",
+    image: "badges/mongodb-advanced-schema-design-patterns-and-anti-pa.png",
+    link: "https://www.credly.com/badges/c0849106-bdac-49c2-984d-dbe0eb0fa184/public_url",
+  },
+  "7e0f925c-1cf3-42f1-898c-e91ffab31c4b": {
+    title: "Optimizing MongoDB Performance with Tuning Tools",
+    date: "2026-06",
+    image: "badges/optimizing-mongodb-performance-with-tuning-tools.1.png",
+    link: "https://www.credly.com/badges/7e0f925c-1cf3-42f1-898c-e91ffab31c4b/public_url",
+  },
+  "85544a77-9af0-417c-9233-fe018479398d": {
+    title: "MongoDB Aggregation Fundamentals",
+    date: "2026-06",
+    image: "badges/mongodb-aggregation-fundamentals.png",
+    link: "https://www.credly.com/badges/85544a77-9af0-417c-9233-fe018479398d/public_url",
+  },
+  "crewai-multi-ai-agent-systems": {
+    title: "Multi AI Agent Systems with crewAI",
+    date: "2024-11",
+    image: "badges/crewai-color.svg",
+    link: "https://drive.google.com/file/d/1cTY3Xl9lll9IsiDeJvKWc1ETlOuGEGg4/view?usp=sharing",
+  },
+  "crewai-practical-multi-ai-agents": {
+    title: "Practical Multi AI Agents and Advanced Use Cases with crewAI",
+    date: "2024-12",
+    image: "badges/crewai-color.svg",
+    link: "https://www.deeplearning.ai/accomplishments/06594d83-8d11-403e-b7d8-587c247a8694?usp=sharing",
+  },
+} satisfies Record<string, BadgeMetadata>;
+
+type BadgeId = keyof typeof BADGE_META;
+
+type CertificationSection = {
+  title: string;
+  description: string;
+  badgeIds: BadgeId[];
+  enabled?: boolean;
+};
+
+const CERTIFICATION_SECTIONS: CertificationSection[] = [
+  {
+    title: "Inteligência Artificial",
+    description:
+      "Formação em inteligência artificial e sistemas multiagentes com crewAI.",
+    badgeIds: [
+      "156ff5a0-74ef-4b67-890f-e05d980f34dd",
+      "crewai-multi-ai-agent-systems",
+      "crewai-practical-multi-ai-agents",
+    ],
+  },
+  {
+    title: "Cloud",
+    description:
+      "Certificados que validam meus conhecimentos em computação em nuvem e serviços AWS.",
+    badgeIds: [
+      "c7051ddb-432b-4600-953b-eccd74fdcde3",
+      "f0a14d48-243e-49ae-b607-d1835af289e0",
+    ],
+  },
+
+  {
+    title: "Banco de Dados",
+    description:
+      "Certificados em modelagem de dados, otimização de desempenho e agregações com MongoDB.",
+    badgeIds: [
+      "c0849106-bdac-49c2-984d-dbe0eb0fa184",
+      "7e0f925c-1cf3-42f1-898c-e91ffab31c4b",
+      "85544a77-9af0-417c-9233-fe018479398d",
+    ],
+  },
+  {
+    title: "Desenvolvimento & Fundamentos",
+    description:
+      "Estes badges demonstram meu rigor acadêmico e técnico nas bases de programação e web development.",
+    badgeIds: [
+      "cddb1fe4-b19c-431f-bfeb-6f174d477d37",
+      "6578a5bb-b5fb-4b64-b898-55811cbfc45d",
+      "78b22a43-12d0-4abf-b0cd-2492677e2762",
+      "2530c36d-8ebb-4016-9159-9d8120d900a0",
+    ],
+    enabled: false,
+  },
+];
+
+const HOVER_LIFT: Variants = {
+  initial: { y: 0 },
+  hover: { y: -8, transition: { duration: 0.3, ease: "easeOut" } },
+};
+
+function BadgeCard({
+  id,
+  compact = false,
+}: {
+  id: BadgeId;
+  compact?: boolean;
+}) {
+  const badge: BadgeMetadata = BADGE_META[id];
+  const size = compact ? 120 : 150;
+  const imageSizeClass = compact
+    ? "w-[120px] h-[120px]"
+    : "w-[150px] h-[150px]";
+
+  return (
+    <motion.article
+      initial="initial"
+      whileHover="hover"
+      variants={HOVER_LIFT}
+      className={`flex flex-col items-center ${compact ? "gap-2 opacity-80 col-span-full md:col-auto mt-4" : "gap-3"} group`}
+    >
+      <a
+        href={badge.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`block ${imageSizeClass} rounded-md overflow-hidden transition-transform duration-300`}
+        aria-label={badge.title}
+      >
+        {badge.image ? (
+          <Image
+            src={encodeURI(`/images/${badge.image}`)}
+            alt={badge.title}
+            width={size}
+            height={size}
+            className="object-contain bg-transparent transition-transform duration-500 group-hover:scale-105"
+            unoptimized
+          />
+        ) : (
+          <div
+            aria-hidden="true"
+            className="flex h-full w-full items-center justify-center bg-gradient-to-br from-sky-500/15 to-indigo-500/15 text-sky-600 transition-transform duration-500 group-hover:scale-105 dark:text-sky-300"
+          >
+            <Award size={48} strokeWidth={1.5} />
+          </div>
+        )}
+      </a>
+
+      <div className="mt-1 text-center max-w-[190px]">
+        <div
+          className={`transition-colors duration-300 group-hover:text-[#00A9E0] ${
+            compact
+              ? "text-sm font-medium text-[var(--badge-legend-muted)]"
+              : "text-sm font-semibold text-[var(--badge-legend-color)]"
+          }`}
+        >
+          {badge.title}
+        </div>
+        {badge.date && (
+          <div className="text-xs text-[var(--badge-legend-muted)]">
+            {badge.date}
+          </div>
+        )}
+      </div>
+    </motion.article>
+  );
 }
 
 export default function Certifications() {
-  const hoverLift: any = {
-    initial: { y: 0 },
-    hover: { y: -8, transition: { duration: 0.3, ease: "easeOut" } }
-  }
-
   return (
-    <section id="certifications" className="max-w-6xl mx-auto px-6 py-24 text-center">
-      <h2 className="text-3xl font-extrabold mb-10 text-text-main">Certificações e Conquistas</h2>
+    <section
+      id="certifications"
+      className="max-w-6xl mx-auto px-6 py-24 text-center"
+    >
+      <h2 className="text-3xl font-extrabold mb-10 text-text-main">
+        Certificados e Conquistas
+      </h2>
 
-      <section className="mb-12">
-        <h3 className="text-2xl font-bold mb-1 text-text-main">Cloud & Inteligência Artificial</h3>
-        <p className="text-text-main/75 mb-6 max-w-3xl mx-auto">Estes certificados validam minha capacidade de trabalhar em ambientes modernos e escaláveis, com foco em nuvem e soluções de IA.</p>
+      {CERTIFICATION_SECTIONS.filter(
+        (section) => section.enabled !== false,
+      ).map((section) => (
+        <section key={section.title} className="mb-12">
+          <h3 className="text-2xl font-bold mb-1 text-text-main">
+            {section.title}
+          </h3>
+          <p className="text-text-main/75 mb-6 max-w-3xl mx-auto">
+            {section.description}
+          </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
-          {[
-            'c7051ddb-432b-4600-953b-eccd74fdcde3',
-            'f0a14d48-243e-49ae-b607-d1835af289e0',
-            '156ff5a0-74ef-4b67-890f-e05d980f34dd',
-          ].map((id) => {
-            const meta = BADGE_META[id]
-            const localImg = meta?.image ? `/images/${meta.image}` : `/images/badges/${id}.png`
-            return (
-              <motion.article 
-                key={id} 
-                initial="initial"
-                whileHover="hover"
-                variants={hoverLift}
-                className="flex flex-col items-center gap-3 group"
-              >
-                <a
-                  href={meta?.link ?? `https://www.credly.com/embedded_badge/${id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-[150px] h-[150px] rounded-md overflow-hidden transition-transform duration-300"
-                  aria-label={meta?.title ?? 'Ver certificado no Credly'}
-                >
-                  <Image
-                    src={encodeURI(localImg)}
-                    alt={meta?.title ?? 'Badge'}
-                    width={150}
-                    height={150}
-                    className="object-contain bg-transparent transition-transform duration-500 group-hover:scale-105"
-                    unoptimized
-                  />
-                </a>
-
-                <div className="mt-1 text-center max-w-[190px]">
-                  <div className="text-sm font-semibold text-[var(--badge-legend-color)] transition-colors duration-300 group-hover:text-[#00A9E0]">
-                    {meta?.title ?? 'Certificação'}
-                  </div>
-                  {meta?.date && (
-                    <div className="text-xs text-[var(--badge-legend-muted)]">{meta.date}</div>
-                  )}
-                </div>
-              </motion.article>
-            )
-          })}
-        </div>
-      </section>
-
-      <section className="mb-12">
-        <h3 className="text-2xl font-bold mb-1 text-text-main">Banco de Dados</h3>
-        <p className="text-text-main/75 mb-6 max-w-3xl mx-auto">Certificações em modelagem de dados, otimização de desempenho e agregações com MongoDB.</p>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
-          {[
-            'c0849106-bdac-49c2-984d-dbe0eb0fa184',
-            '7e0f925c-1cf3-42f1-898c-e91ffab31c4b',
-            '85544a77-9af0-417c-9233-fe018479398d',
-          ].map((id) => {
-            const meta = BADGE_META[id]
-            const localImg = meta?.image ? `/images/${meta.image}` : `/images/badges/${id}.png`
-            return (
-              <motion.article
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
+            {section.badgeIds.map((id) => (
+              <BadgeCard
                 key={id}
-                initial="initial"
-                whileHover="hover"
-                variants={hoverLift}
-                className="flex flex-col items-center gap-3 group"
-              >
-                <a
-                  href={meta?.link ?? `https://www.credly.com/embedded_badge/${id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-[150px] h-[150px] rounded-md overflow-hidden transition-transform duration-300"
-                  aria-label={meta?.title ?? 'Ver certificado no Credly'}
-                >
-                  <Image
-                    src={encodeURI(localImg)}
-                    alt={meta?.title ?? 'Badge'}
-                    width={150}
-                    height={150}
-                    className="object-contain bg-transparent transition-transform duration-500 group-hover:scale-105"
-                    unoptimized
-                  />
-                </a>
-
-                <div className="mt-1 text-center max-w-[190px]">
-                  <div className="text-sm font-semibold text-[var(--badge-legend-color)] transition-colors duration-300 group-hover:text-[#00A9E0]">
-                    {meta?.title ?? 'Certificação'}
-                  </div>
-                  {meta?.date && (
-                    <div className="text-xs text-[var(--badge-legend-muted)]">{meta.date}</div>
-                  )}
-                </div>
-              </motion.article>
-            )
-          })}
-        </div>
-      </section>
-
-      {/* Desenvolvimento & Fundamentos */}
-      <section className="mb-6">
-        <h3 className="text-2xl font-bold mb-1 text-text-main">Desenvolvimento & Fundamentos</h3>
-        <p className="text-text-main/75 mb-6 max-w-3xl mx-auto">Estes badges demonstram meu rigor acadêmico e técnico nas bases de programação e web development.</p>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
-          {[
-            'cddb1fe4-b19c-431f-bfeb-6f174d477d37',
-            '6578a5bb-b5fb-4b64-b898-55811cbfc45d',
-            '78b22a43-12d0-4abf-b0cd-2492677e2762',
-          ].map((id) => {
-            const meta = BADGE_META[id]
-            const localImg = meta?.image ? `/images/${meta.image}` : `/images/badges/${id}.png`
-            return (
-              <motion.article 
-                key={id} 
-                initial="initial"
-                whileHover="hover"
-                variants={hoverLift}
-                className="flex flex-col items-center gap-3 group"
-              >
-                <a
-                  href={meta?.link ?? `https://www.credly.com/embedded_badge/${id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block w-[150px] h-[150px] rounded-md overflow-hidden transition-transform duration-300"
-                  aria-label={meta?.title ?? 'Ver certificado no Credly'}
-                >
-                  <Image
-                    src={encodeURI(localImg)}
-                    alt={meta?.title ?? 'Badge'}
-                    width={150}
-                    height={150}
-                    className="object-contain bg-transparent transition-transform duration-500 group-hover:scale-105"
-                    unoptimized
-                  />
-                </a>
-
-                <div className="mt-1 text-center max-w-[190px]">
-                  <div className="text-sm font-semibold text-[var(--badge-legend-color)] transition-colors duration-300 group-hover:text-[#00A9E0]">
-                    {meta?.title ?? 'Certificação'}
-                  </div>
-                  {meta?.date && (
-                    <div className="text-xs text-[var(--badge-legend-muted)]">{meta.date}</div>
-                  )}
-                </div>
-              </motion.article>
-            )
-          })}
-
-          <motion.article 
-            initial="initial"
-            whileHover="hover"
-            variants={hoverLift}
-            className="flex flex-col items-center gap-2 opacity-80 col-span-full md:col-auto mt-4 group"
-          >
-            {(() => {
-              const id = '2530c36d-8ebb-4016-9159-9d8120d900a0'
-              const meta = BADGE_META[id]
-              const localImg = meta?.image ? `/images/${meta.image}` : `/images/badges/${id}.png`
-              return (
-                <>
-                  <a
-                    href={meta?.link ?? `https://www.credly.com/embedded_badge/${id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block w-[120px] h-[120px] rounded-md overflow-hidden transition-transform duration-300"
-                    aria-label={meta?.title ?? 'Ver certificado no Credly'}
-                  >
-                    <Image
-                      src={encodeURI(localImg)}
-                      alt={meta?.title ?? 'Badge'}
-                      width={120}
-                      height={120}
-                      className="object-contain bg-transparent transition-transform duration-500 group-hover:scale-105"
-                      unoptimized
-                    />
-                  </a>
-                  <div className="mt-1 text-center max-w-[190px]">
-                    <div className="text-sm font-medium text-[var(--badge-legend-muted)] transition-colors duration-300 group-hover:text-[#00A9E0]">
-                      {meta?.title ?? 'Certificação'}
-                    </div>
-                    {meta?.date && <div className="text-xs text-[var(--badge-legend-muted)]">{meta.date}</div>}
-                  </div>
-                </>
-              )
-            })()}
-          </motion.article>
-        </div>
-      </section>
-
-      <Script src="//cdn.credly.com/assets/utilities/embed.js" strategy="lazyOnload" />
+                id={id}
+                compact={id === "2530c36d-8ebb-4016-9159-9d8120d900a0"}
+              />
+            ))}
+          </div>
+        </section>
+      ))}
     </section>
-  )
+  );
 }

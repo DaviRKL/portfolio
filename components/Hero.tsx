@@ -216,7 +216,7 @@ export default function Hero() {
           <motion.a
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
-            href="mailto:davirkl07@gmail.com"
+            href="#contacts"
             className="inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold text-text-main border border-border-color bg-white/5 backdrop-blur-xl"
             aria-label="Contato por e-mail"
           >
