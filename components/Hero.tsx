@@ -183,7 +183,7 @@ export default function Hero() {
           className="mt-6 text-base md:text-lg text-text-main/85 max-w-2xl mx-auto"
           style={{ willChange: 'transform, opacity' }}
         >
-          Com sólida base em Engenharia de Software e atuação focada em frontend enterprise com React e TypeScript, desenvolvo interfaces integradas a fluxos operacionais, priorizando escalabilidade, contexto de produto e experiência do usuário.
+          Desenvolvedor Front-End especializado no ecossistema React e TypeScript, com sólida experiência em plataformas SaaS de alta complexidade para o setor financeiro. Uno a engenharia de interfaces escaláveis à orquestração de fluxos com Inteligência Artificial e automação (LLMs, CrewAI, n8n), entregando aplicações focadas em performance, acessibilidade e valor real para o usuário.
         </motion.p>
 
         <motion.div

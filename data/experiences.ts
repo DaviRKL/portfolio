@@ -29,17 +29,23 @@ export const experiences: ExperienceItem[] = [
       "Redux",
       "Styled Components",
       "APIs REST",
+      "Antigravity",
+      "Gemini Code Assistant",
+      "Github Copilot",
       "Git",
     ],
     responsibilities: [
-      "Implementei sincronização bidirecional entre Redux e query params, permitindo persistir, restaurar e compartilhar filtros pela URL sem recarregar a aplicação, mantendo o estado da interface consistente.",
-      "Desenvolvi fluxos de navegação contextual entre Produto, Auto-contratação (AC) e Propostas, contemplando diferentes status operacionais e permitindo acessar registros relacionados mesmo entre módulos com estados isolados.",
-      "Desacoplei fluxos de configuração de produtos no CRM da dependência direta de rotas, reutilizando interfaces legadas e preservando a compatibilidade com funcionalidades existentes, sem necessidade de novos endpoints.",
-      "Implementei recursos de acessibilidade com Web Speech API e IntersectionObserver, incluindo navegação por voz, leitura de termos obrigatórios e tratamento de incompatibilidades com recursos do navegador e VLibras.",
+      "Atuação no desenvolvimento do SaaS Indiky, plataforma financeira utilizada por grandes instituições (como Banco Santander, Caixa e BMG), utilizando React, TypeScript e Redux.",
+
+      "Estruturação de sincronização bidirecional entre o estado global da aplicação e parâmetros de URL, garantindo a persistência e o compartilhamento de filtros complexos.",
+
+      "Desacoplamento de interfaces legadas do CRM, eliminando dependências de rotas para permitir a reutilização segura de componentes em múltiplos módulos sem duplicar regras de negócio.",
+
+      "Implementação de recursos avançados de acessibilidade utilizando Web Speech API e IntersectionObserver para navegação por voz, além da refatoração contínua de fluxos apoiada por ferramentas de IA (Copilot e Gemini).",
     ],
     resultLabel: "Resultado",
     result:
-      "Contribuí para a evolução de uma aplicação SaaS B2B, aprimorando a consistência de estado, a navegação entre módulos, a reutilização de componentes legados e a acessibilidade em fluxos operacionais com regras de negócio complexas.",
+      "Evolução de aplicação SaaS B2B de alta complexidade, garantindo maior consistência de estado, reaproveitamento inteligente de código legado e acessibilidade em fluxos operacionais financeiros.",
   },
   {
     role: "Estagiário de Tecnologia",
@@ -50,17 +56,20 @@ export const experiences: ExperienceItem[] = [
       "Node.js",
       "Webhooks",
       "APIs REST",
+      "CrewAI",
       "n8n",
       "Google Apps Script",
+      "Git"
     ],
     responsibilities: [
-      "Desenvolvi uma integração entre a API do sistema de gestão EVO e o Google Apps Script para a Meta Studio, combinando webhooks e consultas automatizadas para centralizar dados operacionais no Google Sheets e viabilizar dashboards no Looker Studio.",
-      "Automatizei a consolidação de estoque da RR Inox por meio da integração com APIs de dois sistemas de inventário, comparando quantidades no Google Sheets para fornecer uma visão unificada e mais confiável dos saldos disponíveis.",
-      "Implementei automações e integrações de dados com Google Apps Script, n8n e APIs REST, reduzindo etapas manuais e transformando fluxos operacionais em processos reutilizáveis, mantidos em uso após a implementação.",
-      "Conduzi levantamentos de requisitos e alinhamentos técnicos com clientes, investigando necessidades operacionais, apoiando a manutenção de aplicações web e desenvolvendo soluções alinhadas aos processos reais de cada negócio.",
+      "Criação de integrações e automações de processos utilizando APIs REST, webhooks, n8n e Google Apps Script, centralizando dados operacionais para viabilizar dashboards no Looker Studio.",
+
+      "Desenvolvimento de soluções baseadas em Inteligência Artificial, incluindo chatbots integrados a LLMs e agentes autônomos com CrewAI para processamento e transformação de documentos empresariais.",
+
+      "Levantamento de requisitos diretamente com clientes e desenvolvimento de rotinas de consolidação de dados (ex: sincronização e comparação de múltiplos sistemas de estoque).",
     ],
     resultLabel: "Resultado",
     result:
-      "Implementei soluções de integração e automação utilizadas continuamente pelos clientes, melhorando a centralização e a confiabilidade dos dados, ampliando a visibilidade operacional e reduzindo a dependência de tarefas manuais.",
+      "Otimização de processos operacionais por meio de automações e soluções em IA, assegurando a centralização de dados, alta confiabilidade para tomada de decisão e redução da dependência de tarefas manuais.",
   },
 ];
