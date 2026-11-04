@@ -85,6 +85,12 @@ const BADGE_META = {
     image: "badges/crewai-color.svg",
     link: "https://www.deeplearning.ai/accomplishments/06594d83-8d11-403e-b7d8-587c247a8694?usp=sharing",
   },
+  "google-antigravity-software-engineering-immersion": {
+    title: "Imersão Engenharia de Software: Dev na era da IA",
+    date: "2026-11",
+    image: "badges/Google-Antigravity-Icon-Full-Color.svg",
+    link: "https://cursos.alura.com.br/immersion/imersao-engenharia-software-ia-google/user/davirkl07/certificate",
+  },
 } satisfies Record<string, BadgeMetadata>;
 
 type BadgeId = keyof typeof BADGE_META;
@@ -102,7 +108,8 @@ const CERTIFICATION_SECTIONS: CertificationSection[] = [
     description:
       "Formação em inteligência artificial e sistemas multiagentes com crewAI.",
     badgeIds: [
-      "156ff5a0-74ef-4b67-890f-e05d980f34dd",
+      "google-antigravity-software-engineering-immersion",
+      "f0a14d48-243e-49ae-b607-d1835af289e0",
       "crewai-multi-ai-agent-systems",
       "crewai-practical-multi-ai-agents",
     ],
@@ -113,7 +120,7 @@ const CERTIFICATION_SECTIONS: CertificationSection[] = [
       "Certificados que validam meus conhecimentos em computação em nuvem e serviços AWS.",
     badgeIds: [
       "c7051ddb-432b-4600-953b-eccd74fdcde3",
-      "f0a14d48-243e-49ae-b607-d1835af289e0",
+      "156ff5a0-74ef-4b67-890f-e05d980f34dd",
     ],
   },
 
@@ -164,50 +171,56 @@ function BadgeCard({
       initial="initial"
       whileHover="hover"
       variants={HOVER_LIFT}
-      className={`flex flex-col items-center ${compact ? "gap-2 opacity-80 col-span-full md:col-auto mt-4" : "gap-3"} group`}
+      className={
+        compact ? "opacity-80 col-span-full md:col-auto mt-4" : undefined
+      }
     >
       <a
         href={badge.link}
         target="_blank"
         rel="noopener noreferrer"
-        className={`block ${imageSizeClass} rounded-md overflow-hidden transition-transform duration-300`}
+        className={`flex flex-col items-center ${compact ? "gap-2" : "gap-3"} group`}
         aria-label={badge.title}
       >
-        {badge.image ? (
-          <Image
-            src={encodeURI(`/images/${badge.image}`)}
-            alt={badge.title}
-            width={size}
-            height={size}
-            className="object-contain bg-transparent transition-transform duration-500 group-hover:scale-105"
-            unoptimized
-          />
-        ) : (
-          <div
-            aria-hidden="true"
-            className="flex h-full w-full items-center justify-center bg-gradient-to-br from-sky-500/15 to-indigo-500/15 text-sky-600 transition-transform duration-500 group-hover:scale-105 dark:text-sky-300"
-          >
-            <Award size={48} strokeWidth={1.5} />
-          </div>
-        )}
-      </a>
-
-      <div className="mt-1 text-center max-w-[190px]">
         <div
-          className={`transition-colors duration-300 group-hover:text-[#00A9E0] ${
-            compact
-              ? "text-sm font-medium text-[var(--badge-legend-muted)]"
-              : "text-sm font-semibold text-[var(--badge-legend-color)]"
-          }`}
+          className={`${imageSizeClass} rounded-md overflow-hidden transition-transform duration-300`}
         >
-          {badge.title}
+          {badge.image ? (
+            <Image
+              src={encodeURI(`/images/${badge.image}`)}
+              alt={badge.title}
+              width={size}
+              height={size}
+              className="object-contain bg-transparent transition-transform duration-500 group-hover:scale-105"
+              unoptimized
+            />
+          ) : (
+            <div
+              aria-hidden="true"
+              className="flex h-full w-full items-center justify-center bg-gradient-to-br from-sky-500/15 to-indigo-500/15 text-sky-600 transition-transform duration-500 group-hover:scale-105 dark:text-sky-300"
+            >
+              <Award size={48} strokeWidth={1.5} />
+            </div>
+          )}
         </div>
-        {badge.date && (
-          <div className="text-xs text-[var(--badge-legend-muted)]">
-            {badge.date}
+
+        <div className="mt-1 text-center max-w-[190px]">
+          <div
+            className={`transition-colors duration-300 group-hover:text-[#00A9E0] ${
+              compact
+                ? "text-sm font-medium text-[var(--badge-legend-muted)]"
+                : "text-sm font-semibold text-[var(--badge-legend-color)]"
+            }`}
+          >
+            {badge.title}
           </div>
-        )}
-      </div>
+          {badge.date && (
+            <div className="text-xs text-[var(--badge-legend-muted)]">
+              {badge.date}
+            </div>
+          )}
+        </div>
+      </a>
     </motion.article>
   );
 }

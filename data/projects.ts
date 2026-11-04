@@ -1,5 +1,36 @@
 const projects = [
   {
+    title: "e-manager",
+    tagline:
+      "Painel moderno, responsivo e internacionalizado para gestão de estoque e produtos.",
+    challenge:
+      "Desenvolver um sistema de gestão com CRUD de produtos, dashboard configurável e busca/paginação performáticas, integrando uma aplicação Next.js a uma API própria e banco PostgreSQL em produção.",
+    image: "/images/projects/e-manager.png",
+    technologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "Redux Toolkit",
+      "TanStack Query",
+      "Axios",
+      "React Hook Form",
+      "Zod",
+      "next-intl",
+      "Node.js",
+      "Express",
+      "PostgreSQL",
+      "Prisma",
+      "Vercel",
+      "Render",
+      "Neon",
+    ],
+    links: {
+      live: "https://e-manager-tau.vercel.app",
+      repo: "https://github.com/DaviRKL/e-manager",
+    },
+    status: "completed",
+  },
+  {
     title: "Portfólio - Fotografa Sofia Clickss",
     tagline:
       "Portfólio fotográfico com design em Glassmorphism e galeria Masonry imersiva.",
