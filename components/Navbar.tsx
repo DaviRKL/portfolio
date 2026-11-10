@@ -42,7 +42,7 @@ export default function Navbar() {
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link
           href="/"
-          className="text-xl font-bold tracking-tight hover:text-accent transition-colors"
+          className="text-xl font-bold tracking-tight text-primary transition-colors hover:text-accent"
           aria-label="Davi Konuma home"
         >
           Davi Konuma
@@ -133,9 +133,10 @@ export default function Navbar() {
 
         {/* Mobile: hamburger */}
         <div className="md:hidden flex items-center gap-2">
-          <ThemeToggle />
           <button
             aria-label={open ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={open}
+            aria-controls="mobile-navigation-menu"
             onClick={() => setOpen((s) => !s)}
             className="p-2 rounded-xl transition-colors border"
             style={{
@@ -187,6 +188,7 @@ export default function Navbar() {
             animate="open"
             exit="closed"
             variants={menuVariants}
+            id="mobile-navigation-menu"
             className="absolute left-0 top-full z-[60] w-full border-b border-primary/20 bg-bg-card shadow-2xl transition-colors duration-500 md:hidden"
           >
             <div className="px-6 py-8 flex flex-col gap-6">
@@ -269,6 +271,11 @@ export default function Navbar() {
                   </svg>
                   LinkedIn
                 </motion.a>
+              </div>
+
+              <div className="flex items-center justify-between border-t border-primary/20 pt-4 text-text-main">
+                <span className="text-sm font-medium">Alternar tema</span>
+                <ThemeToggle />
               </div>
             </div>
           </motion.div>
