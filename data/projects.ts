@@ -1,39 +1,37 @@
 export type Project = {
+  id: string;
   title: string;
-  tagline: string;
-  challenge: string;
-  impact?: string;
-  killerFeature?: string;
-  image?: string | null;
-  technologies: string[];
-  links: { repo?: string; live?: string };
-  status?: "completed" | "in_progress";
-  architectureOverview?: string;
-  architectureHighlights?: string[];
-  architectureMetrics?: string[];
-  diagramUrl?: string;
+  shortDescription: string;
+  killerFeature: string;
+  image: string | null;
+  demoUrl: string | null;
+  githubUrl: string | null;
+  coreTechnologies: string[];
+  fullTechnologies: string[];
+  caseStudy: {
+    problem: string;
+    engineering: string;
+    technicalImpact: string;
+  };
 };
 
 const projects: Project[] = [
   {
+    id: "e-manager",
     title: "e-manager",
-    tagline:
-      "Painel moderno, responsivo e internacionalizado para gestão de estoque e produtos.",
-    challenge:
-      "Desenvolver um sistema de gestão com CRUD de produtos, dashboard configurável e busca/paginação performáticas, integrando uma aplicação Next.js a uma API própria e banco PostgreSQL em produção.",
-    impact:
-      "Gestão centralizada com busca e paginação performáticas em uma aplicação full-stack.",
+    shortDescription:
+      "Painel moderno e internacionalizado para gestão de estoque e produtos.",
     killerFeature: "CRUD & busca otimizada",
-    architectureOverview:
-      "Aplicação de gestão full-stack com interface Next.js e TypeScript integrada a uma API Node.js/Express e banco PostgreSQL.",
-    architectureHighlights: [
-      "Frontend Next.js com internacionalização via next-intl",
-      "API Node.js e Express com persistência PostgreSQL via Prisma",
-      "TanStack Query e Redux Toolkit para dados e estado da interface",
-      "Formulários tipados com React Hook Form e Zod",
-    ],
     image: "/images/projects/e-manager.png",
-    technologies: [
+    demoUrl: "https://e-manager-tau.vercel.app",
+    githubUrl: "https://github.com/DaviRKL/e-manager",
+    coreTechnologies: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS v4",
+      "PostgreSQL",
+    ],
+    fullTechnologies: [
       "Next.js",
       "TypeScript",
       "Tailwind CSS v4",
@@ -51,31 +49,26 @@ const projects: Project[] = [
       "Render",
       "Neon",
     ],
-    links: {
-      live: "https://e-manager-tau.vercel.app",
-      repo: "https://github.com/DaviRKL/e-manager",
+    caseStudy: {
+      problem:
+        "Desenvolver um sistema de gestão com CRUD de produtos, dashboard configurável e busca/paginação performáticas, integrando uma aplicação Next.js a uma API própria e banco PostgreSQL em produção.",
+      engineering:
+        "Aplicação full-stack com interface Next.js e TypeScript integrada a uma API Node.js/Express e banco PostgreSQL via Prisma. TanStack Query e Redux Toolkit organizam dados e estado da interface; React Hook Form e Zod cuidam dos formulários e validação.",
+      technicalImpact:
+        "Centraliza o gerenciamento de produtos com busca, paginação e dashboard configurável em uma aplicação responsiva e internacionalizada. Não há métricas quantitativas cadastradas.",
     },
-    status: "completed",
   },
   {
+    id: "sofia-clickss",
     title: "Portfólio - Fotografa Sofia Clickss",
-    tagline:
-      "Portfólio fotográfico com design em Glassmorphism e galeria Masonry imersiva.",
-    challenge:
-      "Exibir dezenas de imagens em alta qualidade em um layout complexo sem comprometer a memória do navegador, garantindo navegação mobile intuitiva via gestos (swipe) e cache otimizado na CDN para carregamento instantâneo.",
-    impact:
-      "Galeria Masonry responsiva para imagens de alta qualidade, com navegação mobile e entrega via CDN.",
+    shortDescription:
+      "Portfólio fotográfico com galeria Masonry e otimização de desempenho.",
     killerFeature: "Galeria Masonry imersiva",
-    architectureOverview:
-      "Portfólio fotográfico em React e TypeScript, com galeria Masonry pensada para apresentar imagens em alta qualidade em diferentes tamanhos de tela.",
-    architectureHighlights: [
-      "Interface React construída e empacotada com Vite",
-      "Galeria responsiva com react-masonry-css",
-      "Experiência mobile planejada para navegação por gestos",
-      "Imagens entregues com apoio de CDN",
-    ],
     image: "/images/projects/portfolio-sofia-clickss.png",
-    technologies: [
+    demoUrl: "https://sofiaclickss.vercel.app/",
+    githubUrl: null,
+    coreTechnologies: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+    fullTechnologies: [
       "React",
       "TypeScript",
       "Tailwind CSS",
@@ -83,30 +76,26 @@ const projects: Project[] = [
       "Vercel",
       "react-masonry-css",
     ],
-    links: {
-      live: "https://sofiaclickss.vercel.app/",
+    caseStudy: {
+      problem:
+        "Exibir dezenas de imagens em alta qualidade em um layout complexo sem comprometer a memória do navegador, garantindo navegação mobile intuitiva e carregamento otimizado.",
+      engineering:
+        "Portfólio em React e TypeScript com galeria Masonry responsiva usando react-masonry-css e publicação na Vercel.",
+      technicalImpact:
+        "Organiza imagens de diferentes proporções em uma galeria adaptável a telas móveis e desktop. Não há métricas quantitativas cadastradas.",
     },
-    status: "completed",
   },
   {
+    id: "diario-de-classe-ang",
     title: "Diário de Classe ANG",
-    tagline:
-      "Digitalização do gerenciamento de informações de assistidos e registros de presença para a Associação Nova Geração.",
-    challenge:
-      "Substituir registros manuais em papel por um sistema centralizado, garantindo a integridade dos dados e agilizando a rotina administrativa.",
-    impact:
-      "Digitalização dos registros de assistidos e presença em um sistema centralizado.",
+    shortDescription:
+      "Sistema centralizado para registros de assistidos e presença.",
     killerFeature: "Gestão digital de presença",
-    architectureOverview:
-      "Sistema web full-stack para centralizar informações de assistidos e registros de presença da Associação Nova Geração.",
-    architectureHighlights: [
-      "Frontend React integrado a serviços em Node.js",
-      "API com dados relacionais armazenados em PostgreSQL",
-      "Persistência organizada com Sequelize",
-      "Autenticação baseada em JWT",
-    ],
     image: "/images/projects/diario_de_classe.png",
-    technologies: [
+    demoUrl: null,
+    githubUrl: "https://github.com/DaviRKL/PI",
+    coreTechnologies: ["React", "Node.js", "TypeScript", "PostgreSQL"],
+    fullTechnologies: [
       "React",
       "Node.js",
       "TypeScript",
@@ -115,30 +104,31 @@ const projects: Project[] = [
       "Docker",
       "JWT",
     ],
-    links: {
-      repo: "https://github.com/DaviRKL/PI",
+    caseStudy: {
+      problem:
+        "Substituir registros manuais em papel por um sistema centralizado, garantindo a integridade dos dados e agilizando a rotina administrativa da Associação Nova Geração.",
+      engineering:
+        "Sistema web full-stack com frontend React, serviços em Node.js, dados relacionais em PostgreSQL gerenciados com Sequelize e autenticação baseada em JWT.",
+      technicalImpact:
+        "Digitaliza e centraliza registros de assistidos e presença para a rotina administrativa. Não há métricas quantitativas cadastradas.",
     },
-    status: "completed",
   },
   {
+    id: "my-poll",
     title: "My Poll",
-    tagline:
-      "Plataforma responsiva de enquetes em tempo real, com criação, votação e filtros personalizados.",
-    challenge:
-      "Construir uma experiência de enquetes compartilhadas com atualização instantânea de votos via Firestore, autenticação Google e anônima, filtros por escopo/status, busca, ordenação e paginação.",
-    impact:
-      "Enquetes com atualização instantânea de votos e opções para filtrar e encontrar resultados.",
+    shortDescription:
+      "Plataforma responsiva de enquetes com votos em tempo real.",
     killerFeature: "Votos em tempo real",
-    architectureOverview:
-      "Aplicação React e TypeScript que combina autenticação Firebase com atualização de enquetes e votos usando Firestore.",
-    architectureHighlights: [
-      "Firestore para dados de enquetes e atualização em tempo real",
-      "Firebase Authentication com acesso Google e anônimo",
-      "TanStack Router para navegação",
-      "Testes de interface com Jest e React Testing Library",
-    ],
     image: "/images/projects/mypoll.png",
-    technologies: [
+    demoUrl: "https://my-poll-b9694.web.app/",
+    githubUrl: "https://github.com/DaviRKL/my-poll",
+    coreTechnologies: [
+      "React",
+      "TypeScript",
+      "Firebase Firestore",
+      "Firebase Auth",
+    ],
+    fullTechnologies: [
       "React",
       "TypeScript",
       "Vite",
@@ -153,31 +143,26 @@ const projects: Project[] = [
       "React Testing Library",
       "Lucide React",
     ],
-    links: {
-      live: "https://my-poll-b9694.web.app/",
-      repo: "https://github.com/DaviRKL/my-poll",
+    caseStudy: {
+      problem:
+        "Criar uma experiência de enquetes compartilhadas com atualização instantânea de votos, autenticação e ferramentas para encontrar enquetes por filtros, busca, ordenação e paginação.",
+      engineering:
+        "Aplicação React e TypeScript com Firebase Authentication (Google e anônimo) e Firestore para dados e atualização de votos. TanStack Router organiza a navegação; Jest e React Testing Library apoiam os testes.",
+      technicalImpact:
+        "Permite acompanhar a atualização dos votos e descobrir enquetes usando filtros e busca. Não há métricas quantitativas cadastradas.",
     },
-    status: "completed",
   },
   {
+    id: "folkdex",
     title: "folkDex",
-    tagline:
-      "Aplicação de descoberta de pessoas com filtros avançados, sincronização de estado via URL e suporte a múltiplos idiomas e temas.",
-    challenge:
-      "Criar uma experiência de busca rápida e compartilhável sobre perfis da Random User API, com paginação e filtros client-side, dados sensíveis sanitizados na camada de serviço e interface adaptável a Português/Inglês e aos temas claro/escuro.",
-    impact:
-      "Busca de perfis com filtros sincronizados à URL e dados sanitizados na camada de serviço.",
+    shortDescription:
+      "Descoberta de perfis com filtros sincronizados à URL e suporte multilíngue.",
     killerFeature: "Filtros compartilháveis por URL",
-    architectureOverview:
-      "Aplicação React para explorar perfis da Random User API, com filtros e estado de busca sincronizado à URL.",
-    architectureHighlights: [
-      "Camada de serviço para consumo e sanitização dos dados da API",
-      "Filtros e paginação no cliente com estado compartilhável pela URL",
-      "Internacionalização com i18next",
-      "Interface com suporte a temas claro e escuro",
-    ],
-    image: "images/projects/folkDex.png",
-    technologies: [
+    image: "/images/projects/folkDex.png",
+    demoUrl: "https://folkdex-davikonuma.vercel.app/",
+    githubUrl: "https://github.com/DaviRKL/folkDex",
+    coreTechnologies: ["React", "TypeScript", "Vite", "i18next"],
+    fullTechnologies: [
       "React",
       "TypeScript",
       "Vite",
@@ -187,31 +172,26 @@ const projects: Project[] = [
       "i18next",
       "Lucide React",
     ],
-    links: {
-      live: "https://folkdex-davikonuma.vercel.app/",
-      repo: "https://github.com/DaviRKL/folkDex",
+    caseStudy: {
+      problem:
+        "Criar uma experiência de busca rápida e compartilhável sobre perfis da Random User API, com paginação e filtros no cliente, sanitização de dados e suporte a Português/Inglês e temas claro/escuro.",
+      engineering:
+        "Aplicação React com estado de busca sincronizado à URL, camada de serviço para consumo e sanitização dos dados da Random User API, navegação com React Router DOM e internacionalização com i18next.",
+      technicalImpact:
+        "Permite compartilhar buscas por URL e navegar por perfis com filtros, idiomas e temas. Não há métricas quantitativas cadastradas.",
     },
-    status: "completed",
   },
   {
+    id: "exoplanet-classifier",
     title: "Exoplanet Classifier API & Dashboard",
-    tagline:
-      "Classificador de exoplanetas utilizando modelos de Machine Learning (Ensemble) e visualização de dados em tempo real.",
-    challenge:
-      "Processar o catálogo Kepler KOI para treinar classificadores Random Forest e XGBoost, servindo predições via API de baixa latência.",
-    impact:
-      "Predições de classificação servidas por API e apresentadas em um dashboard interativo.",
+    shortDescription:
+      "Classificação de exoplanetas com modelos de Machine Learning e dashboard.",
     killerFeature: "Classificação com ML",
-    architectureOverview:
-      "Pipeline de classificação de exoplanetas com modelos de Machine Learning expostos por uma API FastAPI e uma interface de dashboard.",
-    architectureHighlights: [
-      "Modelos Random Forest e XGBoost para classificação",
-      "API de predição construída com FastAPI",
-      "Dashboard Angular para visualizar dados e resultados",
-      "Catálogo Kepler KOI como origem dos dados de treinamento",
-    ],
     image: "/images/projects/exo-classifier.jpg",
-    technologies: [
+    demoUrl: null,
+    githubUrl: "https://github.com/DaviRKL/exoplanet-classifier",
+    coreTechnologies: ["Python", "FastAPI", "Angular", "XGBoost"],
+    fullTechnologies: [
       "Python",
       "FastAPI",
       "Angular",
@@ -220,89 +200,15 @@ const projects: Project[] = [
       "TypeScript",
       "Machine Learning",
     ],
-    links: {
-      repo: "https://github.com/DaviRKL/exoplanet-classifier",
+    caseStudy: {
+      problem:
+        "Processar o catálogo Kepler KOI para treinar classificadores Random Forest e XGBoost e disponibilizar predições por API.",
+      engineering:
+        "Pipeline de Machine Learning para treinamento dos classificadores, API de predição construída com FastAPI e dashboard Angular para visualização de dados e resultados.",
+      technicalImpact:
+        "Expõe classificações geradas pelos modelos por meio de uma API e as apresenta no dashboard. Não há métricas quantitativas cadastradas.",
     },
-    status: "completed",
   },
-
-  /*
-  {
-    title: 'Todo List — MERN Stack',
-    tagline: 'Ecossistema Fullstack completo para gestão de tarefas, integrando banco NoSQL e interface responsiva sob a stack MERN.',
-    challenge: 'Consolidar a integração entre frontend e backend em uma arquitetura MERN (MongoDB, Express, React, Node), implementando operações CRUD eficientes e uma UI moderna com Material UI e feedbacks dinâmicos via React Toastify.',
-    image: '/images/projects/todo-list-mern.png',
-    technologies: [
-      'MongoDB',
-      'Express.js',
-      'React',
-      'Node.js',
-      'Material UI',
-      'React Toastify',
-    ],
-    links: {
-      repo: 'https://github.com/DaviRKL/ToDoList',
-    },
-    status: 'completed',
-  },
-  {
-    title: 'Pokémon Unite Clone',
-    tagline: 'Interface inspirada no site oficial do Pokémon Unite na época de desenvolvimento, com consumo de Mock API e design responsivo.',
-    challenge: 'Desenvolver uma arquitetura de frontend escalável utilizando React Hooks (useState/useEffect) e roteamento dinâmico para simular a experiência do site oficial em parceria com a Eduzz.',
-    image: '/images/projects/pokemon-unite.png',
-    technologies: [
-      'React',
-      'React Router',
-      'Vite',
-      'Mock API',
-      'Hooks',
-      'CSS',
-    ],
-    links: {
-      repo: 'https://github.com/DaviRKL/PokemonsReact',
-    },
-    status: 'completed',
-  },
-  {
-    title: 'Financial Copilot',
-    tagline: 'Planejador financeiro inteligente com análise preditiva via IA (Llama-3) e dashboard interativo.',
-    challenge: 'Implementar uma arquitetura híbrida (SSR/SSG/ISR) para performance e garantir a segurança de chaves sensíveis via API Routes na integração com Groq Cloud.',
-    image: null,
-    technologies: [
-      'Next.js',
-      'TypeScript',
-      'Tailwind CSS',
-      'Groq API',
-      'Llama-3',
-      'Recharts',
-      'Vitest',
-    ],
-    links: {
-      repo: 'https://github.com/DaviRKL/financial-copilot',
-    },
-    status: 'in_progress',
-  },
-  */
-  // {
-  //   title: "Sistema de Reciclagem e Descarte",
-  //   tagline:
-  //     "Otimização de rotas de coleta e gestão de materiais utilizando estruturas de dados avançadas.",
-  //   challenge:
-  //     "Implementar grafos para o cálculo de rotas mais curtas e árvores Tries para busca eficiente e classificação de materiais recicláveis.",
-  //   image: null,
-  //   technologies: [
-  //     "Java",
-  //     "GraphStream",
-  //     "Data Structures",
-  //     "Algorithms",
-  //     "Graphs",
-  //     "Trie Tree",
-  //   ],
-  //   links: {
-  //     repo: "https://github.com/DaviRKL/sistema-reciclagem-descarte",
-  //   },
-  //   status: "completed",
-  // },
 ];
 
 export default projects;

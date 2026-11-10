@@ -37,7 +37,7 @@ export default function Showcase() {
 
             return (
               <ProjectCard
-                key={p.title}
+                key={p.id}
                 project={p}
                 featured={index === 0}
                 className={isWide ? "lg:col-span-7" : "lg:col-span-5"}
@@ -52,7 +52,7 @@ export default function Showcase() {
       <AnimatePresence>
         {selectedProjectForModal && (
           <ProjectArchitectureModal
-            key={selectedProjectForModal.title}
+            key={selectedProjectForModal.id}
             project={selectedProjectForModal}
             onClose={closeArchitectureModal}
           />
