@@ -8,8 +8,8 @@ export default function SectionReveal({
   className?: string
 }) {
   return (
-    <div className={`relative z-10 w-full overflow-x-clip ${className}`}>
-      <div className="relative">
+    <div className={`hero-noise relative isolate z-10 w-full overflow-x-clip ${className}`}>
+      <div className="relative z-10">
         {children}
       </div>
     </div>

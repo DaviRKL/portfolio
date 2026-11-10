@@ -18,8 +18,8 @@ export default function Showcase() {
   return (
     <section id="projects" aria-label="Projetos" className="w-full max-w-6xl mx-auto px-3 sm:px-6 py-10 sm:py-20">
       <header className="mb-6 sm:mb-8 text-center">
-        <h2 className="font-heading text-3xl font-extrabold text-primary">Showcase de Projetos</h2>
-        <p className="mt-2 text-text-main/80">Projetos selecionados com foco em performance e usabilidade.</p>
+        <h2 className="font-heading text-3xl font-extrabold text-text-main">Showcase de Projetos</h2>
+        <p className="mt-2 text-text-main">Projetos selecionados com foco em performance e usabilidade.</p>
       </header>
 
       <motion.div

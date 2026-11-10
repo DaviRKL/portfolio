@@ -38,7 +38,7 @@ export default function Education() {
     >
       <h2
         id="education-heading"
-        className="mb-4 font-heading text-3xl font-extrabold text-primary"
+        className="mb-4 font-heading text-3xl font-extrabold text-text-main"
       >
         Formações
       </h2>
@@ -47,7 +47,7 @@ export default function Education() {
         {education.map((e) => (
           <article
             key={e.institution}
-            className="rounded-xl border border-primary/20 bg-bg-card p-6 text-center shadow-lg transition-colors hover:border-secondary/40"
+            className="rounded-xl border border-primary/20 bg-white p-6 text-center shadow-[0_4px_20px_rgba(82,89,173,0.05)] transition-colors hover:border-secondary/40 dark:bg-bg-card dark:shadow-lg"
           >
             <header className="flex flex-col items-center gap-4">
               {logoFor(e.institution) && (
@@ -63,13 +63,13 @@ export default function Education() {
               )}
 
               <div>
-                <h3 className="font-heading text-xl font-semibold text-text-main">
+                <h3 className="font-heading text-xl font-semibold text-text-main dark:text-text-on-card">
                   {e.degree}
                 </h3>
-                <p className="mt-1 text-sm text-text-muted">
+                <p className="mt-1 text-sm text-text-main dark:text-text-on-card">
                   {e.institution}
                 </p>
-                <p className="mt-2 text-sm italic text-text-muted">
+                <p className="mt-2 text-sm italic text-text-main dark:text-text-on-card">
                   {e.period}
                 </p>
               </div>

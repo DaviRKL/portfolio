@@ -15,32 +15,32 @@ const techs = [
   {
     id: "ts",
     label: "TS",
-    icon: <SiTypescript className="text-[#3178C6]" />,
-    color: "border-primary/30 bg-primary/10 text-primary hover:border-primary/60",
+    icon: <SiTypescript />,
+    color: "border-primary/20 bg-primary/10 text-primary hover:border-primary/60",
   },
   {
     id: "react",
     label: "React",
-    icon: <SiReact className="text-[#61DAFB]" />,
-    color: "border-secondary/30 bg-secondary/10 text-secondary hover:border-secondary/60",
+    icon: <SiReact />,
+    color: "border-secondary/20 bg-secondary/10 text-secondary hover:border-secondary/60",
   },
   {
     id: "tailwind",
     label: "Tailwind",
-    icon: <SiTailwindcss className="text-[#06B6D4]" />,
-    color: "border-primary/30 bg-primary/10 text-primary hover:border-primary/60",
+    icon: <SiTailwindcss />,
+    color: "border-primary/20 bg-primary/10 text-primary hover:border-primary/60",
   },
   {
     id: "express",
     label: "Express",
-    icon: <SiExpress className="dark:text-white text-black" />,
-    color: "border-secondary/30 bg-secondary/10 text-secondary hover:border-secondary/60",
+    icon: <SiExpress />,
+    color: "border-secondary/20 bg-secondary/10 text-secondary hover:border-secondary/60",
   },
   {
     id: "node",
     label: "Node.js",
-    icon: <SiNodedotjs className="text-[#339933]" />,
-    color: "border-primary/30 bg-primary/10 text-primary hover:border-primary/60",
+    icon: <SiNodedotjs />,
+    color: "border-primary/20 bg-primary/10 text-primary hover:border-primary/60",
   },
 ];
 

@@ -3,13 +3,16 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-bg-main: #1B1D22;
-  --color-bg-card: #2A2C35;
-  --color-text-main: #F2F3F3;
+  --color-bg-main: #AEE1FF;
+  --color-bg-card: #1B1D22;
+  --color-text-main: #1B1D22;
+  --color-text-on-bg: #1B1D22;
+  --color-text-on-card: #F2F3F3;
   --color-text-muted: #A0A1A7;
-  --color-primary: #6FBFEC;
+  --color-primary: #5840A0;
   --color-secondary: #D84875;
   --color-accent-gold: #F3D361;
+  --color-star-fill: #FFACE4;
 }
 
 @theme inline {
@@ -28,16 +31,16 @@
 :root {
   color-scheme: dark;
   --bg-primary: var(--color-bg-main);
-  --bg-rgb: 27, 29, 34;
+  --bg-rgb: 174, 225, 255;
   --surface: var(--color-bg-card);
-  --surface-rgb: 42, 44, 53;
+  --surface-rgb: 27, 29, 34;
   --accent: var(--color-primary);
-  --text-main: var(--color-text-main);
-  --text-rgb: 242, 243, 243;
+  --text-main: var(--color-text-on-bg);
+  --text-rgb: 27, 29, 34;
   --transformative-teal: var(--color-primary);
-  --border-color: rgb(111 191 236 / 20%);
-  --hover-accent: rgb(111 191 236 / 10%);
-  --badge-legend-color: var(--color-text-main);
+  --border-color: rgb(88 64 160 / 24%);
+  --hover-accent: rgb(88 64 160 / 10%);
+  --badge-legend-color: var(--color-text-on-card);
   --badge-legend-muted: var(--color-text-muted);
 }
 
@@ -46,6 +49,9 @@
   --color-bg-main: #F2F3F3;
   --color-bg-card: #FFFFFF;
   --color-text-main: #404146;
+  --color-text-on-bg: #404146;
+  --color-text-on-card: #404146;
+  --color-star-fill: #AEE1FF;
   --color-text-muted: #676870;
   --color-primary: #5259AD;
   --color-secondary: #D84875;
@@ -54,7 +60,7 @@
   --surface-rgb: 255, 255, 255;
   --border-color: rgb(82 89 173 / 20%);
   --hover-accent: rgb(82 89 173 / 10%);
-  --badge-legend-color: var(--color-text-main);
+  --badge-legend-color: var(--color-text-on-card);
   --badge-legend-muted: var(--color-text-muted);
 }
 
@@ -67,7 +73,6 @@ html, body, #__next {
 
 h2,
 h3 {
-  color: var(--text-main);
   font-family: var(--font-space-grotesk), sans-serif;
 }
 

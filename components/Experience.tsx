@@ -14,7 +14,7 @@ export default function Experience() {
       className="w-full max-w-6xl mx-auto px-3 py-10 sm:px-6 sm:py-20"
     >
       <header className="mb-6 text-center sm:mb-8">
-        <h2 className="font-heading text-3xl font-extrabold text-primary">
+        <h2 className="font-heading text-3xl font-extrabold text-text-main">
           {experienceTitle}
         </h2>
       </header>
@@ -45,18 +45,18 @@ export default function Experience() {
               y: -2,
               transition: { duration: 0.08, ease: "easeOut" },
             }}
-            className="relative flex h-full flex-col rounded-xl border border-primary/20 bg-bg-card p-4 shadow-lg transition-colors hover:border-secondary/40 sm:p-8 md:p-10"
+            className="relative flex h-full flex-col rounded-xl border border-primary/20 bg-white p-4 shadow-[0_4px_20px_rgba(82,89,173,0.05)] transition-colors hover:border-secondary/40 dark:bg-bg-card dark:shadow-lg sm:p-8 md:p-10"
           >
             <div className="flex-1">
               <header className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                 <div>
-                  <div className="text-sm text-text-muted">
+                  <div className="text-sm text-text-main dark:text-text-on-card">
                     {experience.role}
                   </div>
-                  <h3 className="font-heading text-2xl font-bold text-text-main md:text-3xl">
+                  <h3 className="font-heading text-2xl font-bold text-text-main dark:text-text-on-card md:text-3xl">
                     {experience.company}
                   </h3>
-                  <div className="mt-1 text-xs text-text-muted">
+                  <div className="mt-1 text-xs text-text-main dark:text-text-on-card">
                     {experience.period}
                   </div>
                 </div>
@@ -69,8 +69,8 @@ export default function Experience() {
                       key={technology}
                       className={`rounded-full border px-2 py-1 text-xs font-semibold ${
                         index % 2 === 0
-                          ? "border-primary/30 bg-primary/10 text-primary"
-                          : "border-secondary/30 bg-secondary/10 text-secondary"
+                          ? "border-primary/20 bg-primary/10 text-primary dark:bg-primary/20 dark:text-text-on-card"
+                          : "border-secondary/20 bg-secondary/10 text-secondary dark:bg-secondary/20 dark:text-secondary"
                       }`}
                     >
                       {technology}
@@ -79,11 +79,11 @@ export default function Experience() {
                 </ul>
               </header>
 
-              <ul className="mt-6 space-y-3 text-text-main/85">
+              <ul className="mt-6 space-y-3 text-text-main dark:text-text-on-card">
                 {experience.responsibilities.map((responsibility) => (
                   <li key={responsibility} className="flex items-start gap-3">
                     <svg
-                      className="h-5 w-5 shrink-0 text-accent"
+                      className="h-5 w-5 shrink-0 text-primary dark:text-secondary"
                       viewBox="0 0 24 24"
                       fill="none"
                       aria-hidden="true"
@@ -103,16 +103,12 @@ export default function Experience() {
             </div>
 
             <div
-              className="mt-6 rounded-lg border border-primary/20 p-3 sm:mt-8 sm:p-4"
-              style={{
-                background: "var(--color-bg-main)",
-                borderLeft: "4px solid var(--color-primary)",
-              }}
+              className="mt-6 rounded-lg border-l-4 border-primary bg-primary/5 p-3 sm:mt-8 sm:p-4"
             >
-              <div className="text-sm font-semibold text-primary">
+              <div className="text-sm font-semibold text-primary dark:text-secondary">
                 {experience.resultLabel}
               </div>
-              <p className="mt-1 text-text-main/85">{experience.result}</p>
+              <p className="mt-1 text-text-main dark:text-text-on-card">{experience.result}</p>
             </div>
           </motion.article>
         ))}

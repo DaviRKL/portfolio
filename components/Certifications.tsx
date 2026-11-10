@@ -173,8 +173,8 @@ function BadgeCard({
       variants={HOVER_LIFT}
       className={
         compact
-          ? "col-span-full mt-4 rounded-xl border border-secondary/20 bg-bg-card p-4 opacity-80 transition-colors hover:border-primary/40 md:col-auto"
-          : "rounded-xl border border-primary/20 bg-bg-card p-4 shadow-lg transition-colors hover:border-secondary/40"
+          ? "col-span-full mt-4 rounded-xl border border-secondary/20 bg-white p-4 shadow-[0_4px_20px_rgba(82,89,173,0.05)] transition-colors hover:border-primary/40 dark:bg-bg-card dark:shadow-lg md:col-auto"
+          : "rounded-xl border border-primary/20 bg-white p-4 shadow-[0_4px_20px_rgba(82,89,173,0.05)] transition-colors hover:border-secondary/40 dark:bg-bg-card dark:shadow-lg"
       }
     >
       <a
@@ -210,14 +210,14 @@ function BadgeCard({
           <div
             className={`transition-colors duration-300 group-hover:text-primary ${
               compact
-                ? "text-sm font-medium text-[var(--badge-legend-muted)]"
-                : "text-sm font-semibold text-[var(--badge-legend-color)]"
+                ? "text-sm font-medium text-text-main dark:text-text-on-card"
+                : "text-sm font-semibold text-text-main dark:text-text-on-card"
             }`}
           >
             {badge.title}
           </div>
           {badge.date && (
-            <div className="text-xs text-[var(--badge-legend-muted)]">
+            <div className="text-xs text-text-main dark:text-text-on-card">
               {badge.date}
             </div>
           )}
@@ -233,7 +233,7 @@ export default function Certifications() {
       id="certifications"
       className="max-w-6xl mx-auto px-6 py-24 text-center"
     >
-      <h2 className="mb-10 font-heading text-3xl font-extrabold text-primary">
+      <h2 className="mb-10 font-heading text-3xl font-extrabold text-text-main">
         Certificados e Conquistas
       </h2>
 
@@ -241,10 +241,10 @@ export default function Certifications() {
         (section) => section.enabled !== false,
       ).map((section) => (
         <section key={section.title} className="mb-12">
-          <h3 className="mb-1 font-heading text-2xl font-bold text-text-main">
+          <h3 className="mb-1 font-heading text-2xl font-bold text-primary dark:text-secondary">
             {section.title}
           </h3>
-          <p className="text-text-main/75 mb-6 max-w-3xl mx-auto">
+          <p className="mb-6 max-w-3xl mx-auto text-text-main">
             {section.description}
           </p>
 

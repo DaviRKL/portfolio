@@ -45,11 +45,11 @@ export default function Contact() {
         transition={{ duration: 0.8 }}
         className="max-w-4xl mx-auto px-6 text-center"
       >
-        <h2 className="mb-6 font-heading text-4xl font-extrabold text-primary md:text-5xl">
+        <h2 className="mb-6 font-heading text-4xl font-extrabold text-text-main md:text-5xl">
           Vamos construir algo incrível juntos?
         </h2>
         
-        <p className="mb-12 max-w-2xl mx-auto text-lg text-text-muted md:text-xl">
+        <p className="mb-12 max-w-2xl mx-auto text-lg text-text-main md:text-xl">
           Estou sempre aberto a novos projetos, colaborações Front-End e desafios tecnológicos que demandem alta performance.
         </p>
 
@@ -58,8 +58,8 @@ export default function Contact() {
           <MagneticButton>
             <motion.a
               href="mailto:davirkl07@gmail.com" 
-              whileHover={{ y: -5, boxShadow: "0px 10px 30px rgba(0, 169, 224, 0.3)" }}
-              className="flex items-center gap-3 rounded-2xl bg-primary px-8 py-4 text-lg font-bold text-bg-main transition-all hover:brightness-110"
+              whileHover={{ y: -5, boxShadow: "0px 10px 20px rgba(82, 89, 173, 0.2)" }}
+              className="flex items-center gap-3 rounded-2xl bg-primary px-8 py-4 text-lg font-bold text-white shadow-md transition-all duration-300 hover:shadow-[0_10px_20px_rgba(82,89,173,0.2)]"
             >
               <Mail className="h-6 w-6" />
               Enviar E-mail
@@ -69,8 +69,8 @@ export default function Contact() {
           {/* LinkedIn - Botão Secundário */}
           <motion.a
             href="https://www.linkedin.com/in/davirkl/"
-            whileHover={{ y: -5 }}
-            className="flex items-center gap-3 rounded-2xl bg-secondary px-8 py-4 text-lg font-bold text-bg-main transition-all hover:brightness-110"
+            whileHover={{ y: -5, boxShadow: "0px 10px 20px rgba(216, 72, 117, 0.2)" }}
+            className="flex items-center gap-3 rounded-2xl bg-secondary px-8 py-4 text-lg font-bold text-white shadow-md transition-all duration-300 hover:shadow-[0_10px_20px_rgba(216,72,117,0.2)]"
           >
             <Linkedin className="h-6 w-6" />
             LinkedIn
@@ -78,7 +78,7 @@ export default function Contact() {
         </div>
 
         {/* Footer Minimalista */}
-        <footer className="border-t border-primary/20 pt-12 text-sm text-text-muted">
+        <footer className="border-t border-primary/20 pt-12 text-sm text-text-main dark:text-text-on-bg">
           <p>© 2026 Davi Konuma — Desenvolvedor Front-End </p>
           <p className="mt-2">Feito com Next.js 14, Framer Motion e GSAP.</p>
         </footer>

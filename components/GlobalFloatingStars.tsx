@@ -37,19 +37,19 @@ export default function GlobalFloatingStars() {
         <motion.svg
           key={`${star.top}-${star.left}`}
           viewBox="0 0 100 100"
-          fill="currentColor"
-          className="absolute text-accent-gold"
+          fill="var(--color-star-fill)"
+          className="absolute"
           style={{
             top: star.top,
             left: star.left,
             width: star.size,
             height: star.size,
           }}
-          initial={{ opacity: 0.3 }}
+          initial={{ opacity: 0.25 }}
           animate={
             prefersReducedMotion
-              ? { opacity: 0.3 }
-              : { opacity: [0.2, 0.4, 0.2] }
+              ? { opacity: 0.25 }
+              : { opacity: [0.18, 0.32, 0.18] }
           }
           transition={{
             duration: 3.5 + (index % 5) * 0.6,
@@ -58,7 +58,13 @@ export default function GlobalFloatingStars() {
             ease: "easeInOut",
           }}
         >
-          <path d="M50 4 61 36 95 36 67 56 78 89 50 69 22 89 33 56 5 36 39 36Z" />
+          <path
+            d="M50 4 61 36 95 36 67 56 78 89 50 69 22 89 33 56 5 36 39 36Z"
+            stroke="#000"
+            strokeOpacity="0.5"
+            strokeWidth="5"
+            strokeLinejoin="round"
+          />
         </motion.svg>
       ))}
     </div>
