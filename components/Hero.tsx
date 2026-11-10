@@ -131,7 +131,7 @@ export default function Hero() {
   return (
     <section className="relative min-h-[75vh] flex items-center overflow-hidden">
       <motion.div
-        className="relative max-w-3xl mx-auto px-6 py-20 text-center"
+        className="relative grid w-full max-w-6xl grid-cols-1 items-center gap-12 mx-auto px-6 py-20 text-left lg:grid-cols-12"
         initial="hidden"
         animate="show"
         variants={{
@@ -142,86 +142,97 @@ export default function Hero() {
         <motion.div
           variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
           transition={{ duration: 0.65, ease: 'easeOut' }}
-          className="mx-auto w-36 h-36 md:w-48 md:h-48 rounded-full hero-avatar"
+          className="lg:col-span-7"
         >
-          <div className="w-full h-full rounded-full overflow-hidden border-4 border-border-color shadow-md">
+          <motion.h1
+            ref={nameRef}
+            variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05] animated-gradient bg-clip-text"
+            aria-label="Davi Konuma — Front-End Developer"
+            style={{ willChange: 'transform' }}
+          >
+            Davi Konuma
+          </motion.h1>
+
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.65, ease: 'easeOut' }}
+            className="mt-6 inline-flex items-center rounded-full bg-[rgba(0,169,224,0.08)] px-3 py-1 text-sm font-semibold text-white badge-beam"
+            style={{ willChange: 'transform' }}
+          >
+            Front-End Developer
+          </motion.div>
+
+          <motion.p
+            ref={titleRef}
+            variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.65, ease: 'easeOut' }}
+            className="mt-6 max-w-2xl text-base text-text-main/85 md:text-lg"
+            style={{ willChange: 'transform, opacity' }}
+          >
+            Desenvolvedor Front-End especializado no ecossistema React e TypeScript, com sólida experiência em plataformas SaaS de alta complexidade para o setor financeiro. Uno a engenharia de interfaces escaláveis à orquestração de fluxos com Inteligência Artificial e automação (LLMs, CrewAI, n8n), entregando aplicações focadas em performance, acessibilidade e valor real para o usuário.
+          </motion.p>
+
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.65, ease: 'easeOut' }}
+            className="mt-10"
+          >
+            <TechStack />
+          </motion.div>
+
+          <motion.div
+            variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+            transition={{ duration: 0.65, ease: 'easeOut' }}
+            className="mt-8 flex flex-col items-start justify-start gap-4 sm:flex-row"
+          >
+            <motion.a
+              href="#projects"
+              onClick={handleProjectsClick}
+              onMouseMove={handleMagnetMove}
+              onMouseLeave={handleMagnetLeave}
+              onFocus={handleMagnetLeave}
+              whileTap={{ scale: 0.98 }}
+              style={{ x: springX, y: springY, willChange: 'transform' }}
+              className="cta-primary cta-primary-pulse inline-flex items-center gap-2 rounded-xl border border-[rgba(0,169,224,0.35)] bg-[rgba(0,169,224,0.18)] px-6 py-3 font-semibold text-[#00171f] shadow-lg backdrop-blur-md dark:text-white"
+              aria-label="Ver projetos"
+            >
+              Ver Projetos
+            </motion.a>
+
+            <motion.a
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
+              href="#contacts"
+              className="inline-flex items-center gap-2 rounded-xl border border-border-color bg-white/5 px-6 py-3 font-semibold text-text-main backdrop-blur-xl"
+              aria-label="Contato por e-mail"
+            >
+              Entrar em Contato
+            </motion.a>
+          </motion.div>
+        </motion.div>
+
+        <motion.div
+          variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
+          transition={{ duration: 0.65, ease: 'easeOut' }}
+          className="lg:col-span-5"
+        >
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl shadow-2xl">
             <Image
               src="/images/davi/DaviPicture.jpeg"
               alt="Davi Konuma"
-              width={384}
-              height={384}
-              style={{ objectFit: 'cover', transform: ' translateY(-17%)', objectPosition: 'center' }}
+              fill
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="object-cover object-[center_30%]"
               priority
             />
+            <div
+              aria-hidden="true"
+              className="absolute inset-x-0 bottom-0 h-1/3"
+              style={{ background: 'linear-gradient(to top, var(--bg-primary), transparent)' }}
+            />
           </div>
-        </motion.div>
-
-        <motion.h1
-          ref={nameRef}
-          variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
-          transition={{ duration: 0.7, ease: 'easeOut' }}
-          className="mt-6 text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05] animated-gradient bg-clip-text"
-          aria-label="Davi Konuma — Front-End Developer"
-          style={{ willChange: 'transform' }}
-        >
-          Davi Konuma
-        </motion.h1>
-
-        <motion.div
-          variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
-          transition={{ duration: 0.65, ease: 'easeOut' }}
-          className="mt-6 pd-10 inline-flex items-center px-3 py-1 rounded-full bg-[rgba(0,169,224,0.08)] text-white text-sm font-semibold badge-beam pd-10"
-          style={{ willChange: 'transform' }}
-        >
-          Front-End Developer
-        </motion.div>
-
-        <motion.p
-          ref={titleRef}
-          variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
-          transition={{ duration: 0.65, ease: 'easeOut' }}
-          className="mt-6 text-base md:text-lg text-text-main/85 max-w-2xl mx-auto"
-          style={{ willChange: 'transform, opacity' }}
-        >
-          Desenvolvedor Front-End especializado no ecossistema React e TypeScript, com sólida experiência em plataformas SaaS de alta complexidade para o setor financeiro. Uno a engenharia de interfaces escaláveis à orquestração de fluxos com Inteligência Artificial e automação (LLMs, CrewAI, n8n), entregando aplicações focadas em performance, acessibilidade e valor real para o usuário.
-        </motion.p>
-
-        <motion.div
-          variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
-          transition={{ duration: 0.65, ease: 'easeOut' }}
-          className="mt-10"
-        >
-          <TechStack />
-        </motion.div>
-
-        <motion.div
-          variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
-          transition={{ duration: 0.65, ease: 'easeOut' }}
-          className="mt-8 flex items-center justify-center gap-4"
-        >
-          <motion.a
-            href="#projects"
-            onClick={handleProjectsClick}
-            onMouseMove={handleMagnetMove}
-            onMouseLeave={handleMagnetLeave}
-            onFocus={handleMagnetLeave}
-            whileTap={{ scale: 0.98 }}
-            style={{ x: springX, y: springY, willChange: 'transform' }}
-            className="cta-primary cta-primary-pulse inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold text-[#00171f] dark:text-white bg-[rgba(0,169,224,0.18)] border border-[rgba(0,169,224,0.35)] backdrop-blur-md shadow-lg"
-            aria-label="Ver projetos"
-          >
-            Ver Projetos
-          </motion.a>
-
-          <motion.a
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.98 }}
-            href="#contacts"
-            className="inline-flex items-center gap-2 rounded-xl px-6 py-3 font-semibold text-text-main border border-border-color bg-white/5 backdrop-blur-xl"
-            aria-label="Contato por e-mail"
-          >
-            Entrar em Contato
-          </motion.a>
         </motion.div>
       </motion.div>
     </section>

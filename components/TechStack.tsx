@@ -46,8 +46,8 @@ const techs = [
 
 export default function TechStack() {
   return (
-    <section aria-label="Tech Stack" className="mt-8 text-center">
-      <ul className="mt-4 flex flex-wrap gap-4 items-center justify-center">
+    <section aria-label="Tech Stack" className="mt-8 text-left">
+      <ul className="mt-4 flex flex-wrap items-center justify-start gap-4">
         {techs.map((t) => (
           <motion.li
             key={t.id}
