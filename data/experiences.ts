@@ -2,6 +2,7 @@ export type ExperienceItem = {
   role: string;
   company: string;
   period: string;
+  location: string;
   technologies: string[];
   responsibilities: string[];
   resultLabel: string;
@@ -22,7 +23,8 @@ export const experiences: ExperienceItem[] = [
   {
     role: "Desenvolvedor Front-End Junior",
     company: "AGX Software",
-    period: "mar de 2026 — Jun de 2026 · Sorocaba (Presencial)",
+    period: "mar de 2026 — Jun de 2026",
+    location: "Sorocaba (Presencial)",
     technologies: [
       "React.js",
       "TypeScript",
@@ -50,7 +52,8 @@ export const experiences: ExperienceItem[] = [
   {
     role: "Estagiário de Tecnologia",
     company: "Climbz Consultoria",
-    period: "nov de 2024 — nov de 2025 · Sorocaba (Híbrido)",
+    period: "nov de 2024 — nov de 2025",
+    location: "Sorocaba (Híbrido)",
     technologies: [
       "React.js",
       "Node.js",

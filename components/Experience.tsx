@@ -1,17 +1,129 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
-  experienceIntroduction,
   experiences,
   experienceTitle,
+  type ExperienceItem,
 } from "../data/experiences";
 
+function ExperienceCard({ experience, index }: { experience: ExperienceItem; index: number }) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const detailsId = `experience-details-${index}`;
+
+  return (
+    <article className="rounded-2xl bg-[var(--color-bg-card)] p-6 text-[var(--color-text-on-card)] shadow-[0_4px_20px_rgba(82,89,173,0.08)] md:p-8">
+      <header className="flex flex-col gap-2">
+        <h3 className="font-heading text-2xl font-bold text-[var(--color-primary)] md:text-3xl">
+          {experience.role}
+        </h3>
+        <p className="text-lg font-semibold">{experience.company}</p>
+        <p className="text-sm text-[var(--color-text-muted)]">
+          {experience.period} <span aria-hidden="true">·</span> {experience.location}
+        </p>
+      </header>
+
+      <div className="mt-6 rounded-r-lg border-l-4 border-[var(--color-primary)] bg-[var(--color-primary)]/10 p-4 sm:p-5">
+        <p className="text-sm font-semibold text-[var(--color-primary)]">
+          {experience.resultLabel}
+        </p>
+        <p className="mt-1 leading-relaxed">{experience.result}</p>
+      </div>
+
+      <ul
+        className="mt-5 flex flex-wrap gap-2"
+        aria-label={`Tecnologias principais de ${experience.company}`}
+      >
+        {experience.technologies.slice(0, 4).map((technology) => (
+          <li
+            key={technology}
+            className="rounded-full border border-[var(--color-primary)]/20 bg-[var(--color-primary)]/10 px-3 py-1 text-xs font-semibold text-[var(--color-primary)]"
+          >
+            {technology}
+          </li>
+        ))}
+      </ul>
+
+      <button
+        type="button"
+        aria-expanded={isExpanded}
+        aria-controls={detailsId}
+        onClick={() => setIsExpanded((expanded) => !expanded)}
+        className="mt-5 text-sm font-medium text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-secondary)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
+      >
+        {isExpanded ? "- Ocultar entregas técnicas" : "+ Exibir entregas técnicas"}
+      </button>
+
+      <AnimatePresence initial={false}>
+        {isExpanded && (
+          <motion.div
+            id={detailsId}
+            key="technical-deliveries"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
+          >
+            <ul className="mt-5 space-y-3 border-t border-[var(--color-primary)]/15 pt-5">
+              {experience.responsibilities.map((responsibility) => (
+                <li key={responsibility} className="flex items-start gap-3">
+                  <svg
+                    className="mt-0.5 h-5 w-5 shrink-0 text-[var(--color-primary)]"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M5 12l4 4L19 6"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  <span>{responsibility}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </article>
+  );
+}
+
 export default function Experience() {
+  const [activeTab, setActiveTab] = useState(0);
+
+  function handleTabKeyDown(
+    event: React.KeyboardEvent<HTMLButtonElement>,
+    index: number,
+  ) {
+    let nextIndex = index;
+
+    if (event.key === "ArrowRight") {
+      nextIndex = (index + 1) % experiences.length;
+    } else if (event.key === "ArrowLeft") {
+      nextIndex = (index - 1 + experiences.length) % experiences.length;
+    } else if (event.key === "Home") {
+      nextIndex = 0;
+    } else if (event.key === "End") {
+      nextIndex = experiences.length - 1;
+    } else {
+      return;
+    }
+
+    event.preventDefault();
+    setActiveTab(nextIndex);
+    document.getElementById(`experience-tab-${nextIndex}`)?.focus();
+  }
+
   return (
     <section
       id="experience"
-      className="w-full max-w-6xl mx-auto px-3 py-10 sm:px-6 sm:py-20"
+      className="mx-auto w-full max-w-6xl px-3 py-10 sm:px-6 sm:py-20"
     >
       <header className="mb-6 text-center sm:mb-8">
         <h2 className="font-heading text-3xl font-extrabold text-text-main">
@@ -19,100 +131,56 @@ export default function Experience() {
         </h2>
       </header>
 
-      <motion.div
-        className="grid grid-cols-1 gap-5 sm:gap-8"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={{
-          hidden: {},
-          show: { transition: { staggerChildren: 0.14, delayChildren: 0.06 } },
-        }}
+      <div
+        role="tablist"
+        aria-label="Empresas"
+        className="mb-5 flex gap-4 overflow-x-auto border-b border-[var(--color-primary)]/20"
       >
-        {experiences.map((experience) => (
-          <motion.article
-            key={experience.company}
-            variants={{
-              hidden: { opacity: 0, y: 18 },
-              show: { opacity: 1, y: 0 },
-            }}
-            transition={{ duration: 0.65, ease: "easeOut" }}
-            whileHover={{
-              y: -4,
-              transition: { duration: 0.14, ease: "easeOut" },
-            }}
-            whileTap={{
-              y: -2,
-              transition: { duration: 0.08, ease: "easeOut" },
-            }}
-            className="relative flex h-full flex-col rounded-xl border border-primary/20 bg-white p-4 shadow-[0_4px_20px_rgba(82,89,173,0.05)] transition-colors hover:border-secondary/40 dark:bg-bg-card dark:shadow-lg sm:p-8 md:p-10"
-          >
-            <div className="flex-1">
-              <header className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
-                <div>
-                  <div className="text-sm text-text-main dark:text-text-on-card">
-                    {experience.role}
-                  </div>
-                  <h3 className="font-heading text-2xl font-bold text-text-main dark:text-text-on-card md:text-3xl">
-                    {experience.company}
-                  </h3>
-                  <div className="mt-1 text-xs text-text-main dark:text-text-on-card">
-                    {experience.period}
-                  </div>
-                </div>
-                <ul
-                  className="mt-2 flex flex-wrap items-center gap-2 md:mt-0"
-                  aria-label={`Tecnologias de ${experience.company}`}
-                >
-                  {experience.technologies.map((technology, index) => (
-                    <li
-                      key={technology}
-                      className={`rounded-full border px-2 py-1 text-xs font-semibold ${
-                        index % 2 === 0
-                          ? "border-primary/20 bg-primary/10 text-primary dark:bg-primary/20 dark:text-text-on-card"
-                          : "border-secondary/20 bg-secondary/10 text-secondary dark:bg-secondary/20 dark:text-secondary"
-                      }`}
-                    >
-                      {technology}
-                    </li>
-                  ))}
-                </ul>
-              </header>
+        {experiences.map((experience, index) => {
+          const isActive = activeTab === index;
 
-              <ul className="mt-6 space-y-3 text-text-main dark:text-text-on-card">
-                {experience.responsibilities.map((responsibility) => (
-                  <li key={responsibility} className="flex items-start gap-3">
-                    <svg
-                      className="h-5 w-5 shrink-0 text-primary dark:text-secondary"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M5 12l4 4L19 6"
-                        stroke="currentColor"
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <span>{responsibility}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div
-              className="mt-6 rounded-lg border-l-4 border-primary bg-primary/5 p-3 sm:mt-8 sm:p-4"
+          return (
+            <button
+              key={experience.company}
+              id={`experience-tab-${index}`}
+              type="button"
+              role="tab"
+              aria-selected={isActive}
+              aria-controls={`experience-panel-${index}`}
+              tabIndex={isActive ? 0 : -1}
+              onClick={() => setActiveTab(index)}
+              onKeyDown={(event) => handleTabKeyDown(event, index)}
+              className={`relative shrink-0 px-1 pb-3 text-sm font-semibold transition-opacity ${
+                isActive
+                  ? "text-[var(--color-primary)]"
+                  : "text-[var(--color-text-on-bg)] opacity-60 hover:opacity-100"
+              }`}
             >
-              <div className="text-sm font-semibold text-primary dark:text-secondary">
-                {experience.resultLabel}
-              </div>
-              <p className="mt-1 text-text-main dark:text-text-on-card">{experience.result}</p>
-            </div>
-          </motion.article>
-        ))}
-      </motion.div>
+              {experience.company}
+              {isActive && (
+                <motion.span
+                  layoutId="experience-tab-indicator"
+                  className="absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-[var(--color-primary)]"
+                  transition={{ duration: 0.25, ease: "easeInOut" }}
+                />
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {experiences.map((experience, index) => (
+        <div
+          key={experience.company}
+          id={`experience-panel-${index}`}
+          role="tabpanel"
+          aria-labelledby={`experience-tab-${index}`}
+          hidden={activeTab !== index}
+          tabIndex={0}
+        >
+          <ExperienceCard experience={experience} index={index} />
+        </div>
+      ))}
     </section>
   );
 }
