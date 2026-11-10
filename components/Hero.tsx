@@ -146,11 +146,11 @@ export default function Hero() {
         >
           <div className="w-full h-full rounded-full overflow-hidden border-4 border-border-color shadow-md">
             <Image
-              src="/images/davi/mypic.jpg"
+              src="/images/davi/DaviPicture.jpeg"
               alt="Davi Konuma"
               width={384}
               height={384}
-              style={{ objectFit: 'cover', transform: 'scale(1.2) translateY(-8%)', objectPosition: 'center' }}
+              style={{ objectFit: 'cover', transform: ' translateY(-17%)', objectPosition: 'center' }}
               priority
             />
           </div>

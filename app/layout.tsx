@@ -6,7 +6,7 @@ export const metadata = {
   title: 'Davi Konuma — Front-End Developer',
   description: 'Portfólio de Davi Konuma — Front-End Developer (Next.js, TypeScript, Tailwind)',
   icons: {
-    icon: '/images/davi/mypic.ico',
+    icon: '/images/davi/DaviPicture.ico',
   },
   openGraph: {
     title: 'Davi Konuma — Front-End Developer',
