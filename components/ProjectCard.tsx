@@ -31,7 +31,6 @@ export default function ProjectCard({
 }) {
   const [loaded, setLoaded] = useState(false);
   const [imageOpen, setImageOpen] = useState(false);
-  // A lógica simplificou para: use o que está no JSON ou o placeholder
   const imageSrc = project.image || "/images/projects/placeholder.png";
 
   useEffect(() => {
@@ -63,57 +62,41 @@ export default function ProjectCard({
         className="absolute inset-0 rounded-2xl bg-[conic-gradient(from_var(--spin-angle),#6FBFEC,#F3D361,#D84875,#6FBFEC)] opacity-0 transition-opacity duration-500 group-hover:animate-golden-spin group-hover:opacity-100 group-focus-within:animate-golden-spin group-focus-within:opacity-100"
       />
       <div className="relative z-10 flex h-full flex-col overflow-hidden rounded-[calc(1rem-2px)] bg-[var(--color-bg-card)] text-[var(--color-text-on-card)]">
-      <div className={`relative flex w-full items-center justify-center overflow-hidden border-b border-secondary/20 bg-bg-main ${featured ? "aspect-[16/8]" : "aspect-video"}`}>
-        {project.image ? (
-          <button
-            type="button"
-            onClick={() => setImageOpen(true)}
-            aria-label={`Ampliar imagem do projeto ${project.title}`}
-            className="absolute inset-0 z-0 cursor-zoom-in"
-          >
-            <Image
-              src={imageSrc}
-              alt={project.title}
-              fill
-              className={`object-cover transition-all duration-700 group-hover:scale-110 ${loaded ? "blur-0 opacity-100" : "blur-sm opacity-0"}`}
-              onLoad={() => setLoaded(true)}
-              unoptimized
-            />
-          </button>
-        ) : (
-          /* Mantendo a lógica de ícones para projetos sem imagem no JSON */
-          <div className="flex items-center justify-center w-full h-full">
-            {project.title.toLowerCase().includes("reciclagem") ? (
-              <i className="fa fa-recycle fa-3x text-[var(--color-text-on-card)]" />
-            ) : project.title.toLowerCase().includes("financial") ? (
-              <i className="fa fa-usd fa-3x text-[var(--color-text-on-card)]" />
-            ) : (
-              <div className="italic text-[var(--color-text-on-card)]">No preview</div>
-            )}
-          </div>
-        )}
-
-        {/* Badge de Status */}
-        {project.status && (
-          <div className="absolute top-3 right-3 z-10">
-            <div
-              className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border shadow-sm flex items-center gap-2 ${
-                project.status === "completed"
-                  ? "border-primary/40 bg-primary/20 text-[var(--color-text-on-card)]"
-                  : "border-secondary/40 bg-secondary/20 text-[var(--color-text-on-card)]"
-              }`}
+        <div className={`group/image relative h-52 w-full overflow-hidden rounded-t-[calc(1rem-2px)] border border-white/10 bg-bg-main shadow-[0_4px_20px_rgba(111,191,236,0.12)] after:pointer-events-none after:absolute after:inset-0 after:z-10 after:bg-gradient-to-b after:from-white/[0.04] after:to-black/10 dark:border-white/15 md:h-60 ${featured ? "lg:h-64" : ""}`}>
+          {project.image ? (
+            <button
+              type="button"
+              onClick={() => setImageOpen(true)}
+              aria-label={`Ampliar imagem do projeto ${project.title}`}
+              className="absolute inset-0 z-0 cursor-zoom-in"
             >
-              {project.status === "in_progress" && (
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary opacity-50"></span>
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary"></span>
-                </span>
+              <Image
+                src={imageSrc}
+                alt={project.title}
+                fill
+                className={`object-cover object-top transition-[object-position,opacity,filter] duration-[3000ms] ease-in-out group-hover/image:object-bottom ${loaded ? "blur-0 opacity-100" : "blur-sm opacity-0"}`}
+                onLoad={() => setLoaded(true)}
+                unoptimized
+              />
+            </button>
+          ) : (
+            <div className="flex h-full items-center justify-center">
+              {project.title.toLowerCase().includes("reciclagem") ? (
+                <i className="fa fa-recycle fa-3x text-[var(--color-text-on-card)]" />
+              ) : project.title.toLowerCase().includes("financial") ? (
+                <i className="fa fa-usd fa-3x text-[var(--color-text-on-card)]" />
+              ) : (
+                <div className="italic text-[var(--color-text-on-card)]">No preview</div>
               )}
-              {project.status === "completed" ? "Finalizado" : "Em progresso"}
             </div>
-          </div>
-        )}
-      </div>
+          )}
+
+          {project.killerFeature && (
+            <span className="absolute right-3 top-3 z-20 max-w-[75%] truncate rounded-full bg-[var(--color-secondary)] px-3 py-1 text-xs font-semibold text-white shadow-lg backdrop-blur-md">
+              {project.killerFeature}
+            </span>
+          )}
+        </div>
 
       <div className={`flex flex-grow flex-col p-6 text-left ${featured ? "sm:p-8" : ""}`}>
         <h3 className={`font-heading font-bold text-[var(--color-text-on-card)] transition-colors group-hover:text-secondary ${featured ? "text-2xl sm:text-3xl" : "text-xl"}`}>
@@ -133,8 +116,8 @@ export default function ProjectCard({
             Solução construída com {project.technologies.slice(0, 4).join(", ")}.
           </p>
           <p className={featured ? "sm:col-span-2" : ""}>
-            <strong className="mr-1 text-secondary">Impacto / proposta:</strong>
-            {project.tagline}
+            <strong className="mr-1 text-secondary">Impacto técnico:</strong>
+            {project.impact ?? `Solução desenvolvida com ${project.technologies.slice(0, 3).join(", ")}.`}
           </p>
         </div>
 

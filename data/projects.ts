@@ -2,6 +2,8 @@ export type Project = {
   title: string;
   tagline: string;
   challenge: string;
+  impact?: string;
+  killerFeature?: string;
   image?: string | null;
   technologies: string[];
   links: { repo?: string; live?: string };
@@ -19,6 +21,9 @@ const projects: Project[] = [
       "Painel moderno, responsivo e internacionalizado para gestão de estoque e produtos.",
     challenge:
       "Desenvolver um sistema de gestão com CRUD de produtos, dashboard configurável e busca/paginação performáticas, integrando uma aplicação Next.js a uma API própria e banco PostgreSQL em produção.",
+    impact:
+      "Gestão centralizada com busca e paginação performáticas em uma aplicação full-stack.",
+    killerFeature: "CRUD & busca otimizada",
     architectureOverview:
       "Aplicação de gestão full-stack com interface Next.js e TypeScript integrada a uma API Node.js/Express e banco PostgreSQL.",
     architectureHighlights: [
@@ -58,6 +63,9 @@ const projects: Project[] = [
       "Portfólio fotográfico com design em Glassmorphism e galeria Masonry imersiva.",
     challenge:
       "Exibir dezenas de imagens em alta qualidade em um layout complexo sem comprometer a memória do navegador, garantindo navegação mobile intuitiva via gestos (swipe) e cache otimizado na CDN para carregamento instantâneo.",
+    impact:
+      "Galeria Masonry responsiva para imagens de alta qualidade, com navegação mobile e entrega via CDN.",
+    killerFeature: "Galeria Masonry imersiva",
     architectureOverview:
       "Portfólio fotográfico em React e TypeScript, com galeria Masonry pensada para apresentar imagens em alta qualidade em diferentes tamanhos de tela.",
     architectureHighlights: [
@@ -86,6 +94,9 @@ const projects: Project[] = [
       "Digitalização do gerenciamento de informações de assistidos e registros de presença para a Associação Nova Geração.",
     challenge:
       "Substituir registros manuais em papel por um sistema centralizado, garantindo a integridade dos dados e agilizando a rotina administrativa.",
+    impact:
+      "Digitalização dos registros de assistidos e presença em um sistema centralizado.",
+    killerFeature: "Gestão digital de presença",
     architectureOverview:
       "Sistema web full-stack para centralizar informações de assistidos e registros de presença da Associação Nova Geração.",
     architectureHighlights: [
@@ -115,6 +126,9 @@ const projects: Project[] = [
       "Plataforma responsiva de enquetes em tempo real, com criação, votação e filtros personalizados.",
     challenge:
       "Construir uma experiência de enquetes compartilhadas com atualização instantânea de votos via Firestore, autenticação Google e anônima, filtros por escopo/status, busca, ordenação e paginação.",
+    impact:
+      "Enquetes com atualização instantânea de votos e opções para filtrar e encontrar resultados.",
+    killerFeature: "Votos em tempo real",
     architectureOverview:
       "Aplicação React e TypeScript que combina autenticação Firebase com atualização de enquetes e votos usando Firestore.",
     architectureHighlights: [
@@ -151,6 +165,9 @@ const projects: Project[] = [
       "Aplicação de descoberta de pessoas com filtros avançados, sincronização de estado via URL e suporte a múltiplos idiomas e temas.",
     challenge:
       "Criar uma experiência de busca rápida e compartilhável sobre perfis da Random User API, com paginação e filtros client-side, dados sensíveis sanitizados na camada de serviço e interface adaptável a Português/Inglês e aos temas claro/escuro.",
+    impact:
+      "Busca de perfis com filtros sincronizados à URL e dados sanitizados na camada de serviço.",
+    killerFeature: "Filtros compartilháveis por URL",
     architectureOverview:
       "Aplicação React para explorar perfis da Random User API, com filtros e estado de busca sincronizado à URL.",
     architectureHighlights: [
@@ -182,6 +199,9 @@ const projects: Project[] = [
       "Classificador de exoplanetas utilizando modelos de Machine Learning (Ensemble) e visualização de dados em tempo real.",
     challenge:
       "Processar o catálogo Kepler KOI para treinar classificadores Random Forest e XGBoost, servindo predições via API de baixa latência.",
+    impact:
+      "Predições de classificação servidas por API e apresentadas em um dashboard interativo.",
+    killerFeature: "Classificação com ML",
     architectureOverview:
       "Pipeline de classificação de exoplanetas com modelos de Machine Learning expostos por uma API FastAPI e uma interface de dashboard.",
     architectureHighlights: [
