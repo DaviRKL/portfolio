@@ -9,15 +9,15 @@ export default function Languages() {
     >
       <h2
         id="languages-heading"
-        className="mb-8 text-3xl font-extrabold text-text-main"
+        className="mb-8 font-heading text-3xl font-extrabold text-primary"
       >
         Idiomas
       </h2>
 
-      <article className="mx-auto max-w-3xl rounded-xl border border-black/5 bg-black/5 p-6 text-left shadow-[0_8px_32px_0_rgba(0,0,0,0.24)] backdrop-blur-xl dark:border-white/10 dark:bg-white/5 sm:p-8">
+      <article className="mx-auto max-w-3xl rounded-xl border border-primary/20 bg-bg-card p-6 text-left shadow-lg transition-colors hover:border-secondary/40 sm:p-8">
         <h2
           id="languages-heading"
-          className="mb-5 text-2xl font-extrabold text-text-main"
+          className="mb-5 font-heading text-2xl font-extrabold text-text-main"
         >
           Inglês Avançado
         </h2>
@@ -28,7 +28,7 @@ export default function Languages() {
               href="https://cert.efset.org/qiXnjT"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 font-semibold text-accent underline-offset-4 hover:underline no-wrap"
+              className="mt-4 inline-flex items-center gap-2 font-semibold text-primary underline-offset-4 hover:underline no-wrap"
             >
               Verificação oficial do certificado
               <ExternalLink size={16} aria-hidden="true" />
@@ -40,7 +40,7 @@ export default function Languages() {
               href="https://drive.google.com/file/d/13bgCLfYpHfBJmzJEO6EbDGKpByz9PW95/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-flex items-center gap-2 font-semibold text-accent underline-offset-4 hover:underline"
+              className="mt-4 inline-flex items-center gap-2 font-semibold text-secondary underline-offset-4 hover:underline"
             >
               Verificação oficial do certificado
               <ExternalLink size={16} aria-hidden="true" />
@@ -51,4 +51,3 @@ export default function Languages() {
     </section>
   );
 }
-

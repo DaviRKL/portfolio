@@ -129,9 +129,9 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-[75vh] flex items-center overflow-hidden">
+    <section className="hero-noise relative isolate flex min-h-[75vh] items-center overflow-hidden">
       <motion.div
-        className="relative grid w-full max-w-6xl grid-cols-1 items-center gap-12 mx-auto px-6 py-20 text-left lg:grid-cols-12"
+        className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-6 py-20 text-left lg:grid-cols-12"
         initial="hidden"
         animate="show"
         variants={{
@@ -148,7 +148,7 @@ export default function Hero() {
             ref={nameRef}
             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
-            className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.05] animated-gradient bg-clip-text"
+            className="font-heading text-4xl font-extrabold leading-[1.05] tracking-tight text-primary md:text-6xl"
             aria-label="Davi Konuma — Front-End Developer"
             style={{ willChange: 'transform' }}
           >
@@ -158,7 +158,7 @@ export default function Hero() {
           <motion.div
             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.65, ease: 'easeOut' }}
-            className="mt-6 inline-flex items-center rounded-full bg-[rgba(0,169,224,0.08)] px-3 py-1 text-sm font-semibold text-white badge-beam"
+            className="mt-6 inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm font-semibold text-primary"
             style={{ willChange: 'transform' }}
           >
             Front-End Developer
@@ -195,7 +195,7 @@ export default function Hero() {
               onFocus={handleMagnetLeave}
               whileTap={{ scale: 0.98 }}
               style={{ x: springX, y: springY, willChange: 'transform' }}
-              className="cta-primary cta-primary-pulse inline-flex items-center gap-2 rounded-xl border border-[rgba(0,169,224,0.35)] bg-[rgba(0,169,224,0.18)] px-6 py-3 font-semibold text-[#00171f] shadow-lg backdrop-blur-md dark:text-white"
+              className="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 font-semibold text-bg-main shadow-lg transition-all hover:brightness-110"
               aria-label="Ver projetos"
             >
               Ver Projetos
@@ -205,7 +205,7 @@ export default function Hero() {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}
               href="#contacts"
-              className="inline-flex items-center gap-2 rounded-xl border border-border-color bg-white/5 px-6 py-3 font-semibold text-text-main backdrop-blur-xl"
+              className="inline-flex items-center gap-2 rounded-xl bg-secondary px-6 py-3 font-semibold text-bg-main transition-all hover:brightness-110"
               aria-label="Contato por e-mail"
             >
               Entrar em Contato
@@ -218,7 +218,7 @@ export default function Hero() {
           transition={{ duration: 0.65, ease: 'easeOut' }}
           className="lg:col-span-5"
         >
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl shadow-2xl">
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-2xl border border-primary/20 shadow-2xl">
             <Image
               src="/images/davi/DaviPicture.jpeg"
               alt="Davi Konuma"
@@ -226,11 +226,6 @@ export default function Hero() {
               sizes="(min-width: 1024px) 40vw, 100vw"
               className="object-cover object-[center_30%]"
               priority
-            />
-            <div
-              aria-hidden="true"
-              className="absolute inset-x-0 bottom-0 h-1/3"
-              style={{ background: 'linear-gradient(to top, var(--bg-primary), transparent)' }}
             />
           </div>
         </motion.div>

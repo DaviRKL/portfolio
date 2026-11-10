@@ -24,14 +24,6 @@ export default function ProjectCard({
 }) {
   const [loaded, setLoaded] = useState(false);
   const [imageOpen, setImageOpen] = useState(false);
-  const transformative = new Set([
-    "Supabase",
-    "N8N",
-    "n8n",
-    "Llama-3",
-    "Groq API",
-  ]);
-
   // A lógica simplificou para: use o que está no JSON ou o placeholder
   const imageSrc = project.image || "/images/projects/placeholder.png";
 
@@ -60,9 +52,9 @@ export default function ProjectCard({
       whileInView="animate"
       viewport={{ once: true }}
       whileHover={{ y: -8 }}
-      className="flex flex-col h-full overflow-hidden rounded-xl border backdrop-blur-md transition-all duration-500 shadow-lg bg-black/5 border-black/5 dark:bg-white/5 dark:border-white/10 group"
+      className="group flex h-full flex-col overflow-hidden rounded-xl border border-primary/20 bg-bg-card shadow-lg transition-all duration-500 hover:border-secondary/40"
     >
-      <div className="relative aspect-video w-full bg-gradient-to-r from-prussian to-deep-night overflow-hidden border-b border-black/5 dark:border-white/5 flex items-center justify-center">
+      <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden border-b border-primary/20 bg-bg-main">
         {project.image ? (
           <button
             type="button"
@@ -87,7 +79,7 @@ export default function ProjectCard({
             ) : project.title.toLowerCase().includes("financial") ? (
               <i className="fa fa-usd fa-3x text-white-smoke/90" />
             ) : (
-              <div className="text-white-smoke/60 italic">No preview</div>
+              <div className="italic text-text-muted">No preview</div>
             )}
           </div>
         )}
@@ -98,14 +90,14 @@ export default function ProjectCard({
             <div
               className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border shadow-sm flex items-center gap-2 ${
                 project.status === "completed"
-                  ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-500"
-                  : "bg-amber-500/10 border-amber-500/20 text-amber-500"
+                  ? "border-primary/30 bg-primary/10 text-primary"
+                  : "border-accent-gold/30 bg-accent-gold/10 text-accent-gold"
               }`}
             >
               {project.status === "in_progress" && (
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent-gold opacity-50"></span>
+                  <span className="relative inline-flex h-2 w-2 rounded-full bg-accent-gold"></span>
                 </span>
               )}
               {project.status === "completed" ? "Finalizado" : "Em progresso"}
@@ -115,7 +107,7 @@ export default function ProjectCard({
       </div>
 
       <div className="p-6 flex-grow flex flex-col items-center text-center">
-        <h3 className="text-xl font-bold text-text-main group-hover:text-[#00A9E0] transition-colors">
+        <h3 className="font-heading text-xl font-bold text-text-main transition-colors group-hover:text-primary">
           {project.title}
         </h3>
         <p className="mt-1 text-sm text-text-main/70 italic">
@@ -124,19 +116,19 @@ export default function ProjectCard({
 
         <div className="mt-4 text-left w-full">
           <p className="text-sm text-text-main/90">
-            <strong className="text-[#00A9E0]">Desafio:</strong>{" "}
+            <strong className="text-primary">Desafio:</strong>{" "}
             {project.challenge}
           </p>
         </div>
 
-        <ul className="mt-6 flex flex-wrap gap-2 justify-center">
-          {project.technologies.map((t) => (
+        <ul className="mt-6 flex flex-wrap justify-center gap-2">
+          {project.technologies.map((t, index) => (
             <li
               key={t}
-              className={`px-3 py-1 rounded-full text-[11px] font-medium border ${
-                transformative.has(t)
-                  ? "bg-[#2f6364]/20 text-[#2f6364] border-[#2f6364]/40 dark:text-emerald-300"
-                  : "bg-black/5 dark:bg-white/5 text-text-main/80 border-black/10"
+              className={`rounded-full border px-3 py-1 text-[11px] font-medium ${
+                index % 2 === 0
+                  ? "border-primary/30 bg-primary/10 text-primary"
+                  : "border-secondary/30 bg-secondary/10 text-secondary"
               }`}
             >
               {t}
@@ -150,7 +142,7 @@ export default function ProjectCard({
           <a
             href={project.links.repo}
             target="_blank"
-           className="text-xs font-semibold bg-[#00A9E0] text-white px-4 py-2 rounded-lg hover:bg-[#00A9E0]/80 shadow-md"
+           className="rounded-lg bg-secondary px-4 py-2 text-xs font-semibold text-bg-main shadow-md transition-all hover:brightness-110"
           >
             Visualizar Repositório
           </a>
@@ -159,7 +151,7 @@ export default function ProjectCard({
           <a
             href={project.links.live}
             target="_blank"
-            className="text-xs font-semibold bg-[#00A9E0] text-white px-4 py-2 rounded-lg hover:bg-[#00A9E0]/80 shadow-md"
+            className="rounded-lg bg-primary px-4 py-2 text-xs font-semibold text-bg-main shadow-md transition-all hover:brightness-110"
           >
             Visualizar Projeto
           </a>
@@ -183,7 +175,7 @@ export default function ProjectCard({
             type="button"
             onClick={() => setImageOpen(false)}
             aria-label="Fechar imagem"
-            className="absolute right-0 top-0 z-10 inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 font-semibold text-black shadow-lg transition-colors hover:bg-gray-200"
+            className="absolute right-0 top-0 z-10 inline-flex items-center gap-2 rounded-full bg-bg-card px-4 py-2 font-semibold text-text-main shadow-lg transition-colors hover:bg-secondary hover:text-bg-main"
           >
             Fechar <X size={18} aria-hidden="true" />
           </button>

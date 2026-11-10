@@ -172,7 +172,9 @@ function BadgeCard({
       whileHover="hover"
       variants={HOVER_LIFT}
       className={
-        compact ? "opacity-80 col-span-full md:col-auto mt-4" : undefined
+        compact
+          ? "col-span-full mt-4 rounded-xl border border-secondary/20 bg-bg-card p-4 opacity-80 transition-colors hover:border-primary/40 md:col-auto"
+          : "rounded-xl border border-primary/20 bg-bg-card p-4 shadow-lg transition-colors hover:border-secondary/40"
       }
     >
       <a
@@ -197,7 +199,7 @@ function BadgeCard({
           ) : (
             <div
               aria-hidden="true"
-              className="flex h-full w-full items-center justify-center bg-gradient-to-br from-sky-500/15 to-indigo-500/15 text-sky-600 transition-transform duration-500 group-hover:scale-105 dark:text-sky-300"
+              className="flex h-full w-full items-center justify-center bg-primary/10 text-primary transition-transform duration-500 group-hover:scale-105"
             >
               <Award size={48} strokeWidth={1.5} />
             </div>
@@ -206,7 +208,7 @@ function BadgeCard({
 
         <div className="mt-1 text-center max-w-[190px]">
           <div
-            className={`transition-colors duration-300 group-hover:text-[#00A9E0] ${
+            className={`transition-colors duration-300 group-hover:text-primary ${
               compact
                 ? "text-sm font-medium text-[var(--badge-legend-muted)]"
                 : "text-sm font-semibold text-[var(--badge-legend-color)]"
@@ -231,7 +233,7 @@ export default function Certifications() {
       id="certifications"
       className="max-w-6xl mx-auto px-6 py-24 text-center"
     >
-      <h2 className="text-3xl font-extrabold mb-10 text-text-main">
+      <h2 className="mb-10 font-heading text-3xl font-extrabold text-primary">
         Certificados e Conquistas
       </h2>
 
@@ -239,7 +241,7 @@ export default function Certifications() {
         (section) => section.enabled !== false,
       ).map((section) => (
         <section key={section.title} className="mb-12">
-          <h3 className="text-2xl font-bold mb-1 text-text-main">
+          <h3 className="mb-1 font-heading text-2xl font-bold text-text-main">
             {section.title}
           </h3>
           <p className="text-text-main/75 mb-6 max-w-3xl mx-auto">

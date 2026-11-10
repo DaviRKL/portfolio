@@ -37,7 +37,7 @@ function MagneticButton({ children, className }: { children: React.ReactNode, cl
 
 export default function Contact() {
   return (
-    <section id="contacts" className="relative overflow-hidden hero-mesh hero-mesh-animate py-24 transition-colors duration-500">
+    <section id="contacts" className="relative overflow-hidden py-24 transition-colors duration-500">
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -45,11 +45,11 @@ export default function Contact() {
         transition={{ duration: 0.8 }}
         className="max-w-4xl mx-auto px-6 text-center"
       >
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 animated-gradient-text">
+        <h2 className="mb-6 font-heading text-4xl font-extrabold text-primary md:text-5xl">
           Vamos construir algo incrível juntos?
         </h2>
         
-        <p className="text-lg md:text-xl text-[#00171f]/80 dark:text-[#f2f2f2]/80 mb-12 max-w-2xl mx-auto">
+        <p className="mb-12 max-w-2xl mx-auto text-lg text-text-muted md:text-xl">
           Estou sempre aberto a novos projetos, colaborações Front-End e desafios tecnológicos que demandem alta performance.
         </p>
 
@@ -59,9 +59,9 @@ export default function Contact() {
             <motion.a
               href="mailto:davirkl07@gmail.com" 
               whileHover={{ y: -5, boxShadow: "0px 10px 30px rgba(0, 169, 224, 0.3)" }}
-              className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-black/5 dark:bg-white/5 backdrop-blur-md border border-black/5 dark:border-white/10 text-[#00171f] dark:text-[#f2f2f2] font-bold text-lg transition-all"
+              className="flex items-center gap-3 rounded-2xl bg-primary px-8 py-4 text-lg font-bold text-bg-main transition-all hover:brightness-110"
             >
-              <Mail className="w-6 h-6 text-[#00A9E0]" />
+              <Mail className="h-6 w-6" />
               Enviar E-mail
             </motion.a>
           </MagneticButton>
@@ -70,15 +70,15 @@ export default function Contact() {
           <motion.a
             href="https://www.linkedin.com/in/davirkl/"
             whileHover={{ y: -5 }}
-            className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-black/5 dark:bg-white/5 backdrop-blur-md border border-black/5 dark:border-white/10 text-[#00171f] dark:text-[#f2f2f2] font-bold text-lg transition-all"
+            className="flex items-center gap-3 rounded-2xl bg-secondary px-8 py-4 text-lg font-bold text-bg-main transition-all hover:brightness-110"
           >
-            <Linkedin className="w-6 h-6 text-[#00A9E0]" />
+            <Linkedin className="h-6 w-6" />
             LinkedIn
           </motion.a>
         </div>
 
         {/* Footer Minimalista */}
-        <footer className="pt-12 border-t border-black/5 dark:border-white/5 text-sm text-[#00171f]/60 dark:text-[#f2f2f2]/60">
+        <footer className="border-t border-primary/20 pt-12 text-sm text-text-muted">
           <p>© 2026 Davi Konuma — Desenvolvedor Front-End </p>
           <p className="mt-2">Feito com Next.js 14, Framer Motion e GSAP.</p>
         </footer>

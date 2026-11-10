@@ -33,10 +33,10 @@ export default function Navbar() {
 
   return (
     <nav
-      className="w-full backdrop-blur-md sticky top-0 z-50 transition-colors duration-500 text-[#00171f] dark:text-[#f2f2f2]"
+      className="sticky top-0 z-50 w-full text-text-main backdrop-blur-md transition-colors duration-500"
       style={{
         borderBottom: "1px solid var(--border-color)",
-        background: "rgba(var(--bg-rgb), 0.7)", // Supondo variável de cor de fundo
+        background: "rgba(var(--bg-rgb), 0.88)",
       }}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -61,7 +61,8 @@ export default function Navbar() {
                 }}
                 whileTap={{ scale: 0.95 }}
                 href={l.href}
-                className="text-sm font-medium px-3 py-2 rounded-lg text-[#00171f] dark:text-text-main opacity-80 hover:opacity-100 hover:bg-accent/10 transition-colors"
+                className="rounded-lg px-3 py-2 text-sm font-medium text-text-main transition-colors hover:bg-primary/10 hover:text-primary"
+                style={{ color: "var(--color-text-main)" }}
               >
                 {l.label}
               </motion.a>
@@ -78,7 +79,7 @@ export default function Navbar() {
                 color: "var(--accent)",
                 transition: { duration: 0.2, ease: "easeOut" },
               }}
-              className="text-[#00171f] dark:text-text-main opacity-70 hover:opacity-100 transition-colors"
+              className="text-text-main transition-colors hover:text-primary"
               href="https://github.com/DaviRKL"
               target="_blank"
               rel="noopener noreferrer"
@@ -104,7 +105,7 @@ export default function Navbar() {
                 color: "var(--accent)",
                 transition: { duration: 0.2, ease: "easeOut" },
               }}
-              className="text-[#00171f] dark:text-text-main opacity-70 hover:opacity-100 transition-colors"
+              className="text-text-main transition-colors hover:text-primary"
               href="https://www.linkedin.com/in/davirkl/"
               target="_blank"
               rel="noopener noreferrer"
@@ -152,7 +153,7 @@ export default function Navbar() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="text-[#00171f] dark:text-text-main"
+                className="text-text-main"
               >
                 <line x1="18" y1="6" x2="6" y2="18"></line>
                 <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -167,7 +168,7 @@ export default function Navbar() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="text-[#00171f] dark:text-text-main"
+                className="text-text-main"
               >
                 <line x1="3" y1="12" x2="21" y2="12"></line>
                 <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -186,7 +187,7 @@ export default function Navbar() {
             animate="open"
             exit="closed"
             variants={menuVariants}
-            className="md:hidden absolute top-full left-0 w-full bg-[#f2f2f2] dark:bg-[#00171f] border-b border-black/5 dark:border-white/10 shadow-2xl z-[60] transition-colors duration-500"
+            className="absolute left-0 top-full z-[60] w-full border-b border-primary/20 bg-bg-card shadow-2xl transition-colors duration-500 md:hidden"
           >
             <div className="px-6 py-8 flex flex-col gap-6">
               {navLinks.map((l) => (
@@ -211,7 +212,7 @@ export default function Navbar() {
                     transition: { duration: 0.2, ease: "easeOut" },
                   }}
                   whileTap={{ scale: 0.95, y: -3, color: "var(--accent)" }}
-                  className="text-2xl font-semibold text-[#00171f] dark:text-[#f2f2f2] transition-colors py-2 border-b border-black/5 dark:border-white/5 block cursor-pointer focus:outline-none"
+                  className="block cursor-pointer border-b border-primary/20 py-2 text-2xl font-semibold text-text-main transition-colors focus:outline-none"
                 >
                   {l.label}
                 </motion.a>
@@ -223,7 +224,7 @@ export default function Navbar() {
                   whileHover={{ x: 8, color: "var(--accent)" }}
                   whileFocus={{ x: 8, color: "var(--accent)" }}
                   whileTap={{ x: 8, color: "var(--accent)" }}
-                  className="flex items-center gap-3 text-lg font-medium text-[#00171f]/70 dark:text-[#f2f2f2]/70 transition-colors cursor-pointer"
+                  className="flex cursor-pointer items-center gap-3 text-lg font-medium text-primary transition-colors"
                   href="https://github.com/DaviRKL"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -247,7 +248,7 @@ export default function Navbar() {
                   whileHover={{ x: 8, color: "var(--accent)" }}
                   whileFocus={{ x: 8, color: "var(--accent)" }}
                   whileTap={{ x: 8, color: "var(--accent)" }}
-                  className="flex items-center gap-3 text-lg font-medium text-[#00171f]/70 dark:text-[#f2f2f2]/70 transition-colors cursor-pointer"
+                  className="flex cursor-pointer items-center gap-3 text-lg font-medium text-primary transition-colors"
                   href="https://www.linkedin.com/in/davirkl/"
                   target="_blank"
                   rel="noopener noreferrer"

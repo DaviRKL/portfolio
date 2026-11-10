@@ -1,6 +1,20 @@
 import '../styles/globals.css'
 import type { ReactNode } from 'react'
+import { Outfit, Space_Grotesk } from 'next/font/google'
 import ThemeProvider from '../components/ThemeProvider'
+import GlobalFloatingStars from '../components/GlobalFloatingStars'
+
+const outfit = Outfit({
+  subsets: ['latin'],
+  variable: '--font-outfit',
+  display: 'swap',
+})
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  variable: '--font-space-grotesk',
+  display: 'swap',
+})
 
 export const metadata = {
   title: 'Davi Konuma — Front-End Developer',
@@ -24,9 +38,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           precedence="default"
         />
       </head>
-      <body className="font-sans min-h-screen">
+      <body className={`${outfit.variable} ${spaceGrotesk.variable} min-h-screen font-sans`}>
         <ThemeProvider>
-          {children}
+          <GlobalFloatingStars />
+          <div className="relative z-10">{children}</div>
         </ThemeProvider>
       </body>
     </html>

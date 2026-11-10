@@ -16,31 +16,31 @@ const techs = [
     id: "ts",
     label: "TS",
     icon: <SiTypescript className="text-[#3178C6]" />,
-    color: "hover:border-[#3178C6]/50",
+    color: "border-primary/30 bg-primary/10 text-primary hover:border-primary/60",
   },
   {
     id: "react",
     label: "React",
     icon: <SiReact className="text-[#61DAFB]" />,
-    color: "hover:border-[#61DAFB]/50",
+    color: "border-secondary/30 bg-secondary/10 text-secondary hover:border-secondary/60",
   },
   {
     id: "tailwind",
     label: "Tailwind",
     icon: <SiTailwindcss className="text-[#06B6D4]" />,
-    color: "hover:border-[#06B6D4]/50",
+    color: "border-primary/30 bg-primary/10 text-primary hover:border-primary/60",
   },
   {
     id: "express",
     label: "Express",
     icon: <SiExpress className="dark:text-white text-black" />,
-    color: "hover:border-gray-400/50",
+    color: "border-secondary/30 bg-secondary/10 text-secondary hover:border-secondary/60",
   },
   {
     id: "node",
     label: "Node.js",
     icon: <SiNodedotjs className="text-[#339933]" />,
-    color: "hover:border-[#339933]/50",
+    color: "border-primary/30 bg-primary/10 text-primary hover:border-primary/60",
   },
 ];
 
@@ -51,15 +51,12 @@ export default function TechStack() {
         {techs.map((t) => (
           <motion.li
             key={t.id}
-            whileHover={{
-              scale: 1.1,
-              backgroundColor: "rgba(0, 169, 224, 0.1)", // Leve brilho do seu azul elétrico
-            }}
+            whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className={`flex items-center gap-3 bg-prussian/40 backdrop-blur-sm px-4 py-2 rounded-xl border border-white/5 transition-all duration-300 ${t.color}`}
+            className={`flex items-center gap-3 rounded-xl border px-4 py-2 backdrop-blur-sm transition-all duration-300 ${t.color}`}
           >
             <span className="text-2xl">{t.icon}</span>
-            <span className="text-sm font-medium text-white-smoke/90">
+            <span className="text-sm font-medium">
               {t.label}
             </span>
           </motion.li>

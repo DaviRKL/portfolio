@@ -1,22 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { experienceIntroduction, experiences, experienceTitle } from "../data/experiences";
+import {
+  experienceIntroduction,
+  experiences,
+  experienceTitle,
+} from "../data/experiences";
 
 export default function Experience() {
   return (
-    <section id="experience" className="w-full max-w-6xl mx-auto px-3 py-10 sm:px-6 sm:py-20">
+    <section
+      id="experience"
+      className="w-full max-w-6xl mx-auto px-3 py-10 sm:px-6 sm:py-20"
+    >
       <header className="mb-6 text-center sm:mb-8">
-        <h2 className="text-3xl font-extrabold text-text-main">{experienceTitle}</h2>
-        <p className="mx-auto mt-4 max-w-3xl text-text-main/80">
-          {experienceIntroduction.map((part, index) =>
-            part.emphasis ? (
-              <strong key={index}>{part.text}</strong>
-            ) : (
-              <span key={index}>{part.text}</span>
-            ),
-          )}
-        </p>
+        <h2 className="font-heading text-3xl font-extrabold text-primary">
+          {experienceTitle}
+        </h2>
       </header>
 
       <motion.div
@@ -37,22 +37,41 @@ export default function Experience() {
               show: { opacity: 1, y: 0 },
             }}
             transition={{ duration: 0.65, ease: "easeOut" }}
-            whileHover={{ y: -4, transition: { duration: 0.14, ease: "easeOut" } }}
-            whileTap={{ y: -2, transition: { duration: 0.08, ease: "easeOut" } }}
-            className="relative flex h-full flex-col rounded-xl border border-black/5 bg-black/5 p-4 shadow-[0_8px_32px_0_rgba(0,0,0,0.36)] backdrop-blur-xl transition-colors hover:bg-black/10 dark:border-white/10 dark:bg-white/5 dark:hover:bg-white/10 sm:p-8 md:p-10"
+            whileHover={{
+              y: -4,
+              transition: { duration: 0.14, ease: "easeOut" },
+            }}
+            whileTap={{
+              y: -2,
+              transition: { duration: 0.08, ease: "easeOut" },
+            }}
+            className="relative flex h-full flex-col rounded-xl border border-primary/20 bg-bg-card p-4 shadow-lg transition-colors hover:border-secondary/40 sm:p-8 md:p-10"
           >
             <div className="flex-1">
               <header className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
                 <div>
-                  <div className="text-sm text-text-main/70">{experience.role}</div>
-                  <h3 className="text-2xl font-bold text-text-main md:text-3xl">{experience.company}</h3>
-                  <div className="mt-1 text-xs text-text-main/60">{experience.period}</div>
+                  <div className="text-sm text-text-muted">
+                    {experience.role}
+                  </div>
+                  <h3 className="font-heading text-2xl font-bold text-text-main md:text-3xl">
+                    {experience.company}
+                  </h3>
+                  <div className="mt-1 text-xs text-text-muted">
+                    {experience.period}
+                  </div>
                 </div>
-                <ul className="mt-2 flex flex-wrap items-center gap-2 md:mt-0" aria-label={`Tecnologias de ${experience.company}`}>
-                  {experience.technologies.map((technology) => (
+                <ul
+                  className="mt-2 flex flex-wrap items-center gap-2 md:mt-0"
+                  aria-label={`Tecnologias de ${experience.company}`}
+                >
+                  {experience.technologies.map((technology, index) => (
                     <li
                       key={technology}
-                      className="rounded-full bg-[var(--accent)] px-2 py-1 text-xs font-semibold text-white"
+                      className={`rounded-full border px-2 py-1 text-xs font-semibold ${
+                        index % 2 === 0
+                          ? "border-primary/30 bg-primary/10 text-primary"
+                          : "border-secondary/30 bg-secondary/10 text-secondary"
+                      }`}
                     >
                       {technology}
                     </li>
@@ -84,13 +103,15 @@ export default function Experience() {
             </div>
 
             <div
-              className="mt-6 rounded-lg p-3 sm:mt-8 sm:p-4"
+              className="mt-6 rounded-lg border border-primary/20 p-3 sm:mt-8 sm:p-4"
               style={{
-                background: "linear-gradient(90deg, rgba(0,169,224,0.08), rgba(0,169,224,0.03))",
-                borderLeft: "4px solid var(--accent)",
+                background: "var(--color-bg-main)",
+                borderLeft: "4px solid var(--color-primary)",
               }}
             >
-              <div className="text-sm font-semibold text-[var(--badge-legend-color)]">{experience.resultLabel}</div>
+              <div className="text-sm font-semibold text-primary">
+                {experience.resultLabel}
+              </div>
               <p className="mt-1 text-text-main/85">{experience.result}</p>
             </div>
           </motion.article>
