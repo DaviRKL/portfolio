@@ -1,26 +1,33 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
-import { X } from "lucide-react";
+import { ExternalLink, Network, X } from "lucide-react";
+import type { Project } from "../data/projects";
 
-type Project = {
-  title: string;
-  tagline: string;
-  challenge: string;
-  image?: string | null;
-  technologies: string[];
-  links: { repo?: string; live?: string };
-  status?: "completed" | "in_progress";
+const actionTransition = { type: "spring" as const, stiffness: 400, damping: 17 };
+const actionVariants = {
+  rest: { scale: 1, y: 0 },
+  hover: { scale: 1.03, y: -2 },
+};
+const linkIconVariants = {
+  rest: { rotate: 0 },
+  hover: { rotate: 360 },
 };
 
 export default function ProjectCard({
   project,
   variants,
+  className = "",
+  featured = false,
+  onViewArchitecture,
 }: {
   project: Project;
-  variants?: any;
+  variants?: Variants;
+  className?: string;
+  featured?: boolean;
+  onViewArchitecture: (project: Project) => void;
 }) {
   const [loaded, setLoaded] = useState(false);
   const [imageOpen, setImageOpen] = useState(false);
@@ -48,13 +55,15 @@ export default function ProjectCard({
     <>
     <motion.article
       variants={variants}
-      initial="initial"
-      whileInView="animate"
-      viewport={{ once: true }}
-      whileHover={{ y: -8 }}
-      className="group flex h-full flex-col overflow-hidden rounded-xl border border-primary/20 bg-white shadow-[0_4px_20px_rgba(82,89,173,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-secondary/40 hover:shadow-[0_10px_24px_rgba(82,89,173,0.12)] dark:bg-bg-card dark:shadow-lg"
+      whileHover={{ y: -4 }}
+      className={`group relative isolate h-full overflow-hidden rounded-2xl p-[2px] shadow-lg transition-shadow duration-300 hover:shadow-[0_16px_40px_rgba(216,72,117,0.12)] ${className}`}
     >
-      <div className="relative flex aspect-video w-full items-center justify-center overflow-hidden border-b border-primary/20 bg-bg-main">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 rounded-2xl bg-[conic-gradient(from_var(--spin-angle),#6FBFEC,#F3D361,#D84875,#6FBFEC)] opacity-0 transition-opacity duration-500 group-hover:animate-golden-spin group-hover:opacity-100 group-focus-within:animate-golden-spin group-focus-within:opacity-100"
+      />
+      <div className="relative z-10 flex h-full flex-col overflow-hidden rounded-[calc(1rem-2px)] bg-[var(--color-bg-card)] text-[var(--color-text-on-card)]">
+      <div className={`relative flex w-full items-center justify-center overflow-hidden border-b border-secondary/20 bg-bg-main ${featured ? "aspect-[16/8]" : "aspect-video"}`}>
         {project.image ? (
           <button
             type="button"
@@ -75,11 +84,11 @@ export default function ProjectCard({
           /* Mantendo a lógica de ícones para projetos sem imagem no JSON */
           <div className="flex items-center justify-center w-full h-full">
             {project.title.toLowerCase().includes("reciclagem") ? (
-              <i className="fa fa-recycle fa-3x text-text-main dark:text-text-on-card" />
+              <i className="fa fa-recycle fa-3x text-[var(--color-text-on-card)]" />
             ) : project.title.toLowerCase().includes("financial") ? (
-              <i className="fa fa-usd fa-3x text-text-main dark:text-text-on-card" />
+              <i className="fa fa-usd fa-3x text-[var(--color-text-on-card)]" />
             ) : (
-              <div className="italic text-text-main dark:text-text-on-card">No preview</div>
+              <div className="italic text-[var(--color-text-on-card)]">No preview</div>
             )}
           </div>
         )}
@@ -90,8 +99,8 @@ export default function ProjectCard({
             <div
               className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border shadow-sm flex items-center gap-2 ${
                 project.status === "completed"
-                  ? "border-primary/20 bg-primary/10 text-primary dark:bg-primary/20 dark:text-text-on-card"
-                  : "border-secondary/20 bg-secondary/10 text-secondary dark:bg-secondary/20 dark:text-secondary"
+                  ? "border-primary/40 bg-primary/20 text-[var(--color-text-on-card)]"
+                  : "border-secondary/40 bg-secondary/20 text-[var(--color-text-on-card)]"
               }`}
             >
               {project.status === "in_progress" && (
@@ -106,29 +115,37 @@ export default function ProjectCard({
         )}
       </div>
 
-      <div className="p-6 flex-grow flex flex-col items-center text-center">
-        <h3 className="font-heading text-xl font-bold text-text-main transition-colors group-hover:text-primary dark:text-text-on-card dark:group-hover:text-secondary">
+      <div className={`flex flex-grow flex-col p-6 text-left ${featured ? "sm:p-8" : ""}`}>
+        <h3 className={`font-heading font-bold text-[var(--color-text-on-card)] transition-colors group-hover:text-secondary ${featured ? "text-2xl sm:text-3xl" : "text-xl"}`}>
           {project.title}
         </h3>
-        <p className="mt-1 text-sm italic text-text-main dark:text-text-on-card">
+        <p className="mt-2 text-sm italic text-[var(--color-text-on-card)]/75">
           {project.tagline}
         </p>
 
-        <div className="mt-4 text-left w-full">
-          <p className="text-sm text-text-main dark:text-text-on-card">
-            <strong className="text-primary dark:text-secondary">Desafio:</strong>{" "}
+        <div className={`mt-6 grid gap-4 text-sm leading-relaxed ${featured ? "sm:grid-cols-2" : ""}`}>
+          <p>
+            <strong className="mr-1 text-secondary">Problema:</strong>
             {project.challenge}
+          </p>
+          <p>
+            <strong className="mr-1 text-primary">Engenharia:</strong>
+            Solução construída com {project.technologies.slice(0, 4).join(", ")}.
+          </p>
+          <p className={featured ? "sm:col-span-2" : ""}>
+            <strong className="mr-1 text-secondary">Impacto / proposta:</strong>
+            {project.tagline}
           </p>
         </div>
 
-        <ul className="mt-6 flex flex-wrap justify-center gap-2">
-          {project.technologies.map((t, index) => (
+        <ul className="mt-6 flex flex-wrap gap-2" aria-label={`Principais tecnologias de ${project.title}`}>
+          {project.technologies.slice(0, 4).map((t, index) => (
             <li
               key={t}
               className={`rounded-full border px-3 py-1 text-[11px] font-medium ${
                 index % 2 === 0
-                  ? "border-primary/20 bg-primary/10 text-primary dark:bg-primary/20 dark:text-text-on-card"
-                  : "border-secondary/20 bg-secondary/10 text-secondary dark:bg-secondary/20 dark:text-secondary"
+                  ? "border-primary/40 bg-primary/20 text-[var(--color-text-on-card)]"
+                  : "border-secondary/40 bg-secondary/20 text-[var(--color-text-on-card)]"
               }`}
             >
               {t}
@@ -137,26 +154,72 @@ export default function ProjectCard({
         </ul>
       </div>
 
-      <footer className="p-6 pt-0 flex items-center gap-4 justify-center">
+      <footer className="flex flex-wrap items-center gap-3 p-6 pt-0">
         {project.links.repo && (
-          <a
+          <motion.a
             href={project.links.repo}
             target="_blank"
-           className="rounded-lg bg-secondary px-4 py-2 text-xs font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(216,72,117,0.2)]"
+            rel="noopener noreferrer"
+            variants={actionVariants}
+            initial="rest"
+            whileHover="hover"
+            whileTap={{ scale: 0.97 }}
+            transition={actionTransition}
+            className="inline-flex items-center gap-2 rounded-lg bg-secondary px-4 py-2 text-xs font-semibold text-white shadow-md"
           >
             Visualizar Repositório
-          </a>
+            <motion.span
+              variants={linkIconVariants}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="inline-flex"
+            >
+              <ExternalLink size={14} aria-hidden="true" />
+            </motion.span>
+          </motion.a>
         )}
         {project.links.live && (
-          <a
+          <motion.a
             href={project.links.live}
             target="_blank"
-            className="rounded-lg bg-primary px-4 py-2 text-xs font-semibold text-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(82,89,173,0.2)]"
+            rel="noopener noreferrer"
+            variants={actionVariants}
+            initial="rest"
+            whileHover="hover"
+            whileTap={{ scale: 0.97 }}
+            transition={actionTransition}
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-xs font-semibold text-white shadow-md"
           >
             Visualizar Projeto
-          </a>
+            <motion.span
+              variants={linkIconVariants}
+              transition={{ duration: 0.4, ease: "easeInOut" }}
+              className="inline-flex"
+            >
+              <ExternalLink size={14} aria-hidden="true" />
+            </motion.span>
+          </motion.a>
         )}
+        <motion.button
+          type="button"
+          onClick={() => onViewArchitecture(project)}
+          variants={actionVariants}
+          initial="rest"
+          whileHover="hover"
+          whileTap={{ scale: 0.97 }}
+          transition={actionTransition}
+          className="inline-flex items-center gap-2 rounded-lg border border-[var(--color-primary)] px-4 py-2 text-xs font-semibold text-[var(--color-primary)] transition-colors hover:bg-primary/10"
+        >
+          Ver Arquitetura
+          <motion.span
+            variants={linkIconVariants}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="inline-flex"
+          >
+            <Network size={14} aria-hidden="true" />
+          </motion.span>
+        </motion.button>
       </footer>
+      </div>
     </motion.article>
     {imageOpen && project.image && (
       <div
@@ -175,7 +238,7 @@ export default function ProjectCard({
             type="button"
             onClick={() => setImageOpen(false)}
             aria-label="Fechar imagem"
-            className="absolute right-0 top-0 z-10 inline-flex items-center gap-2 rounded-full bg-bg-card px-4 py-2 font-semibold text-text-main shadow-lg transition-colors hover:bg-secondary hover:text-bg-main dark:text-text-on-card"
+            className="absolute right-0 top-0 z-10 inline-flex items-center gap-2 rounded-full bg-[var(--color-bg-card)] px-4 py-2 font-semibold text-[var(--color-text-on-card)] shadow-lg transition-colors hover:bg-secondary hover:text-bg-main"
           >
             Fechar <X size={18} aria-hidden="true" />
           </button>

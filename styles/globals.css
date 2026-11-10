@@ -1,5 +1,11 @@
 @import "tailwindcss";
 
+@property --spin-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -13,6 +19,7 @@
   --color-secondary: #D84875;
   --color-accent-gold: #F3D361;
   --color-star-fill: #FFACE4;
+  --animate-golden-spin: golden-spin 4s linear infinite;
 }
 
 @theme inline {
@@ -42,6 +49,15 @@
   --hover-accent: rgb(88 64 160 / 10%);
   --badge-legend-color: var(--color-text-on-card);
   --badge-legend-muted: var(--color-text-muted);
+}
+
+@keyframes golden-spin {
+  0% {
+    --spin-angle: 0deg;
+  }
+  100% {
+    --spin-angle: 360deg;
+  }
 }
 
 .light {
