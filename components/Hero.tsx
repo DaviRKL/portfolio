@@ -129,9 +129,9 @@ export default function Hero() {
   }, [])
 
   return (
-    <section className="relative isolate flex min-h-[75vh] items-center overflow-hidden">
+    <section className="relative isolate overflow-hidden py-16 md:py-24">
       <motion.div
-        className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-6 py-20 text-left lg:grid-cols-12"
+        className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-6 text-left lg:grid-cols-12"
         initial="hidden"
         animate="show"
         variants={{
@@ -142,7 +142,7 @@ export default function Hero() {
         <motion.div
           variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
           transition={{ duration: 0.65, ease: 'easeOut' }}
-          className="lg:col-span-7"
+          className="flex flex-col items-start gap-6 lg:col-span-7"
         >
           <motion.h1
             ref={nameRef}
@@ -158,7 +158,7 @@ export default function Hero() {
           <motion.div
             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.65, ease: 'easeOut' }}
-            className="mt-6 inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-semibold text-primary"
+            className="inline-flex items-center rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-semibold text-primary"
             style={{ willChange: 'transform' }}
           >
             Front-End Developer
@@ -168,7 +168,7 @@ export default function Hero() {
             ref={titleRef}
             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.65, ease: 'easeOut' }}
-            className="mt-6 max-w-2xl text-base text-text-on-bg md:text-lg"
+            className="max-w-2xl text-base text-text-on-bg md:text-lg"
             style={{ willChange: 'transform, opacity' }}
           >
             Desenvolvedor Front-End especializado no ecossistema React e TypeScript, com sólida experiência em plataformas SaaS de alta complexidade para o setor financeiro. Uno a engenharia de interfaces escaláveis à orquestração de fluxos com Inteligência Artificial e automação (LLMs, CrewAI, n8n), entregando aplicações focadas em performance, acessibilidade e valor real para o usuário.
@@ -177,7 +177,7 @@ export default function Hero() {
           <motion.div
             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.65, ease: 'easeOut' }}
-            className="mt-6"
+            className="w-full"
           >
             <TechStack />
           </motion.div>
@@ -185,7 +185,7 @@ export default function Hero() {
           <motion.div
             variants={{ hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }}
             transition={{ duration: 0.65, ease: 'easeOut' }}
-            className="mt-8 flex flex-col items-start justify-start gap-4 sm:flex-row"
+            className="flex flex-col items-start justify-start gap-4 sm:flex-row"
           >
             <motion.a
               href="#projects"

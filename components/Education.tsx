@@ -34,16 +34,16 @@ export default function Education() {
     <section
       id="education"
       aria-labelledby="education-heading"
-      className="max-w-6xl mx-auto px-6 py-24 text-center"
+      className="mx-auto flex max-w-6xl flex-col gap-12 px-6 py-16 text-center md:gap-16 md:py-24"
     >
       <h2
         id="education-heading"
-        className="mb-4 font-heading text-3xl font-extrabold text-text-main"
+        className="font-heading text-3xl font-extrabold text-text-main"
       >
         Formações
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {education.map((e) => (
           <article
             key={e.institution}
@@ -62,14 +62,14 @@ export default function Education() {
                 </div>
               )}
 
-              <div>
+              <div className="flex flex-col gap-2">
                 <h3 className="font-heading text-xl font-semibold text-text-main dark:text-text-on-card">
                   {e.degree}
                 </h3>
-                <p className="mt-1 text-sm text-text-main dark:text-text-on-card">
+                <p className="text-sm text-text-main dark:text-text-on-card">
                   {e.institution}
                 </p>
-                <p className="mt-2 text-sm italic text-text-main dark:text-text-on-card">
+                <p className="text-sm italic text-text-main dark:text-text-on-card">
                   {e.period}
                 </p>
               </div>

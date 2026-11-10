@@ -173,7 +173,7 @@ function BadgeCard({
       variants={HOVER_LIFT}
       className={
         compact
-          ? "col-span-full mt-4 rounded-xl border border-secondary/20 bg-white p-4 shadow-[0_4px_20px_rgba(82,89,173,0.05)] transition-colors hover:border-primary/40 dark:bg-bg-card dark:shadow-lg md:col-auto"
+          ? "col-span-full rounded-xl border border-secondary/20 bg-white p-4 shadow-[0_4px_20px_rgba(82,89,173,0.05)] transition-colors hover:border-primary/40 dark:bg-bg-card dark:shadow-lg md:col-auto"
           : "rounded-xl border border-primary/20 bg-white p-4 shadow-[0_4px_20px_rgba(82,89,173,0.05)] transition-colors hover:border-secondary/40 dark:bg-bg-card dark:shadow-lg"
       }
     >
@@ -206,7 +206,7 @@ function BadgeCard({
           )}
         </div>
 
-        <div className="mt-1 text-center max-w-[190px]">
+        <div className="flex max-w-[190px] flex-col gap-2 text-center">
           <div
             className={`transition-colors duration-300 group-hover:text-primary ${
               compact
@@ -231,34 +231,38 @@ export default function Certifications() {
   return (
     <section
       id="certifications"
-      className="max-w-6xl mx-auto px-6 py-24 text-center"
+      className="mx-auto flex max-w-6xl flex-col gap-12 px-6 py-16 text-center md:gap-16 md:py-24"
     >
-      <h2 className="mb-10 font-heading text-3xl font-extrabold text-text-main">
+      <h2 className="font-heading text-3xl font-extrabold text-text-main">
         Certificados e Conquistas
       </h2>
 
-      {CERTIFICATION_SECTIONS.filter(
-        (section) => section.enabled !== false,
-      ).map((section) => (
-        <section key={section.title} className="mb-12">
-          <h3 className="mb-1 font-heading text-2xl font-bold text-primary dark:text-secondary">
-            {section.title}
-          </h3>
-          <p className="mb-6 max-w-3xl mx-auto text-text-main">
-            {section.description}
-          </p>
+      <div className="flex flex-col gap-12">
+        {CERTIFICATION_SECTIONS.filter(
+          (section) => section.enabled !== false,
+        ).map((section) => (
+          <section key={section.title} className="flex flex-col gap-6">
+            <header className="flex flex-col items-center gap-2">
+              <h3 className="font-heading text-2xl font-bold text-primary dark:text-secondary">
+                {section.title}
+              </h3>
+              <p className="mx-auto max-w-3xl text-text-main">
+                {section.description}
+              </p>
+            </header>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 justify-items-center">
-            {section.badgeIds.map((id) => (
-              <BadgeCard
-                key={id}
-                id={id}
-                compact={id === "2530c36d-8ebb-4016-9159-9d8120d900a0"}
-              />
-            ))}
-          </div>
-        </section>
-      ))}
+            <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 md:grid-cols-3">
+              {section.badgeIds.map((id) => (
+                <BadgeCard
+                  key={id}
+                  id={id}
+                  compact={id === "2530c36d-8ebb-4016-9159-9d8120d900a0"}
+                />
+              ))}
+            </div>
+          </section>
+        ))}
+      </div>
     </section>
   );
 }

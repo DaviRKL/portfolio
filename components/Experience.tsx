@@ -13,7 +13,7 @@ function ExperienceCard({ experience, index }: { experience: ExperienceItem; ind
   const detailsId = `experience-details-${index}`;
 
   return (
-    <article className="rounded-2xl bg-[var(--color-bg-card)] p-6 text-[var(--color-text-on-card)] shadow-[0_4px_20px_rgba(82,89,173,0.08)] md:p-8">
+    <article className="flex flex-col gap-6 rounded-2xl bg-[var(--color-bg-card)] p-6 text-[var(--color-text-on-card)] shadow-[0_4px_20px_rgba(82,89,173,0.08)] md:p-8">
       <header className="flex flex-col gap-2">
         <h3 className="font-heading text-2xl font-bold text-[var(--color-primary)] md:text-3xl">
           {experience.role}
@@ -24,15 +24,15 @@ function ExperienceCard({ experience, index }: { experience: ExperienceItem; ind
         </p>
       </header>
 
-      <div className="mt-6 rounded-r-lg border-l-4 border-[var(--color-primary)] bg-[var(--color-primary)]/10 p-4 sm:p-5">
+      <div className="flex flex-col gap-2 rounded-r-lg border-l-4 border-[var(--color-primary)] bg-[var(--color-primary)]/10 p-4 sm:p-5">
         <p className="text-sm font-semibold text-[var(--color-primary)]">
           {experience.resultLabel}
         </p>
-        <p className="mt-1 leading-relaxed">{experience.result}</p>
+        <p className="leading-relaxed">{experience.result}</p>
       </div>
 
       <ul
-        className="mt-5 flex flex-wrap gap-2"
+        className="flex flex-wrap gap-2"
         aria-label={`Tecnologias principais de ${experience.company}`}
       >
         {experience.technologies.slice(0, 4).map((technology) => (
@@ -50,7 +50,7 @@ function ExperienceCard({ experience, index }: { experience: ExperienceItem; ind
         aria-expanded={isExpanded}
         aria-controls={detailsId}
         onClick={() => setIsExpanded((expanded) => !expanded)}
-        className="mt-5 text-sm font-medium text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-secondary)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
+        className="text-sm font-medium text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-secondary)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
       >
         {isExpanded ? "- Ocultar entregas técnicas" : "+ Exibir entregas técnicas"}
       </button>
@@ -66,11 +66,11 @@ function ExperienceCard({ experience, index }: { experience: ExperienceItem; ind
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden"
           >
-            <ul className="mt-5 space-y-3 border-t border-[var(--color-primary)]/15 pt-5">
+            <ul className="space-y-3 border-t border-[var(--color-primary)]/15 pt-4">
               {experience.responsibilities.map((responsibility) => (
                 <li key={responsibility} className="flex items-start gap-3">
                   <svg
-                    className="mt-0.5 h-5 w-5 shrink-0 text-[var(--color-primary)]"
+                    className="h-5 w-5 shrink-0 text-[var(--color-primary)]"
                     viewBox="0 0 24 24"
                     fill="none"
                     aria-hidden="true"
@@ -123,64 +123,66 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="mx-auto w-full max-w-6xl px-3 py-10 sm:px-6 sm:py-20"
+      className="mx-auto flex w-full max-w-6xl flex-col gap-12 px-3 py-16 sm:px-6 md:gap-16 md:py-24"
     >
-      <header className="mb-6 text-center sm:mb-8">
+      <header className="text-center">
         <h2 className="font-heading text-3xl font-extrabold text-text-main">
           {experienceTitle}
         </h2>
       </header>
 
-      <div
-        role="tablist"
-        aria-label="Empresas"
-        className="mb-5 flex gap-4 overflow-x-auto border-b border-[var(--color-primary)]/20"
-      >
-        {experiences.map((experience, index) => {
-          const isActive = activeTab === index;
-
-          return (
-            <button
-              key={experience.company}
-              id={`experience-tab-${index}`}
-              type="button"
-              role="tab"
-              aria-selected={isActive}
-              aria-controls={`experience-panel-${index}`}
-              tabIndex={isActive ? 0 : -1}
-              onClick={() => setActiveTab(index)}
-              onKeyDown={(event) => handleTabKeyDown(event, index)}
-              className={`relative shrink-0 px-1 pb-3 text-sm font-semibold transition-opacity ${
-                isActive
-                  ? "text-[var(--color-primary)]"
-                  : "text-[var(--color-text-on-bg)] opacity-60 hover:opacity-100"
-              }`}
-            >
-              {experience.company}
-              {isActive && (
-                <motion.span
-                  layoutId="experience-tab-indicator"
-                  className="absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-[var(--color-primary)]"
-                  transition={{ duration: 0.25, ease: "easeInOut" }}
-                />
-              )}
-            </button>
-          );
-        })}
-      </div>
-
-      {experiences.map((experience, index) => (
+      <div className="flex flex-col gap-5">
         <div
-          key={experience.company}
-          id={`experience-panel-${index}`}
-          role="tabpanel"
-          aria-labelledby={`experience-tab-${index}`}
-          hidden={activeTab !== index}
-          tabIndex={0}
+          role="tablist"
+          aria-label="Empresas"
+          className="flex gap-4 overflow-x-auto border-b border-[var(--color-primary)]/20"
         >
-          <ExperienceCard experience={experience} index={index} />
+          {experiences.map((experience, index) => {
+            const isActive = activeTab === index;
+
+            return (
+              <button
+                key={experience.company}
+                id={`experience-tab-${index}`}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                aria-controls={`experience-panel-${index}`}
+                tabIndex={isActive ? 0 : -1}
+                onClick={() => setActiveTab(index)}
+                onKeyDown={(event) => handleTabKeyDown(event, index)}
+                className={`relative shrink-0 px-1 pb-3 text-sm font-semibold transition-opacity ${
+                  isActive
+                    ? "text-[var(--color-primary)]"
+                    : "text-[var(--color-text-on-bg)] opacity-60 hover:opacity-100"
+                }`}
+              >
+                {experience.company}
+                {isActive && (
+                  <motion.span
+                    layoutId="experience-tab-indicator"
+                    className="absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-[var(--color-primary)]"
+                    transition={{ duration: 0.25, ease: "easeInOut" }}
+                  />
+                )}
+              </button>
+            );
+          })}
         </div>
-      ))}
+
+        {experiences.map((experience, index) => (
+          <div
+            key={experience.company}
+            id={`experience-panel-${index}`}
+            role="tabpanel"
+            aria-labelledby={`experience-tab-${index}`}
+            hidden={activeTab !== index}
+            tabIndex={0}
+          >
+            <ExperienceCard experience={experience} index={index} />
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

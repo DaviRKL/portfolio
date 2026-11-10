@@ -97,7 +97,7 @@ export default function ProjectCard({
             </span>
           </div>
 
-          <div className={`flex flex-grow flex-col p-6 text-left ${featured ? "sm:p-8" : ""}`}>
+          <div className={`flex flex-grow flex-col gap-4 p-6 text-left ${featured ? "sm:p-8" : ""}`}>
             <h3
               className={`font-heading font-bold text-[var(--color-text-on-card)] transition-colors group-hover:text-secondary ${
                 featured ? "text-2xl sm:text-3xl" : "text-xl"
@@ -106,14 +106,14 @@ export default function ProjectCard({
               {project.title}
             </h3>
             <p
-              className="mt-2 line-clamp-1 text-sm text-[var(--color-text-on-card)]/75"
+              className="line-clamp-1 text-sm text-[var(--color-text-on-card)]/75"
               title={project.shortDescription}
             >
               {project.shortDescription}
             </p>
 
             <ul
-              className="mt-5 flex flex-wrap gap-2"
+              className="flex flex-wrap gap-2"
               aria-label={`Tecnologias principais de ${project.title}`}
             >
               {project.coreTechnologies.slice(0, 4).map((technology, index) => (
@@ -131,7 +131,7 @@ export default function ProjectCard({
             </ul>
           </div>
 
-          <footer className="flex flex-wrap items-center gap-3 p-6 pt-0">
+          <footer className="flex flex-wrap items-center gap-4 p-6 pt-0">
             {project.demoUrl && (
               <motion.a
                 href={project.demoUrl}
