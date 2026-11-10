@@ -1,7 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { motion, type Variants } from "framer-motion";
+import { useState } from "react";
+import {
+  AnimatePresence,
+  motion,
+  type Variants,
+} from "framer-motion";
 import { Award } from "lucide-react";
 
 type BadgeMetadata = {
@@ -228,6 +233,42 @@ function BadgeCard({
 }
 
 export default function Certifications() {
+  const categories = CERTIFICATION_SECTIONS.filter(
+    (section) => section.enabled !== false,
+  );
+  const [activeCategory, setActiveCategory] = useState(
+    "Inteligência Artificial",
+  );
+  const activeSection = categories.find(
+    (section) => section.title === activeCategory,
+  );
+  const activeCategoryIndex = categories.findIndex(
+    (section) => section.title === activeCategory,
+  );
+
+  function handleTabKeyDown(
+    event: React.KeyboardEvent<HTMLButtonElement>,
+    index: number,
+  ) {
+    let nextIndex = index;
+
+    if (event.key === "ArrowRight") {
+      nextIndex = (index + 1) % categories.length;
+    } else if (event.key === "ArrowLeft") {
+      nextIndex = (index - 1 + categories.length) % categories.length;
+    } else if (event.key === "Home") {
+      nextIndex = 0;
+    } else if (event.key === "End") {
+      nextIndex = categories.length - 1;
+    } else {
+      return;
+    }
+
+    event.preventDefault();
+    setActiveCategory(categories[nextIndex].title);
+    document.getElementById(`certification-tab-${nextIndex}`)?.focus();
+  }
+
   return (
     <section
       id="certifications"
@@ -237,31 +278,80 @@ export default function Certifications() {
         Certificados e Conquistas
       </h2>
 
-      <div className="flex flex-col gap-12">
-        {CERTIFICATION_SECTIONS.filter(
-          (section) => section.enabled !== false,
-        ).map((section) => (
-          <section key={section.title} className="flex flex-col gap-6">
-            <header className="flex flex-col items-center gap-2">
-              <h3 className="font-heading text-2xl font-bold text-primary dark:text-secondary">
-                {section.title}
-              </h3>
-              <p className="mx-auto max-w-3xl text-text-main">
-                {section.description}
-              </p>
-            </header>
+      <div className="flex flex-col gap-8">
+        <div
+          role="tablist"
+          aria-label="Categorias de certificados"
+          className="flex gap-4 overflow-x-auto border-b border-gray-200 dark:border-gray-800"
+        >
+          {categories.map((category, index) => {
+            const isActive = category.title === activeCategory;
 
-            <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 md:grid-cols-3">
-              {section.badgeIds.map((id) => (
-                <BadgeCard
-                  key={id}
-                  id={id}
-                  compact={id === "2530c36d-8ebb-4016-9159-9d8120d900a0"}
-                />
-              ))}
-            </div>
-          </section>
-        ))}
+            return (
+              <button
+                key={category.title}
+                id={`certification-tab-${index}`}
+                type="button"
+                role="tab"
+                aria-selected={isActive}
+                aria-controls="certification-panel"
+                tabIndex={isActive ? 0 : -1}
+                onClick={() => setActiveCategory(category.title)}
+                onKeyDown={(event) => handleTabKeyDown(event, index)}
+                className={`relative shrink-0 px-1 pb-3 text-sm font-semibold transition-colors ${
+                  isActive
+                    ? "text-primary dark:text-secondary"
+                    : "text-text-main/65 hover:text-primary dark:text-text-on-card/65 dark:hover:text-secondary"
+                }`}
+              >
+                {category.title}
+                {isActive && (
+                  <motion.span
+                    layoutId="certification-tab-indicator"
+                    className="absolute inset-x-0 bottom-0 h-0.5 rounded-full bg-primary dark:bg-secondary"
+                    transition={{ duration: 0.25, ease: "easeInOut" }}
+                  />
+                )}
+              </button>
+            );
+          })}
+        </div>
+
+        <AnimatePresence mode="wait" initial={false}>
+          {activeSection && (
+            <motion.div
+              key={activeSection.title}
+              id="certification-panel"
+              role="tabpanel"
+              aria-labelledby={`certification-tab-${activeCategoryIndex}`}
+              tabIndex={0}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="flex flex-col gap-8"
+            >
+              <header className="flex flex-col items-center gap-2">
+                <h3 className="font-heading text-2xl font-bold text-primary dark:text-secondary">
+                  {activeSection.title}
+                </h3>
+                <p className="mx-auto max-w-3xl text-text-main">
+                  {activeSection.description}
+                </p>
+              </header>
+
+              <div className="grid grid-cols-1 justify-items-center gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {activeSection.badgeIds.map((id) => (
+                  <BadgeCard
+                    key={id}
+                    id={id}
+                    compact={id === "2530c36d-8ebb-4016-9159-9d8120d900a0"}
+                  />
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );
