@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
 import { motion } from 'framer-motion'
 
-export default function ThemeToggle() {
-  const { theme, setTheme, resolvedTheme } = useTheme()
+export default function ThemeToggle({ className = "" }: { className?: string }) {
+  const { setTheme, resolvedTheme } = useTheme()
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -14,7 +14,10 @@ export default function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <button aria-label="Alternar tema" className="p-2 rounded-md focus:outline-none" />
+      <button
+        aria-label="Alternar tema"
+        className={`relative h-10 w-10 rounded-md p-2 focus-visible:outline-2 focus-visible:outline-offset-2 ${className}`}
+      />
     )
   }
 
@@ -24,7 +27,7 @@ export default function ThemeToggle() {
     <motion.button
       onClick={() => setTheme(isLight ? 'dark' : 'light')}
       aria-label={isLight ? 'Mudar para tema escuro' : 'Mudar para tema claro'}
-      className="p-2 rounded-md transition-colors duration-500 focus:outline-none relative"
+      className={`relative h-10 w-10 rounded-md p-2 transition-colors duration-500 focus-visible:outline-2 focus-visible:outline-offset-2 ${className}`}
       whileTap={{ scale: 0.92 }}
       initial={false}
       animate={{ rotate: isLight ? 40 : 0 }}

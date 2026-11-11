@@ -205,16 +205,16 @@ export default function Navbar() {
                   }}
                   whileHover={{
                     y: -5, // Efeito de levantar
-                    color: "var(--accent)",
+                    color: "var(--color-secondary)",
                     transition: { duration: 0.2, ease: "easeOut" },
                   }}
                   whileFocus={{
                     y: -5,
-                    color: "var(--accent)",
+                    color: "var(--color-secondary)",
                     transition: { duration: 0.2, ease: "easeOut" },
                   }}
-                  whileTap={{ scale: 0.95, y: -3, color: "var(--accent)" }}
-                  className="block cursor-pointer border-b border-primary/20 py-2 text-2xl font-semibold text-text-main transition-colors focus:outline-none"
+                  whileTap={{ scale: 0.95, y: -3, color: "var(--color-secondary)" }}
+                  className="block cursor-pointer border-b border-primary/20 py-2 text-2xl font-semibold text-[var(--color-text-on-card)] transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-secondary)]"
                 >
                   {l.label}
                 </motion.a>
@@ -226,7 +226,7 @@ export default function Navbar() {
                   whileHover={{ x: 8, color: "var(--accent)" }}
                   whileFocus={{ x: 8, color: "var(--accent)" }}
                   whileTap={{ x: 8, color: "var(--accent)" }}
-                  className="flex cursor-pointer items-center gap-3 text-lg font-medium text-primary transition-colors"
+                  className="flex cursor-pointer items-center gap-3 text-lg font-medium text-[var(--color-text-on-card)] transition-colors hover:text-[var(--color-secondary)]"
                   href="https://github.com/DaviRKL"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -247,10 +247,10 @@ export default function Navbar() {
                 </motion.a>
 
                 <motion.a
-                  whileHover={{ x: 8, color: "var(--accent)" }}
-                  whileFocus={{ x: 8, color: "var(--accent)" }}
-                  whileTap={{ x: 8, color: "var(--accent)" }}
-                  className="flex cursor-pointer items-center gap-3 text-lg font-medium text-primary transition-colors"
+                  whileHover={{ x: 8, color: "var(--color-secondary)" }}
+                  whileFocus={{ x: 8, color: "var(--color-secondary)" }}
+                  whileTap={{ x: 8, color: "var(--color-secondary)" }}
+                  className="flex cursor-pointer items-center gap-3 text-lg font-medium text-[var(--color-text-on-card)] transition-colors"
                   href="https://www.linkedin.com/in/davirkl/"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -273,9 +273,9 @@ export default function Navbar() {
                 </motion.a>
               </div>
 
-              <div className="flex items-center justify-between border-t border-primary/20 pt-4 text-text-main">
+              <div className="flex items-center justify-between border-t border-primary/20 pt-4 text-[var(--color-text-on-card)]">
                 <span className="text-sm font-medium">Alternar tema</span>
-                <ThemeToggle />
+                <ThemeToggle className="text-[var(--color-text-on-card)] hover:bg-secondary/10 focus-visible:outline-secondary" />
               </div>
             </div>
           </motion.div>
